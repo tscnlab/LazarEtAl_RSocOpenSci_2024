@@ -809,6 +809,9 @@ assumptest_lin <- check_model(model2, theme="ggplot2::theme_classic")
 #show the plot
 assumptest_lin
 
+#save as pdf manually: landscape full din A4 (width = 11.69 in, height = 8.27 in)
+#(ggsave function did not work here)
+
 #create  a linear model for testing the log10-transformed light data
 model <- lm(diameter_3d ~ log_Mel_EDI + age, data = Fielddata)
 
