@@ -28,6 +28,7 @@ vignettes/*.pdf
 /rawdata/**/timing/
 /rawdata/**/*.png
 README.html
+hypotheses.html
 #ignore .rda files with the exception of rawfiles.rda & cleaned_survey.rda
 #this 
 *.rda 
