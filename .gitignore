@@ -25,4 +25,5 @@ vignettes/*.pdf
 /06_output/*.pdf
 /06_output/*.txt
 #add rda files?
+*.rda
 
