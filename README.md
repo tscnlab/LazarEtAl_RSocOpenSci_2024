@@ -13,7 +13,7 @@ You can find the results of the hypothesis tests as output from the  `hypotheses
 This R project applies [`renv`](https://rstudio.github.io/renv/articles/renv.html) for package management. Use `renv::restore()` to download the correct package versions and ensure computational reproducibility. 
 
 # Workflow description 
-Here we explain the R script processing and any manual steps in sequential order. For running the R code files in RStudio, make sure to use the R-Project file `RSOS-191613.Rproj` to avoid issues with the working directory.
+Here we explain the R script processing and any manual steps in sequential order. For running the R code files in RStudio, make sure to use an R-Project file (e.g. the uploaded `RSOS-191613.Rproj`) to avoid issues with the working directory.
 
 
 ## Survey data
