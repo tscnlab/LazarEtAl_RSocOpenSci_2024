@@ -32,6 +32,8 @@ The health and eligibility screening including demographic data are given in thi
 - <span style="color: blue;">*[4] Data mistake corrections*</span> makes corrections to spelling mistakes and missing values in the survey data
 - <span style="color: blue;">*[5] Data saving*</span> saves the survey data in a cleaned R data file as `cleaned_survey.rda`.
 
+<span style="color: red;">**Note**</span>: We also uploaded the resulting `cleaned_survey.rda` file to allow continued analyses in case of problems with the survey data import into R. Import issues can typically arise due to differences in OS and time and language settings.
+
 ## Raw data
 <span style="color: green;">
 Folder: `02_rawdata` <br>
@@ -40,7 +42,9 @@ Output: `rawfiles.rda` <br>
 RCode: `20_rawdata_import.R` <br>
 </span>
 
-The `20_rawdata_import.R` conducts the raw data import, reading in the rawdata csv files and extracting their inclusion/exclusion status from the subject-specific subfolder name and finally renaming some variables. The raw data csv files are given in subject-specific subfolders of the `02_rawdata` folder (`SP001`-`SP113`). The subject-specific subfolders of the participants excluded before the trial contain a results file with the same header but only one row NA as data. 
+The `20_rawdata_import.R` conducts the raw data import, reading in the rawdata csv files and extracting their inclusion/exclusion status from the subject-specific subfolder name and finally renaming some variables. The raw data csv files are given in subject-specific subfolders of the `02_rawdata` folder (`SP001`-`SP113`). The subject-specific subfolders of the participants excluded before the trial contain a results file with the same header but only one row NA as data. The imported data are saved as `rawfiles.rda`
+
+<span style="color: red;">**Note**</span>: We also uploaded the resulting `rawfiles.rda` file to allow continued analyses in case of problems with the survey data import into R. Import issues can typically arise due to differences in OS and time and language settings.
 
 ## Quality checks
 <span style="color: green;">
