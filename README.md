@@ -9,6 +9,8 @@ You can find the results of the hypothesis tests as output from the  `hypotheses
 1) n=83,  75% data loss threshold: `hypotheses_n83.html`
 2) n=63, 50% data loss threshold: `hypotheses_n63.html`
 
+The provided laboratory log file (`lablog_RSOS-191613.csv`) summarises the most relevant metadata for all invited participants.
+
 # Dependency management
 This R project applies [`renv`](https://rstudio.github.io/renv/articles/renv.html) for package management. Use `renv::restore()` to download the correct package versions and ensure computational reproducibility. 
 

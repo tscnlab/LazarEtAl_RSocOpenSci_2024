@@ -1,0 +1,114 @@
+Participant No.,ID,Status,Date,Start time [hh:mm],Age[y],Age group,Sex,Weather,Season,Data loss [%],Lab light sequence
+1,SP001,Included,27/05/2021,13:03,28,25-34,Male,Somewhat cloudy,Spring,25,RGBW
+2,SP002,Excluded before trial,04/06/2021,09:57,27,25-34,Female,NA,Summer,100,NA
+3,SP003,Included,04/06/2021,12:48,22,18-24,Male,Sunny,Summer,39.6011396,RBWG
+4,SP004,Included,10/06/2021,14:42,25,25-34,Female,Cloudy,Summer,55.78034682,RWGB
+5,SP005,Included,11/06/2021,08:49,19,18-24,Female,Sunny,Summer,40.98837209,RWBG
+6,SP006,Included,11/06/2021,10:29,30,25-34,Male,Sunny,Summer,47.12643678,GRBW
+7,SP007,Excluded after trial,11/06/2021,12:39,25,25-34,Female,Sunny,Summer,86.76056338,GRWB
+8,SP008,Included,11/06/2021,16:38,25,25-34,Male,Cloudy,Summer,17.05202312,GBRW
+9,SP009,Included,17/06/2021,08:19,25,25-34,Male,Sunny,Summer,23.51274788,GBWR
+10,SP010,Included,17/06/2021,10:41,26,25-34,Female,Cloudy,Summer,46.53179191,GWRB
+11,SP011,Included,17/06/2021,12:29,25,25-34,Female,Sunny,Summer,66,GWBR
+12,SP012,Included,18/06/2021,09:42,33,25-34,Male,Sunny,Summer,46.17414248,BRGW
+13,SP013,Included,18/06/2021,11:54,34,25-34,Male,Sunny,Summer,47.1810089,BRWG
+14,SP014,Included,18/06/2021,13:58,22,18-24,Female,Sunny,Summer,42.12034384,BGRW
+15,SP015,Included,21/06/2021,12:28,26,25-34,Female,Sunny,Summer,35.19061584,BGRW
+16,SP016,Excluded before trial,21/06/2021,14:34,27,25-34,Male,NA,Summer,100,BWRG
+17,SP017,Included,21/06/2021,14:53,45,45-54,Male,Cloudy,Summer,69.12181303,BGWR
+18,SP018,Included,22/06/2021,16:13,32,25-34,Female,Somewhat cloudy,Summer,29.05027933,BWRG
+19,SP019,Excluded after trial,24/06/2021,09:43,22,18-24,Female,Very cloudy,Summer,100,BWGR
+20,SP020,Included,24/06/2021,11:29,22,18-24,Female,Very cloudy,Summer,48.35164835,WRGB
+21,SP021,Included,24/06/2021,13:11,40,35-44,Female,Light rain,Summer,29.73760933,WRBG
+22,SP022,Included,25/06/2021,09:47,26,25-34,Male,Cloudy,Summer,37.56756757,WGRB
+23,SP023,Excluded after trial,25/06/2021,12:07,24,18-24,Female,Somewhat cloudy,Summer,40.74074074,WGBR
+24,SP024,Included,25/06/2021,15:10,39,35-44,Male,Cloudy,Summer,30.64516129,WBRG
+25,SP025,Included,29/06/2021,14:08,25,25-34,Female,Cloudy,Summer,45.67164179,WBGR
+26,SP026,Included,30/06/2021,16:01,24,18-24,Female,Light rain,Summer,26.20481928,RGBW
+27,SP027,Included,30/06/2021,17:39,24,18-24,Male,Light rain,Summer,25.56818182,RGWB
+28,SP028,Included,02/07/2021,11:38,48,45-54,Female,Sunny,Summer,56.70731707,RBGW
+29,SP029,Included,02/07/2021,13:10,24,18-24,Female,Sunny,Summer,43.5530086,RBWG
+30,SP030,Included,05/07/2021,07:53,18,18-24,Female,Cloudy,Summer,32.58426966,RWGB
+31,SP031,Included,08/07/2021,07:50,38,35-44,Male,Light rain,Summer,23.95209581,RWBG
+32,SP032,Included,08/07/2021,09:36,22,18-24,Male,Light rain,Summer,41.33738602,GRBW
+33,SP033,Included,09/07/2021,12:27,57,55-64,Male,Cloudy,Summer,18.42105263,GRWB
+34,SP034,Included,12/07/2021,10:29,51,45-54,Male,Somewhat cloudy,Summer,25.97765363,GBRW
+35,SP035,Excluded after trial,14/07/2021,17:12,24,18-24,Male,Very cloudy,Summer,78.24858757,GBWR
+36,SP036,Excluded after trial,16/07/2021,08:32,34,25-34,Male,Very cloudy,Summer,100,GWRB
+37,SP037,Included,16/07/2021,17:11,36,35-44,Male,Light rain,Summer,50,GWBR
+38,SP038,Included,21/07/2021,15:32,18,18-24,Female,Sunny,Summer,34.59302326,BRGW
+39,SP039,Included,22/07/2021,13:13,27,25-34,Female,Sunny,Summer,60.81871345,BRWG
+40,SP040,Excluded after trial,22/07/2021,15:23,58,55-64,Female,Sunny,Summer,91.66666667,BGRW
+41,SP041,Included,28/07/2021,13:29,21,18-24,Male,Somewhat cloudy,Summer,44.88636364,BGWR
+42,SP042,Excluded before trial,30/07/2021,11:42,80,>64,Female,NA,Summer,100,NA
+43,SP043,Included,04/08/2021,09:48,21,18-24,Male,Very cloudy,Summer,34.9112426,BWRG
+44,SP044,Included,04/08/2021,11:30,36,35-44,Male,Very cloudy,Summer,23.7388724,BWGR
+45,SP045,Excluded after trial,05/08/2021,10:55,18,18-24,Male,Cloudy,Summer,100,WRGB
+46,SP046,Included,12/08/2021,14:31,22,18-24,Male,Sunny,Summer,44.32989691,WRBG
+47,SP047,Included,13/08/2021,13:09,20,18-24,Male,Sunny,Summer,64.02439024,WGRB
+48,SP048,Included,18/08/2021,16:22,20,18-24,Female,Very cloudy,Summer,35.63829787,WGBR
+49,SP049,Included,19/08/2021,13:39,46,45-54,Male,Cloudy,Summer,30.23255814,WBRG
+50,SP050,Included,19/08/2021,15:53,85,>64,Male,Somewhat cloudy,Summer,47.92746114,WBGR
+51,SP051,Excluded after trial,20/08/2021,07:57,56,55-64,Female,Very cloudy,Summer,100,RGBW
+52,SP052,Excluded after trial,25/08/2021,15:14,64,55-64,Female,Somewhat cloudy,Summer,100,RGWB
+53,SP053,Included,27/08/2021,13:55,36,35-44,Male,Sunny,Summer,48.8372093,RBGW
+54,SP054,Included,03/09/2021,09:30,55,55-64,Female,Somewhat cloudy,Autumn,42.20963173,RBWG
+55,SP055,Included,09/09/2021,09:16,39,35-44,Female,Somewhat cloudy,Autumn,52.85285285,RWGB
+56,SP056,Included,10/09/2021,10:35,60,55-64,Male,Very cloudy,Autumn,22.12885154,RWBG
+57,SP057,Included,16/09/2021,12:26,54,45-54,Female,Cloudy,Autumn,70.64220183,GRBW
+58,SP058,Excluded after trial,17/09/2021,09:41,49,45-54,Female,Somewhat cloudy,Autumn,81.59509202,GRWB
+59,SP059,Included,17/09/2021,11:37,44,35-44,Male,Somewhat cloudy,Autumn,40.58823529,GBRW
+60,SP060,Excluded after trial,22/09/2021,12:47,52,45-54,Female,Sunny,Autumn,100,GBWR
+61,SP061,Excluded after trial,23/09/2021,12:45,93,>64,Male,Sunny,Autumn,95.65217391,GWRB
+62,SP062,Excluded after trial,23/09/2021,14:36,59,55-64,Female,Sunny,Autumn,93.37175793,GWBR
+63,SP063,Included,30/09/2021,08:54,61,55-64,Female,Sunny,Autumn,64.30446194,GWBR
+64,SP064,Included,01/10/2021,14:33,80,>64,Male,Sunny,Autumn,54.20289855,BRGW
+65,SP065,Included,06/10/2021,13:45,38,35-44,Male,Cloudy,Autumn,37.75216138,BRWG
+66,SP066,Included,08/10/2021,12:55,48,45-54,Male,Sunny,Autumn,55.36231884,BGRW
+67,SP067,Included,14/10/2021,12:16,57,55-64,Female,Sunny,Autumn,25.74850299,BGWR
+68,SP068,Included,21/10/2021,14:21,40,35-44,Female,Somewhat cloudy,Autumn,33.86666667,BWRG
+69,SP069,Excluded after trial,28/10/2021,09:58,60,55-64,Female,Sunny,Autumn,100,BWGR
+70,SP070,Included,28/10/2021,12:27,54,45-54,Female,Sunny,Autumn,30.83832335,WRGB
+71,SP071,Included,29/10/2021,10:50,21,18-24,Female,Somewhat cloudy,Autumn,32.0855615,WRBG
+72,SP072,Included,04/11/2021,10:47,62,55-64,Female,Very cloudy,Autumn,15.83333333,WGRB
+73,SP073,Included,12/11/2021,09:47,61,55-64,Female,Very cloudy,Autumn,60,WGBR
+74,SP074,Included,29/11/2021,13:20,64,55-64,Male,Very cloudy,Autumn,10.81794195,WBRG
+75,SP075,Excluded before trial,02/12/2021,10:47,69,>64,Male,NA,Winter,100,NA
+76,SP076,Included,03/12/2021,10:55,87,>64,Male,Sunny,Winter,58.01104972,WBGR
+77,SP077,Included,17/12/2021,10:51,38,35-44,Male,Very cloudy,Winter,26.443769,RGBW
+78,SP078,Excluded before trial,20/12/2021,11:12,68,>64,Female,NA,Winter,100,NA
+79,SP079,Excluded before trial,23/12/2021,10:39,55,55-64,Male,NA,Winter,100,NA
+80,SP080,Included,17/01/2022,14:01,41,35-44,Male,Very cloudy,Winter,26.74094708,RGWB
+81,SP081,Included,24/01/2022,12:51,20,18-24,Female,Sunny,Winter,57.6819407,RBGW
+82,SP082,Included,27/01/2022,08:57,23,18-24,Female,Very cloudy,Winter,61.14130435,RBWG
+83,SP083,Included,27/01/2022,12:18,20,18-24,Female,Very cloudy,Winter,26.24309392,RBWG
+84,SP084,Included,28/01/2022,10:18,21,18-24,Male,Cloudy,Winter,40.38997214,RWGB
+85,SP085,Included,03/02/2022,09:00,26,25-34,Male,Sunny,Winter,36.77130045,RWBG
+86,SP086,Excluded after trial,03/02/2022,11:40,24,18-24,Female,Somewhat cloudy,Winter,100,GRBW
+87,SP087,Included,03/02/2022,13:58,45,45-54,Male,Somewhat cloudy,Winter,56.21621622,GRWB
+88,SP088,Excluded after trial,04/02/2022,09:25,25,25-34,Male,Very cloudy,Winter,51.89873418,GBRW
+89,SP089,Included,04/02/2022,11:42,22,18-24,Male,Cloudy,Winter,41.71270718,GBWR
+90,SP090,Included,07/02/2022,10:51,24,18-24,Female,Sunny,Winter,54.94505495,GWRB
+91,SP091,Included,17/02/2022,14:02,19,18-24,Female,Very cloudy,Winter,35.73264781,GWBR
+92,SP092,Included,18/02/2022,11:47,24,18-24,Male,Sunny,Winter,36.16438356,BRGW
+93,SP093,Included,18/02/2022,13:44,19,18-24,Female,Very cloudy,Winter,45.04021448,BRWG
+94,SP094,Excluded after trial,21/02/2022,12:06,23,18-24,Female,Very cloudy,Winter,73.57859532,BGRW
+95,SP095,Included,24/02/2022,09:41,26,25-34,Female,Sunny,Winter,52.83018868,BGWR
+96,SP096,Included,24/02/2022,14:49,18,18-24,Female,Very cloudy,Winter,44.71544715,BWRG
+97,SP097,Included,25/02/2022,08:26,20,18-24,Male,Sunny,Winter,46.55647383,BWGR
+98,SP098,Included,25/02/2022,10:09,24,18-24,Female,Sunny,Winter,37.29281768,WRGB
+99,SP099,Excluded after trial,25/02/2022,14:50,18,18-24,Female,Very cloudy,Winter,100,WRBG
+100,SP100,Included,28/02/2022,12:34,21,18-24,Female,Sunny,Winter,41.89189189,WGRB
+101,SP101,Included,28/02/2022,14:09,34,25-34,Female,Sunny,Winter,52.8,WGBR
+102,SP102,Excluded after trial,10/03/2022,09:47,25,25-34,Female,Sunny,Spring,100,WBRG
+103,SP103,Excluded after trial,10/03/2022,11:45,18,18-24,Male,Sunny,Spring,100,WBGR
+104,SP104,Excluded after trial,10/03/2022,13:56,19,18-24,Female,Sunny,Spring,100,RGBW
+105,SP105,Excluded after trial,14/03/2022,11:40,47,45-54,Female,Sunny,Spring,100,RGWB
+106,SP106,Excluded after trial,21/03/2022,15:56,34,25-34,Female,Somewhat cloudy,Spring,85.47717842,RBGW
+107,SP107,Excluded before trial,24/03/2022,12:18,38,35-44,Male,NA,Spring,100,NA
+108,SP108,Included,25/03/2022,12:57,18,18-24,Female,Sunny,Spring,27.70448549,RBWG
+109,SP109,Included,31/03/2022,07:50,54,45-54,Female,Light rain,Spring,41.33333333,RWGB
+110,SP110,Included,31/03/2022,09:34,42,35-44,Male,Very cloudy,Spring,60.75949367,RWBG
+111,SP111,Included,01/04/2022,13:56,32,25-34,Female,Light rain,Spring,35.55555556,GRBW
+112,SP112,Included,04/04/2022,12:22,77,>64,Female,Sunny,Spring,25.26041667,GRBW
+113,SP113,Included,07/04/2022,11:51,67,>64,Female,Light rain,Spring,19.71830986,GRWB
