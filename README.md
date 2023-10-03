@@ -62,7 +62,7 @@ The Code section <span style="color: blue;">*[3] Light data transformation*</spa
 
 The Code section <span style="color: blue;">*[4] Save checked rawfiles*</span> saves the quality checked data to the file `checked_rawfiles.rda`.
 
-<span style="color: red;">**Note**</span>: Remember that for the "Proportion of excluded data" quality check we used the adjusted data loss threshold (0.75; n=83 included) as a default. If you want to continue the analysis with the reduced dataset retained from the initial data loss threshold  (0.5; n=63 included),  "uncomment" the code line `#data_loss_thres <- 0.5`, restart RStudio and rerun the `21_qualitychecks.R` code. The `checked_rawfiles.rda` will then contain the same data but with  only n=63 tagged as "Included".
+<span style="color: red;">**Note**</span>: Remember that for the "Proportion of excluded data" quality check we used the adjusted data loss threshold (0.75; n=83 included) as a default. We also uploaded the resulting `checked_rawfiles.rda` file to allow continued analyses in case of problems with the prior R code. If you want to continue the analysis with the reduced dataset retained from the initial data loss threshold  (0.5; n=63 included),  "uncomment" the code line `#data_loss_thres <- 0.5`, restart RStudio and rerun the `21_qualitychecks.R` code. The `checked_rawfiles.rda` will then contain the same data but with  only n=63 tagged as "Included". 
 
 
 ## Data categorisation 
@@ -77,8 +77,7 @@ Code section <span style="color: blue;">*[1] Load checked raw data*</span> loads
 
 In the Code section <span style="color: blue;">*[2] Experimental phase categorisation*</span> the observations are "tagged" according to the experimental phases they were collected in. This is done with the help of multiple steps. First, as rough categorisation step  all data <1.5 lx photopic illuminance is tagged as "Dark" data from the dark-adaptation phase. Then the categorisation is refined by tagging the "Lab" data from the laboratory light conditions. This procedure is verified visually, by plotting the first 181 photopic illuminance samples (log10-scale) of each participants' dataset as a function of the sample number. Finally the "Field" data samples are tagged, starting 3 samples after the laboratory data. The transition samples before starting the dark adaptation and in-between conditions are tagged as "NA". Subsequently, all light data from the dark adaptation phase and data below <1 lx photopic illuminance or mEDI are replaced by "NA" values because the used spectroradiometer does not allow valid measurements in these very dim light conditions. Additionally a new light variable giving the ratio between melanopic irradiance and photopic illuminance (`MPratio`) is introduced for later plotting. 
 
-In code section <span style="color: blue;">*[3] Data saving*</span> we save the cleaned, quality checked and categorised dataset to the `rawdata_ID_all.rda` R data file.
-
+In code section <span style="color: blue;">*[3] Data saving*</span> we save the cleaned, quality checked and categorised dataset to the `rawdata_ID_all.rda` R data file. The uploaded `rawdata_ID_all.rda`file in the repository uses the adjusted data loss threshold (0.75; n=83 included).
 
 ## Data merge
 <span style="color: green;">
@@ -90,7 +89,7 @@ RCode: `30_datamerge.R` <br>
 
 In the datamerge code, the cleaned survey and raw data are combined into one dataset matched by id. The full dataset is saved as `mergeddata_all.rda` including all observations and columns. The full dataset is then reduced to only included participants and relevant variables for confirmatory and exploratory analysis and saved as `merged_data_conf.rda`. 
 
-Beware that in the `merged_data_conf.rda` dataset, participants excluded during the "Proportion of excluded data" quality check are also not included in the data anymore. As a default the adjusted data loss threshold (0.75; n=83 included) was used. If you want to continue the analysis with the reduced dataset retained from the initial data loss threshold  (0.5; n=63 included), you need to go back to `21_qualitychecks.R` code, "uncomment" the code line `#data_loss_thres <- 0.5`, restart RStudio and repeat the workflow from the *Quality checks* section on.
+<span style="color: red;">**Note**</span>: Beware that in the `merged_data_conf.rda` dataset, participants excluded during the "Proportion of excluded data" quality check are also not included in the data anymore. As a default the adjusted data loss threshold (0.75; n=83 included) was used (see uploaded`merged_data_conf.rda` file). If you want to continue the analysis with the reduced dataset retained from the initial data loss threshold  (0.5; n=63 included), you need to go back to `21_qualitychecks.R` code, "uncomment" the code line `#data_loss_thres <- 0.5`, restart RStudio and repeat the workflow from the *Quality checks* section on.
 
 
 ## Demographics
