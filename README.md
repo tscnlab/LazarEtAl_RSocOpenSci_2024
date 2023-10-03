@@ -3,13 +3,14 @@ This Code and data repository is part of the registered report RSOS-191613: Regu
 
 If you have any comments or queries, please reach out to us at rafael.lazar@unibas.ch and manuel.spitschan@tum.de.
 
+The laboratory log file (`lablog_RSOS-191613.csv`) provides an overview of the most relevant metadata for all invited participants.
+
 <span style="color: red;">
 Shortcut to hypothesis testing: </span> 
 You can find the results of the hypothesis tests as output from the  `hypotheses.rmd` file in two versions for the two respective samples: 
 1) n=83,  75% data loss threshold: `hypotheses_n83.html`
 2) n=63, 50% data loss threshold: `hypotheses_n63.html`
 
-The provided laboratory log file (`lablog_RSOS-191613.csv`) summarises the most relevant metadata for all invited participants.
 
 # Dependency management
 This R project applies [`renv`](https://rstudio.github.io/renv/articles/renv.html) for package management. Use `renv::restore()` to download the correct package versions and ensure computational reproducibility. 
