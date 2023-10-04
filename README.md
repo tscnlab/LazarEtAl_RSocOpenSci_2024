@@ -1,5 +1,5 @@
 # Overview
-This Code and data repository is part of the registered report RSOS-191613: Regulation of pupil size in natural vision across the human lifespan (the stage 1 in principal accepted (IPA) manuscript RSOS-191613.R1 is found here: https://osf.io/zrksf/).
+This Code and data repository is part of the registered report: Regulation of pupil size in natural vision across the human lifespan (the stage 1 in principal accepted (IPA) manuscript RSOS-191613.R1 is found here: https://osf.io/zrksf/).
 
 If you have any comments or queries, please reach out to us at rafael.lazar@unibas.ch and manuel.spitschan@tum.de.
 
