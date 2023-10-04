@@ -7,9 +7,10 @@ The laboratory log file (`lablog_RSOS-191613.csv`) provides an overview of the m
 
 <span style="color: red;">
 Shortcut to hypothesis testing: </span> 
-You can find the results of the hypothesis tests as output from the  `hypotheses.rmd` file in two versions for the two respective samples: 
-1) n=83,  75% data loss threshold: `hypotheses_n83.html `
-2) n=63, 50% data loss threshold: `hypotheses_n63.html `
+You can find the results of the hypothesis tests as output from the  `hypotheses.rmd` file in two versions for the two respective samples:
+
+1. n=83,  75% data loss threshold: `hypotheses_n83.html`
+2. n=63, 50% data loss threshold: `hypotheses_n63.html`
 
 
 # Dependency management
