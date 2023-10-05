@@ -1,12 +1,10 @@
 # Overview
-This Code and data repository is part of the registered report: Regulation of pupil size in natural vision across the human lifespan (the stage 1 in principal accepted (IPA) manuscript RSOS-191613.R1 is found here: https://osf.io/zrksf/).
+This R code and data repository is part of the registered report: **Regulation of pupil size in natural vision across the human lifespan** and publicly accessible under the [MIT](https://opensource.org/license/mit/) license. The laboratory log file (`lablog_RSOS-191613.csv`) provides an overview of the most relevant metadata for all invited participants.
 
-If you have any comments or queries, please reach out to us at rafael.lazar@unibas.ch and manuel.spitschan@tum.de.
-
-The laboratory log file (`lablog_RSOS-191613.csv`) provides an overview of the most relevant metadata for all invited participants.
+The stage 1 in principal accepted (IPA) manuscript RSOS-191613.R1 is available on [OSF](https://osf.io/zrksf/). Additional supporting materials are available on [FigShare](https://doi.org/10.6084/m9.figshare.24230890.v1) under the [CC-BY 4.0](https://creativecommons.org/licenses/by/4.0/) license. If you have any comments or queries, please reach out to us at rafael.lazar@unibas.ch and manuel.spitschan@tum.de.
 
 <span style="color: red;">
-Shortcut to hypothesis testing: </span> 
+**Shortcut to hypothesis testing:** </span> 
 You can find the results of the hypothesis tests as output from the  `hypotheses.rmd` file in two versions for the two respective samples:
 
 1. n=83,  75% data loss threshold: `hypotheses_n83.html`
@@ -14,11 +12,11 @@ You can find the results of the hypothesis tests as output from the  `hypotheses
 
 
 # Dependency management
-This R project applies [`renv`](https://rstudio.github.io/renv/articles/renv.html) for package management. Use `renv::restore()` to download the correct package versions and ensure computational reproducibility. 
+This R project applies [`renv`](https://rstudio.github.io/renv/articles/renv.html) for package management. Use `renv::restore()` to download the correct package versions and ensure computational reproducibility. For running the R code files in RStudio, make sure to use an R-Project file (e.g. the uploaded `RSOS-191613.Rproj`) to avoid issues with the working directory.
+
 
 # Workflow description 
-Here we explain the R script processing and any manual steps in sequential order. For running the R code files in RStudio, make sure to use an R-Project file (e.g. the uploaded `RSOS-191613.Rproj`) to avoid issues with the working directory.
-
+Here we explain the R script processing and any manual steps in sequential order. 
 
 ## Survey data
 <span style="color: green;">
