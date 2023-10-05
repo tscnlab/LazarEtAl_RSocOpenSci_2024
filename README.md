@@ -3,8 +3,8 @@ This R code and data repository is part of the registered report: **Regulation o
 
 The stage 1 in principal accepted (IPA) manuscript RSOS-191613.R1 is available on [OSF](https://osf.io/zrksf/). Additional supporting materials are available on [FigShare](https://doi.org/10.6084/m9.figshare.24230890.v1) under the [CC-BY 4.0](https://creativecommons.org/licenses/by/4.0/) license. If you have any comments or queries, please reach out to us at rafael.lazar@unibas.ch and manuel.spitschan@tum.de.
 
-<span style="color: red;">
-**Shortcut to hypothesis testing:** </span> 
+<span style="color: red;"> **Shortcut to hypothesis testing:** </span>
+
 You can find the results of the hypothesis tests as output from the  `hypotheses.rmd` file in two versions for the two respective samples:
 
 1. n=83,  75% data loss threshold: `hypotheses_n83.html`
