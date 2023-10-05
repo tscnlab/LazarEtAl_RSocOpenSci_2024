@@ -40,10 +40,12 @@ The health and eligibility screening including demographic data are given in thi
 
 ## Raw data
 <span style="color: green;">
+
 Folder: `02_rawdata` <br>
 Input: `results.csv` of 113 subjects (`SP001`-`SP113`) <br>
 Output: `rawfiles.rda` <br>
 RCode: `20_rawdata_import.R` <br>
+
 </span>
 
 The `20_rawdata_import.R` conducts the raw data import, reading in the rawdata csv files and extracting their inclusion/exclusion status from the subject-specific subfolder name and finally renaming some variables. The raw data csv files are given in subject-specific subfolders of the `02_rawdata` folder (`SP001`-`SP113`). The subject-specific subfolders of the participants excluded before the trial contain a results file with the same header but only one row NA as data. The imported data are saved as `rawfiles.rda`
@@ -52,10 +54,12 @@ The `20_rawdata_import.R` conducts the raw data import, reading in the rawdata c
 
 ## Quality checks
 <span style="color: green;">
+
 Folder: `02_rawdata` <br>
 Input: `rawfiles.rda` <br>
 Output: `checked_rawfiles.rda` <br>
 RCode: `21_qualitychecks.R` <br>
+
 </span>
 
 Code section <span style="color: blue;">*[1] Load raw data*</span> loads the `rawfiles.rda` file generated from the `20_rawdata_import.R` script.
@@ -71,10 +75,12 @@ The Code section <span style="color: blue;">*[4] Save checked rawfiles*</span> s
 
 ## Data categorisation 
 <span style="color: green;">
+
 Folder: `02_rawdata` <br>
 Input: `checked_rawfiles.rda` <br>
 Output: `rawdata_ID_all.rda` <br>
 RCode: `22_categorisation.r` <br>
+
 </span>
 
 Code section <span style="color: blue;">*[1] Load checked raw data*</span> loads the `checked_rawfiles.rda` file generated from the `21_qualitychecks.R` script.
@@ -85,10 +91,12 @@ In code section <span style="color: blue;">*[3] Data saving*</span> we save the 
 
 ## Data merge
 <span style="color: green;">
+
 Folder: `03_datamerge` <br>
 Input: `cleaned_survey.rda`, `rawdata_ID_all.rda` <br>
 Output: `mergeddata_all.rda`, `merged_data_conf.rda` <br>
 RCode: `30_datamerge.R` <br>
+
 </span>
 
 In the datamerge code, the cleaned survey and raw data are combined into one dataset matched by id. The full dataset is saved as `mergeddata_all.rda` including all observations and columns. The full dataset is then reduced to only included participants and relevant variables for confirmatory and exploratory analysis and saved as `merged_data_conf.rda`. 
@@ -98,10 +106,12 @@ In the datamerge code, the cleaned survey and raw data are combined into one dat
 
 ## Demographics
 <span style="color: green;">
+
 Folder: `04_demographics` <br>
 Input: `mergeddata_all.rda` <br>
 Output: `dem_tab.pdf`, `suppl_dem_tab.pdf`, `agepyr_plot.pdf` <br>
 RCode: `40_demographics.R` <br>
+
 </span>
 
 In the first section <span style="color: blue;">*[1] Demographic data preparation*</span>, we use the data from `mergeddata_all.rda` and prepare it for visualising the demographic characteristics of the sample, by selecting only relevant columns and reducing the dataset to 1 row per participant (resulting in the subdataset `dem_data`).
@@ -128,10 +138,12 @@ Thus, the figure is either based on n=83 or n=63 participants. To change the thr
 
 ## Subdatasets
 <span style="color: green;">
+
 Folder: `05_analysis` <br>
 Input: `merged_data_conf.rda` <br>
 Output: `conf_subdata.rda` <br>
 RCode: `50_subdatasets.R` <br>
+
 </span>
 
 In the first code section <span style="color: blue;">*[1] Load merged data*</span> we import the `merged_data_conf.rda` file which consists of only included participant and relevant variables.
@@ -166,10 +178,12 @@ In <span style="color: blue;">*[8] Saving subdatasets*</span> we save all subdat
 
 ## Hypotheses
 <span style="color: green;">
+
 Folder: `05_analysis` <br>
 Input: `conf_subdata.rda` <br>
 Output: Hypothesis tests' bayes factors (BF10) in form of `.txt` files (see `07_output/stat`)<br>
 RCode: `51_hypotheses.R`<br>
+
 </span>
 
 
@@ -214,10 +228,12 @@ In the code section <span style="color: blue;">*[7] Exploratory analyses - EH*</
 
 ## Figures and tables
 <span style="color: green;">
+
 Folder: `05_analysis` <br>
 Input: `conf_subdata.rda` <br>
 Output: Figures and tables used in the manuscript in form of `.pdf` files (see `07_output` & `07_output/suppl`)<br>
 RCode: `52_figures&tables.R`, `ggplot_functions.R` <br>
+
 </span>
 
 In the *<span style="color: blue;">`ggplot_functions.R`*</span> code we specify functions in ggplot that we then use in the `52_figures&tables.R` for generating figures for the manuscript.
