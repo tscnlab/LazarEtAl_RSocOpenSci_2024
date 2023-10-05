@@ -20,10 +20,12 @@ Here we explain the R script processing and any manual steps in sequential order
 
 ## Survey data
 <span style="color: green;">
+
 Folder: `01_surveydata` <br>
 Input: `data_chronobiology_2022-04-07_21-20.csv` <br>
 Output: `cleaned_survey.rda` <br>
 RCode: `10_surveydata_prep.R` <br>
+
 </span>
 
 The health and eligibility screening including demographic data are given in this `01_surveydata`folder. The data file containing all survey data from the project is `data_chronobiology_2022-04-07_21-20.csv`. The R script `10_surveydata_prep.R` is divided into the following sections: 
