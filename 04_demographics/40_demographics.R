@@ -236,7 +236,10 @@ agepyr_plot <- agepyr_plot+
     legend.text = element_text(size=9),
     plot.title = element_text(size = 12, face="bold"))
   
-#save the plot as pdf
+#save the plot as pdf 
+#in case you encounter problems during the pdf saving process, this could be
+#related to the cairo_pdf device (especially the case for MACOS users)
+#In that case try deleting "device=cairo_pdf" in following code bit below
 ggsave("06_output/agepyr_plot.pdf", plot = agepyr_plot ,
        width = 246.2/3.2, height = 73.4, units = "mm", 
        bg = "white", device=cairo_pdf)

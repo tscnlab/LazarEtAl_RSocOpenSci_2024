@@ -414,16 +414,16 @@ summary(BF_CH2bx)
 
 ```
 
-To double check that our tests conducted with the "BayesFactors" package were valid, we additionally ran a test comparing the two models defined with a function from the *lme4* & *lmerTest* packages ("lmer") and compared the two models from CH2 regarding their Bayesian Information Criterion (BIC). The resulting BIC value for the full model is lower for the full model than with the null model, confirming the results from the BayesFactor analysis. However, the BIC test with using models with the non-transformed light data result in the following warning: <span style="color: red;">*"fit warnings: Some predictor variables are on very different scales: consider rescaling"*</span>. This further confirms the suggestion to use log10-transformed light data  instead of linear light data as predictors in linear regression. 
+To double check that our tests conducted with the "BayesFactors" package were valid, we additionally ran a test comparing the two models defined with a function from the *lme4* & *lmerTest* packages ("lmer") and compared the two models from CH2 regarding their Bayesian Information Criterion (BIC). The resulting BIC value for the full model is lower for the full model than with the null model, confirming the results from the BayesFactor analysis.
 
 We then approximated the the Bayes factors from BICs computed in the *lme4* package using the  equation by Wagenmakers (2007), retrieved from [Stevens (2019)](https://osf.io/eszbd), resulting in very similar Bayes Factor magnitudes.
 
-```{r [5]-Hypothesis-testing:-CH2-BIC-validation, warning=TRUE}
+```{r [5]-Hypothesis-testing:-CH2-BIC-validation, warning=FALSE}
 #loading required packages
 library(lme4)
 library(lmerTest)
 
- #Testing the models against each other with BICs from the lm4e package
+#Testing the models against each other with BICs from the lm4e package
 #these tests are only used as a double check to 
 #"validate" our procedure with the BayesFactor package 
 
@@ -474,11 +474,7 @@ set.seed(20230703)
 set.seed(20230703)
 BIC(CH2_NHST_nolog_H0, CH2_NHST_nolog_H1)
 
-#with the non-transformed light data the following warning pops up:
-#"fit warnings:
-#Some predictor variables are on very different scales: consider rescaling"
-#--> this again comes back to linear assumptions being violated without log10-transformation
-#regardless, the model with log10(mEDI) (H1) has a lower BIC and is preferred.
+#the model with log10(mEDI) (H1) has a lower BIC and is preferred.
 
 
 #compute BIC for each model of CH2 without log10 transformation

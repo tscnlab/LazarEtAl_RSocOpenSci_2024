@@ -1,5 +1,5 @@
 # Overview
-This R code and data repository is part of the registered report: **Regulation of pupil size in natural vision across the human lifespan** and publicly accessible under the [MIT](https://opensource.org/license/mit/) license. The laboratory log file (`lablog_RSOS-191613.csv`) provides an overview of the most relevant metadata for all invited participants.
+This R code and data repository is part of the registered report: **Regulation of pupil size in natural vision across the human lifespan** and publicly accessible under the [MIT](https://opensource.org/license/mit/) license (see `LICENSE.md` file). The laboratory log file (`lablog_RSOS-191613.csv`) provides an overview of the most relevant metadata for all invited participants.
 
 The stage 1 in principal accepted (IPA) manuscript RSOS-191613.R1 is available on [OSF](https://osf.io/zrksf/). Additional supporting materials are available on [FigShare](https://doi.org/10.6084/m9.figshare.24230890.v1) under the [CC-BY 4.0](https://creativecommons.org/licenses/by/4.0/) license. If you have any comments or queries, please reach out to us at rafael.lazar@unibas.ch and manuel.spitschan@tum.de.
 
@@ -127,8 +127,7 @@ In section <span style="color: blue;">*[2] Demographic table*</span> we then app
 
 In section <span style="color: blue;">*[3] Supplementary demographic table*</span> we repeat the procedure as in *[2] Demographic table*, using further participant characteristics surveyed in the study, generating an additional demographic characteristics table for the supplementary information (see Suppl. Table 2).
 
-The code given in <span style="color: blue;">*[4] Demographic figure*</span> generates a pyramid plot stratified by sex for only the included participants (see Figure 2 in manuscript)
-The size of the sample depends on the chosen data loss threshold in the `21_qualitychecks.R` script:
+The code given in <span style="color: blue;">*[4] Demographic figure*</span> generates a pyramid plot stratified by sex for only the included participants (see Figure 2 in manuscript). If you have problems with the pdf saving code section, this may be related to the cairo_pdf device (especially for MACOS users). In this case, try deleting "device=cairo_pdf" in the ggsave command and rerun the code. The size of the sample in the figure depends on the chosen data loss threshold in the `21_qualitychecks.R` script:
 
 * adjusted data loss threshold (0.75; n=83 included) [used as default]
 * initial data loss threshold  (0.5; n=63 included)
@@ -211,9 +210,10 @@ In the code given in <span style="color: blue;">*[5] Hypothesis testing - CH2*</
  
 *CH2: In real-world conditions, melanopsin sensitivity-weighted retinal illumination better predicts pupil size than the weighted sum of L- and M-cone weighted retinal illumination (CIE 1931 Y, photopic illuminance).* 
  
- To double-check that our tests conducted with the "BayesFactors" package were valid, we additionally ran a test comparing the two models defined with a function from the lme4 package ("lmer") and compared the two models from CH2 regarding their Akaike's Information Criterion (AIC). The resulting AIC value for the full model is lower for the full model than with the null model, confirming the results from the BayesFactor analysis.
- However, the AIC test with using models with the non-transformed light data result in the following warning: *"fit warnings: Some predictor variables are on very different scales: consider rescaling"*
-This further confirms the suggestion to use log10-transformed light data  instead of linear light data as predictors in linear regression.
+ To double-check that our tests conducted with the "BayesFactors" package were valid, we additionally ran a test comparing the two models defined with a function from the lme4 package ("lmer") and compared the two models from CH2 regarding their Bayesian Information Criterion (BIC). The resulting BIC value for the full model is lower for the full model than with the null model, confirming the results from the BayesFactor analysis. 
+
+We then approximated Bayes factors from the BICs using the equation by Wagenmakers (2007), retrieved from [Stevens (2019)](https://osf.io/eszbd), resulting in very similar Bayes Factor magnitudes.
+
 
 In the code given in <span style="color: blue;">*[6] Hypothesis testing - CH3*</span>, we test our confirmatory hypothesis CH3 in the data from the field condition (subdataset "Fielddata"). First, we conduct the test  with models including the log10-transformed mEDI  predictor and then secondly with the linear mEDI predictor.
  
@@ -262,7 +262,7 @@ In the code section <span style="color: blue;">*[9] Data tables*</span> we creat
 Finally we visualise the <span style="color: blue;">*[10] Linear regression assumptions*</span> (corresponding to Suppl. Figures 2 & 3) for the prediction of pupil size with the non-transformed and log10-transformed mEDI variable using the `performance` and `see` packages. The Figures were saved as pdf manually (see `assumptest_lin.pdf`, `assumptest_log.pdf`; size: landscape, width = 11.69 in, height = 8.27 in) because the *ggsave* function could not handle the size of those figures. 
 
 
-Note: *Figure 1 and Suppl. Figure 1 of the manuscript are not based on raw data and are hence not generated in R*
+Note: Figure 1 and Suppl. Figure 1 of the manuscript are not based on raw data and are hence not generated in R. If you have problems with some of the pdf saving code, this may be related to the cairo_pdf device (especially for MACOS users). In this case, try deleting "device=cairo_pdf" in the *ggsave* command and rerun the code.
 
 
 ## Output

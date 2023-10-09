@@ -466,11 +466,7 @@ set.seed(20230703)
 
 BIC(CH2_NHST_nolog_H0, CH2_NHST_nolog_H1)
 
-#with the non-transformed light data the following warning pops up:
-#"fit warnings:
-#Some predictor variables are on very different scales: consider rescaling"
-#--> this again comes back to linear assumptions being violated without log10-transformation
-#regardless, the model with log10(mEDI) (H1) has a lower BIC and is preferred.
+#the model with mEDI (H1) has a lower BIC and is preferred.
 
 
 #compute BIC for each model of CH2 without log10 transformation

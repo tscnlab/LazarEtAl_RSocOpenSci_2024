@@ -100,10 +100,12 @@ info_panel <- grid.arrange(info_plots[[1]], info_plots[[2]],
                            )
 
 #save Figure 3
+#in case you encounter problems during the pdf saving process, this could be
+#related to the cairo_pdf device (especially the case for MACOS users)
+#In that case try deleting "device=cairo_pdf" in following code bit below
 ggsave("06_output/weath_panels.pdf", plot = info_panel ,
        width = 90, height = 100, units = "mm",
        bg = "white", device=cairo_pdf)
-
 
 ### [4] Case data age comparison-------------------------------------------------------------
 
@@ -289,6 +291,9 @@ Winn_panel1 <- grid.arrange(Winn_plot1[[1]], Winn_plot1[[2]],
 
 
 #Din A 4 Landscape
+#in case you encounter problems during the pdf saving process, this could be
+#related to the cairo_pdf device (especially the case for MACOS users)
+#In that case try deleting "device=cairo_pdf" in following code bit below
 ggsave("06_output/age_panels1.pdf", plot = Winn_panel1 ,
        width = 246.2, height = 80, units = "mm", 
        bg = "white", device=cairo_pdf)
@@ -419,6 +424,9 @@ Winn_panel2b <- grid.arrange(Winn_plot2[[1]],
 )
 
 #save Figure 8 adapted to the size of the axes of the other plots
+#in case you encounter problems during the pdf saving process, this could be
+#related to the cairo_pdf device (especially the case for MACOS users)
+#In that case try deleting "device=cairo_pdf" in following code bit below
 ggsave("06_output/age_panels2.pdf", plot = Winn_panel2b ,
        width = 246.2*(3.4389/5), height = 85, units = "mm", 
        bg = "white", device = cairo_pdf)
