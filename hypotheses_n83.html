@@ -10,7 +10,7 @@
 
 
 
-<meta name="date" content="2023-09-29" />
+<meta name="date" content="2023-10-09" />
 
 <title>Regulation of pupil size in natural vision - hypotheses</title>
 
@@ -2839,7 +2839,7 @@ border-radius: 0px;
 
 <h1 class="title toc-ignore">Regulation of pupil size in natural vision
 - hypotheses</h1>
-<h4 class="date">29 Sep 2023</h4>
+<h4 class="date">09 Oct 2023</h4>
 
 </div>
 
@@ -3293,22 +3293,23 @@ defined with a function from the <em>lme4</em> &amp; <em>lmerTest</em>
 packages (“lmer”) and compared the two models from CH2 regarding their
 Bayesian Information Criterion (BIC). The resulting BIC value for the
 full model is lower for the full model than with the null model,
-confirming the results from the BayesFactor analysis. However, the BIC
-test with using models with the non-transformed light data result in the
-following warning: <span style="color: red;"><em>“fit warnings: Some
-predictor variables are on very different scales: consider
-rescaling”</em></span>. This further confirms the suggestion to use
-log10-transformed light data instead of linear light data as predictors
-in linear regression.</p>
+confirming the results from the BayesFactor analysis.</p>
 <p>We then approximated the the Bayes factors from BICs computed in the
 <em>lme4</em> package using the equation by Wagenmakers (2007),
 retrieved from <a href="https://osf.io/eszbd">Stevens (2019)</a>,
 resulting in very similar Bayes Factor magnitudes.</p>
 <pre class="r"><code>#loading required packages
 library(lme4)
-library(lmerTest)
-
- #Testing the models against each other with BICs from the lm4e package
+library(lmerTest)</code></pre>
+<pre><code>## 
+## Attaching package: &#39;lmerTest&#39;</code></pre>
+<pre><code>## The following object is masked from &#39;package:lme4&#39;:
+## 
+##     lmer</code></pre>
+<pre><code>## The following object is masked from &#39;package:stats&#39;:
+## 
+##     step</code></pre>
+<pre class="r"><code>#Testing the models against each other with BICs from the lm4e package
 #these tests are only used as a double check to 
 #&quot;validate&quot; our procedure with the BayesFactor package 
 
@@ -3386,11 +3387,7 @@ bic_bf10(CH2_H0_bic,CH2_H1_bic)</code></pre>
 # Repeating the BIC test using the non-log10 transformed light intensity vars
 set.seed(20230703) 
 (CH2_NHST_nolog_H1&lt;-lmer(diameter_3d ~ Mel_EDI + age  + (1|id) + (1|sex), Fielddata))</code></pre>
-<pre><code>## Warning: Some predictor variables are on very different scales: consider
-## rescaling</code></pre>
 <pre><code>## boundary (singular) fit: see help(&#39;isSingular&#39;)</code></pre>
-<pre><code>## Warning: Some predictor variables are on very different scales: consider
-## rescaling</code></pre>
 <pre><code>## Linear mixed model fit by REML [&#39;lmerModLmerTest&#39;]
 ## Formula: diameter_3d ~ Mel_EDI + age + (1 | id) + (1 | sex)
 ##    Data: Fielddata
@@ -3409,11 +3406,7 @@ set.seed(20230703)
 ## optimizer (nloptwrap) convergence code: 0 (OK) ; 0 optimizer warnings; 1 lme4 warnings</code></pre>
 <pre class="r"><code>set.seed(20230703) 
 (CH2_NHST_nolog_H0&lt;-lmer(diameter_3d ~ phot_lux + age + (1|id) + (1|sex), Fielddata))</code></pre>
-<pre><code>## Warning: Some predictor variables are on very different scales: consider
-## rescaling</code></pre>
 <pre><code>## boundary (singular) fit: see help(&#39;isSingular&#39;)</code></pre>
-<pre><code>## Warning: Some predictor variables are on very different scales: consider
-## rescaling</code></pre>
 <pre><code>## Linear mixed model fit by REML [&#39;lmerModLmerTest&#39;]
 ## Formula: diameter_3d ~ phot_lux + age + (1 | id) + (1 | sex)
 ##    Data: Fielddata
@@ -3437,11 +3430,7 @@ BIC(CH2_NHST_nolog_H0, CH2_NHST_nolog_H1)</code></pre>
 {"columns":[{"label":[""],"name":["_rn_"],"type":[""],"align":["left"]},{"label":["df"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["BIC"],"name":[2],"type":["dbl"],"align":["right"]}],"data":[{"1":"6","2":"30210.64","_rn_":"CH2_NHST_nolog_H0"},{"1":"6","2":"30164.11","_rn_":"CH2_NHST_nolog_H1"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
   </script>
 </div>
-<pre class="r"><code>#with the non-transformed light data the following warning pops up:
-#&quot;fit warnings:
-#Some predictor variables are on very different scales: consider rescaling&quot;
-#--&gt; this again comes back to linear assumptions being violated without log10-transformation
-#regardless, the model with log10(mEDI) (H1) has a lower BIC and is preferred.
+<pre class="r"><code>#the model with log10(mEDI) (H1) has a lower BIC and is preferred.
 
 
 #compute BIC for each model of CH2 without log10 transformation
