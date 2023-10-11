@@ -212,8 +212,7 @@ In the code given in <span style="color: blue;">*[5] Hypothesis testing - CH2*</
  
  To double-check that our tests conducted with the "BayesFactors" package were valid, we additionally ran a test comparing the two models defined with a function from the lme4 package ("lmer") and compared the two models from CH2 regarding their Bayesian Information Criterion (BIC). The resulting BIC value for the full model is lower for the full model than with the null model, confirming the results from the BayesFactor analysis. 
 
-We then approximated Bayes factors from the BICs using the equation by Wagenmakers (2007), retrieved from [Stevens (2019)](https://osf.io/eszbd), resulting in very similar Bayes Factor magnitudes.
-
+We then approximated Bayes factors from the BICs using the equation by [Wagenmakers (2007)](https://doi.org/10.3758/BF03194105), retrieved from [Stevens (2019)](https://osf.io/eszbd), resulting in very similar Bayes Factor magnitudes.
 
 In the code given in <span style="color: blue;">*[6] Hypothesis testing - CH3*</span>, we test our confirmatory hypothesis CH3 in the data from the field condition (subdataset "Fielddata"). First, we conduct the test  with models including the log10-transformed mEDI  predictor and then secondly with the linear mEDI predictor.
  
@@ -225,6 +224,7 @@ In the code section <span style="color: blue;">*[7] Exploratory analyses - EH*</
 - *EH2: Light-adapted pupil size varies as a function of iris colour under real-world conditions.*
 - *EH3: Light-adapted pupil size varies as a function of habitual caffeine consumption (relative to body weight) under real-world conditions.*
 - *EH4: Light-adapted pupil size varies as a function of the acute caffeine consumption (relative to body weight) under real-world conditions.*
+
 
 ## Figures and tables
 <span style="color: green;">

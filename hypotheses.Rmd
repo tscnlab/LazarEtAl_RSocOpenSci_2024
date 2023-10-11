@@ -416,7 +416,7 @@ summary(BF_CH2bx)
 
 To double check that our tests conducted with the "BayesFactors" package were valid, we additionally ran a test comparing the two models defined with a function from the *lme4* & *lmerTest* packages ("lmer") and compared the two models from CH2 regarding their Bayesian Information Criterion (BIC). The resulting BIC value for the full model is lower for the full model than with the null model, confirming the results from the BayesFactor analysis.
 
-We then approximated the the Bayes factors from BICs computed in the *lme4* package using the  equation by Wagenmakers (2007), retrieved from [Stevens (2019)](https://osf.io/eszbd), resulting in very similar Bayes Factor magnitudes.
+We then approximated the the Bayes factors from BICs computed in the *lme4* package using the  equation by [Wagenmakers (2007)](https://doi.org/10.3758/BF03194105), retrieved from [Stevens (2019)](https://osf.io/eszbd), resulting in very similar Bayes Factor magnitudes.
 
 ```{r [5]-Hypothesis-testing:-CH2-BIC-validation, warning=FALSE}
 #loading required packages

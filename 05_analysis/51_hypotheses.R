@@ -423,10 +423,10 @@ CH2_NHST_H1
 sink()
 
 
-#Approximating Bayes factors from BICs using the  equation by Wagenmakers (2007),
-#retrieved from Stevens (2019) https://osf.io/eszbd
+#Approximating Bayes factors from BICs using the equation by Wagenmakers (2007)
+#https://doi.org/10.3758/BF03194105, retrieved from Stevens (2019) https://osf.io/eszbd
 
-#function for converting BICs into BFs (retrieved from Stevens (2019) https://osf.io/eszbd )
+#function for converting BICs into BFs (retrieved from Stevens (2019))
 bic_bf10 <- function(null, alternative) {
   new_bf <- exp((null - alternative) / 2) # convert BICs to Bayes factor
   names(new_bf) <- NULL # remove BIC label
@@ -516,12 +516,6 @@ BF_CH3b <-  compare(CH3b_numerator, CH3b_denominator)
 sink(file = "06_output/stat/BF_CH3_field.txt")
 summary(BF_CH3b)
 sink()
-
-
-
-set.seed(20230703) 
-#re-test by switching numerator and denominator (BF01)
-compare(CH3b_denominator, CH3b_numerator)
 
 
 #computing BF10: likelihood ratio of full model vs. null model
@@ -705,3 +699,5 @@ summary(iris_field)
 sink()
 
 # strong evidence for null model 
+
+
