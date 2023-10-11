@@ -2896,7 +2896,7 @@ BF_CH1blog &lt;-compare(CH1blog_numerator, CH1blog_denominator)
 summary(BF_CH1blog)</code></pre>
 <pre><code>## Bayes factor analysis
 ## --------------
-## [1] log_Mel_EDI + age + id + sex : 5.678918e+996 ±3.55%
+## [1] log_Mel_EDI + age + id + sex : 2.293948e+834 ±1.94%
 ## 
 ## Against denominator:
 ##   diameter_3d ~ Mel_EDI + age + id + sex 
@@ -2945,7 +2945,7 @@ BF_CH1a &lt;- compare(CH1a_numerator, CH1a_denominator)
 summary(BF_CH1a)</code></pre>
 <pre><code>## Bayes factor analysis
 ## --------------
-## [1] log_Mel_EDI + age + id + sex : 1.090096e+127 ±2.57%
+## [1] log_Mel_EDI + age + id + sex : 2.801948e+116 ±2.06%
 ## 
 ## Against denominator:
 ##   diameter_3d ~ age + id + sex 
@@ -2984,7 +2984,7 @@ BF_CH1ax &lt;- compare(CH1ax_numerator, CH1ax_denominator)
 summary(BF_CH1ax)</code></pre>
 <pre><code>## Bayes factor analysis
 ## --------------
-## [1] Mel_EDI + age + id + sex : 1.553889e+170 ±2.55%
+## [1] Mel_EDI + age + id + sex : 1.136029e+153 ±2.05%
 ## 
 ## Against denominator:
 ##   diameter_3d ~ age + id + sex 
@@ -3031,7 +3031,7 @@ BF_CH2_lab &lt;- compare(CH2a_numerator, CH2a_denominator)
 summary(BF_CH2_lab)</code></pre>
 <pre><code>## Bayes factor analysis
 ## --------------
-## [1] log_Mel_EDI + age + id + sex : 4.524662e+24 ±2.13%
+## [1] log_Mel_EDI + age + id + sex : 4.262853e+27 ±2.31%
 ## 
 ## Against denominator:
 ##   diameter_3d ~ log_phot_lux + age + id + sex 
@@ -3069,7 +3069,7 @@ BF_CH2x_lab &lt;- compare(CH2ax_numerator, CH2ax_denominator)
 summary(BF_CH2x_lab)</code></pre>
 <pre><code>## Bayes factor analysis
 ## --------------
-## [1] Mel_EDI + age + id + sex : 3.366674e+99 ±1.85%
+## [1] Mel_EDI + age + id + sex : 6.961333e+91 ±1.82%
 ## 
 ## Against denominator:
 ##   diameter_3d ~ phot_lux + age + id + sex 
@@ -3113,7 +3113,7 @@ BF_CH3c &lt;-  compare(CH3c_numerator, CH3c_denominator)
 summary(BF_CH3c)</code></pre>
 <pre><code>## Bayes factor analysis
 ## --------------
-## [1] age + id + sex : 208318.5 ±1.44%
+## [1] age + id + sex : 192.7163 ±1.36%
 ## 
 ## Against denominator:
 ##   diameter_3d ~ id + sex 
@@ -3159,7 +3159,7 @@ BF_CH1b &lt;- compare(CH1b_numerator, CH1b_denominator)
 summary(BF_CH1b)</code></pre>
 <pre><code>## Bayes factor analysis
 ## --------------
-## [1] log_Mel_EDI + age + id + sex : 1.543255e+1288 ±2.2%
+## [1] log_Mel_EDI + age + id + sex : 2.404706e+1076 ±2.24%
 ## 
 ## Against denominator:
 ##   diameter_3d ~ age + id + sex 
@@ -3197,7 +3197,7 @@ BF_CH1bx &lt;-compare(CH1bx_numerator, CH1bx_denominator)
 summary(BF_CH1bx)</code></pre>
 <pre><code>## Bayes factor analysis
 ## --------------
-## [1] Mel_EDI + age + id + sex : 2.642936e+291 ±2.78%
+## [1] Mel_EDI + age + id + sex : 1.031709e+242 ±2.24%
 ## 
 ## Against denominator:
 ##   diameter_3d ~ age + id + sex 
@@ -3244,7 +3244,7 @@ BF_CH2b &lt;- compare(CH2b_numerator, CH2b_denominator)
 summary(BF_CH2b)</code></pre>
 <pre><code>## Bayes factor analysis
 ## --------------
-## [1] log_Mel_EDI + age + id + sex : 1.458261e+21 ±2.13%
+## [1] log_Mel_EDI + age + id + sex : 1.782022e+19 ±2.06%
 ## 
 ## Against denominator:
 ##   diameter_3d ~ log_phot_lux + age + id + sex 
@@ -3281,7 +3281,7 @@ BF_CH2bx &lt;- compare(CH2bx_numerator, CH2bx_denominator)
 summary(BF_CH2bx)</code></pre>
 <pre><code>## Bayes factor analysis
 ## --------------
-## [1] Mel_EDI + age + id + sex : 10708989894 ±3.91%
+## [1] Mel_EDI + age + id + sex : 1921990 ±1.93%
 ## 
 ## Against denominator:
 ##   diameter_3d ~ phot_lux + age + id + sex 
@@ -3320,16 +3320,16 @@ set.seed(20230703)
 <pre><code>## Linear mixed model fit by REML [&#39;lmerModLmerTest&#39;]
 ## Formula: diameter_3d ~ log_Mel_EDI + age + (1 | id) + (1 | sex)
 ##    Data: Fielddata
-## REML criterion at convergence: 25501.07
+## REML criterion at convergence: 21157.15
 ## Random effects:
 ##  Groups   Name        Std.Dev.
-##  id       (Intercept) 0.4740  
+##  id       (Intercept) 0.5041  
 ##  sex      (Intercept) 0.0000  
-##  Residual             0.8435  
-## Number of obs: 10082, groups:  id, 83; sex, 2
+##  Residual             0.8545  
+## Number of obs: 8282, groups:  id, 63; sex, 2
 ## Fixed Effects:
 ## (Intercept)  log_Mel_EDI          age  
-##      5.6877      -0.7856      -0.0178  
+##     5.69217     -0.80172     -0.01656  
 ## optimizer (nloptwrap) convergence code: 0 (OK) ; 0 optimizer warnings; 1 lme4 warnings</code></pre>
 <pre class="r"><code>set.seed(20230703) 
 (CH2_NHST_H0&lt;-lmer(diameter_3d ~ log_phot_lux + age + (1|id) + (1|sex), Fielddata))</code></pre>
@@ -3337,16 +3337,16 @@ set.seed(20230703)
 <pre><code>## Linear mixed model fit by REML [&#39;lmerModLmerTest&#39;]
 ## Formula: diameter_3d ~ log_phot_lux + age + (1 | id) + (1 | sex)
 ##    Data: Fielddata
-## REML criterion at convergence: 25598.5
+## REML criterion at convergence: 21245.77
 ## Random effects:
 ##  Groups   Name        Std.Dev.
-##  id       (Intercept) 0.4742  
+##  id       (Intercept) 0.5035  
 ##  sex      (Intercept) 0.0000  
-##  Residual             0.8477  
-## Number of obs: 10082, groups:  id, 83; sex, 2
+##  Residual             0.8591  
+## Number of obs: 8282, groups:  id, 63; sex, 2
 ## Fixed Effects:
 ##  (Intercept)  log_phot_lux           age  
-##       5.8255       -0.8131       -0.0180  
+##      5.83236      -0.82943      -0.01674  
 ## optimizer (nloptwrap) convergence code: 0 (OK) ; 0 optimizer warnings; 1 lme4 warnings</code></pre>
 <pre class="r"><code>#compute a model comparison with Bayesian information criterion
 # the lower the BIC, the better the model fit
@@ -3355,7 +3355,7 @@ BIC_CH2&lt;- BIC(CH2_NHST_H0,CH2_NHST_H1)
 BIC_CH2</code></pre>
 <div data-pagedtable="false">
 <script data-pagedtable-source type="application/json">
-{"columns":[{"label":[""],"name":["_rn_"],"type":[""],"align":["left"]},{"label":["df"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["BIC"],"name":[2],"type":["dbl"],"align":["right"]}],"data":[{"1":"6","2":"25653.81","_rn_":"CH2_NHST_H0"},{"1":"6","2":"25556.38","_rn_":"CH2_NHST_H1"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+{"columns":[{"label":[""],"name":["_rn_"],"type":[""],"align":["left"]},{"label":["df"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["BIC"],"name":[2],"type":["dbl"],"align":["right"]}],"data":[{"1":"6","2":"21299.90","_rn_":"CH2_NHST_H0"},{"1":"6","2":"21211.28","_rn_":"CH2_NHST_H1"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
   </script>
 </div>
 <pre class="r"><code>#BIC is lower with log10(mEDI) than with log10(photopic lux)
@@ -3381,7 +3381,7 @@ CH2_H0_bic&lt;- BIC(CH2_NHST_H0)
 set.seed(20230703) 
 #convert the BICs into an approximated BF10 factor
 bic_bf10(CH2_H0_bic,CH2_H1_bic)</code></pre>
-<pre><code>## [1] 1.435333e+21</code></pre>
+<pre><code>## [1] 1.749307e+19</code></pre>
 <pre class="r"><code>#result very similar to the BF10 computed with BayesFactor package.
 
 # Repeating the BIC test using the non-log10 transformed light intensity vars
@@ -3391,16 +3391,16 @@ set.seed(20230703)
 <pre><code>## Linear mixed model fit by REML [&#39;lmerModLmerTest&#39;]
 ## Formula: diameter_3d ~ Mel_EDI + age + (1 | id) + (1 | sex)
 ##    Data: Fielddata
-## REML criterion at convergence: 30108.8
+## REML criterion at convergence: 25017.36
 ## Random effects:
 ##  Groups   Name        Std.Dev.
-##  id       (Intercept) 0.488365
-##  sex      (Intercept) 0.000105
-##  Residual             1.060950
-## Number of obs: 10082, groups:  id, 83; sex, 2
+##  id       (Intercept) 0.5261  
+##  sex      (Intercept) 0.0000  
+##  Residual             1.0793  
+## Number of obs: 8282, groups:  id, 63; sex, 2
 ## Fixed Effects:
 ## (Intercept)      Mel_EDI          age  
-##   3.9560277   -0.0001198   -0.0158611  
+##   3.8979292   -0.0001233   -0.0139235  
 ## fit warnings:
 ## Some predictor variables are on very different scales: consider rescaling
 ## optimizer (nloptwrap) convergence code: 0 (OK) ; 0 optimizer warnings; 1 lme4 warnings</code></pre>
@@ -3410,16 +3410,16 @@ set.seed(20230703)
 <pre><code>## Linear mixed model fit by REML [&#39;lmerModLmerTest&#39;]
 ## Formula: diameter_3d ~ phot_lux + age + (1 | id) + (1 | sex)
 ##    Data: Fielddata
-## REML criterion at convergence: 30155.33
+## REML criterion at convergence: 25046.6
 ## Random effects:
-##  Groups   Name        Std.Dev. 
-##  id       (Intercept) 4.897e-01
-##  sex      (Intercept) 1.816e-05
-##  Residual             1.063e+00
-## Number of obs: 10082, groups:  id, 83; sex, 2
+##  Groups   Name        Std.Dev.
+##  id       (Intercept) 0.5272  
+##  sex      (Intercept) 0.0000  
+##  Residual             1.0812  
+## Number of obs: 8282, groups:  id, 63; sex, 2
 ## Fixed Effects:
 ## (Intercept)     phot_lux          age  
-##   3.9490525   -0.0001047   -0.0158113  
+##   3.8917771   -0.0001086   -0.0138530  
 ## fit warnings:
 ## Some predictor variables are on very different scales: consider rescaling
 ## optimizer (nloptwrap) convergence code: 0 (OK) ; 0 optimizer warnings; 1 lme4 warnings</code></pre>
@@ -3427,7 +3427,7 @@ set.seed(20230703)
 BIC(CH2_NHST_nolog_H0, CH2_NHST_nolog_H1)</code></pre>
 <div data-pagedtable="false">
 <script data-pagedtable-source type="application/json">
-{"columns":[{"label":[""],"name":["_rn_"],"type":[""],"align":["left"]},{"label":["df"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["BIC"],"name":[2],"type":["dbl"],"align":["right"]}],"data":[{"1":"6","2":"30210.64","_rn_":"CH2_NHST_nolog_H0"},{"1":"6","2":"30164.11","_rn_":"CH2_NHST_nolog_H1"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+{"columns":[{"label":[""],"name":["_rn_"],"type":[""],"align":["left"]},{"label":["df"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["BIC"],"name":[2],"type":["dbl"],"align":["right"]}],"data":[{"1":"6","2":"25100.73","_rn_":"CH2_NHST_nolog_H0"},{"1":"6","2":"25071.49","_rn_":"CH2_NHST_nolog_H1"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
   </script>
 </div>
 <pre class="r"><code>#the model with log10(mEDI) (H1) has a lower BIC and is preferred.
@@ -3442,7 +3442,7 @@ CH2_H0_nolog_bic&lt;- BIC(CH2_NHST_nolog_H0)
 set.seed(20230703) 
 #convert the BICs into an approximated BF10 factor
 bic_bf10(CH2_H0_nolog_bic,CH2_H1_nolog_bic)</code></pre>
-<pre><code>## [1] 12699650781</code></pre>
+<pre><code>## [1] 2229736</code></pre>
 <pre class="r"><code>#results very similar to the BF10 computed with BayesFactor package.</code></pre>
 <p>In the code given in <span style="color: blue;"><em>[6] Hypothesis
 testing - CH3</em></span> , we test our confirmatory hypothesis CH3 in
@@ -3480,7 +3480,7 @@ BF_CH3b &lt;-  compare(CH3b_numerator, CH3b_denominator)
 summary(BF_CH3b)</code></pre>
 <pre><code>## Bayes factor analysis
 ## --------------
-## [1] log_Mel_EDI + age + id + sex : 46076.19 ±2.17%
+## [1] log_Mel_EDI + age + id + sex : 124.465 ±2.12%
 ## 
 ## Against denominator:
 ##   diameter_3d ~ log_Mel_EDI + id + sex 
@@ -3515,7 +3515,7 @@ BF_CH3b_nolog &lt;-  compare(CH3bx_numerator, CH3bx_denominator)
 summary(BF_CH3b_nolog)</code></pre>
 <pre><code>## Bayes factor analysis
 ## --------------
-## [1] Mel_EDI + age + id + sex : 2221.5 ±2.66%
+## [1] Mel_EDI + age + id + sex : 13.99228 ±1.89%
 ## 
 ## Against denominator:
 ##   diameter_3d ~ Mel_EDI + id + sex 
@@ -3572,7 +3572,7 @@ sexdif_field &lt;- compare(sexdif_field_numerator, sexdif_field_denominator)
 summary(sexdif_field)</code></pre>
 <pre><code>## Bayes factor analysis
 ## --------------
-## [1] log_Mel_EDI + age + id + sex : 0.06982025 ±1.44%
+## [1] log_Mel_EDI + age + id + sex : 0.08543012 ±1.35%
 ## 
 ## Against denominator:
 ##   diameter_3d ~ log_Mel_EDI + age + id 
@@ -3613,7 +3613,7 @@ caf_field &lt;- compare(caf_field_numerator, caf_field_denominator)
 summary(caf_field)</code></pre>
 <pre><code>## Bayes factor analysis
 ## --------------
-## [1] log_Mel_EDI + age + id + sex + acute_sum_rel : 0.1755455 ±2.1%
+## [1] log_Mel_EDI + age + id + sex + acute_sum_rel : 0.1417334 ±2.05%
 ## 
 ## Against denominator:
 ##   diameter_3d ~ log_Mel_EDI + age + id + sex 
@@ -3655,7 +3655,7 @@ hcaf_field&lt;- compare(hcaf_field_numerator, hcaf_field_denominator)
 summary(hcaf_field)</code></pre>
 <pre><code>## Bayes factor analysis
 ## --------------
-## [1] log_Mel_EDI + age + id + sex + habitual_sum_rel : 0.1308957 ±2.1%
+## [1] log_Mel_EDI + age + id + sex + habitual_sum_rel : 0.1209524 ±2.05%
 ## 
 ## Against denominator:
 ##   diameter_3d ~ log_Mel_EDI + age + id + sex 
@@ -3695,7 +3695,7 @@ iris_field &lt;- compare(iris_field_numerator, iris_field_denominator)
 summary(iris_field)</code></pre>
 <pre><code>## Bayes factor analysis
 ## --------------
-## [1] log_Mel_EDI + age + id + sex + iris_colour : 0.01723423 ±2.86%
+## [1] log_Mel_EDI + age + id + sex + iris_colour : 0.02751227 ±2.66%
 ## 
 ## Against denominator:
 ##   diameter_3d ~ log_Mel_EDI + age + id + sex 
