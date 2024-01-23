@@ -81,7 +81,10 @@ BF_CH1blog <-compare(CH1blog_numerator, CH1blog_denominator)
 #saving the results in a text file
 sink(file = "06_output/stat/BF_field_logvsnolog.txt")
 summary(BF_CH1blog)
+"log(BF):"
+extractBF(BF_CH1blog, logbf = T, onlybf = T)
 sink()
+
 
 
 ###[3] Positive control tests---------------------------------------------------
@@ -119,9 +122,9 @@ BF_CH1a <- compare(CH1a_numerator, CH1a_denominator)
 #saving the results in a text file
 sink(file = "06_output/stat/BF_CH1_lab.txt")
 BF_CH1a
+"log(BF):"
+extractBF(BF_CH1a, logbf = T, onlybf = T)
 sink()
-
-
 
 # Positive control: CH1 in Lab data
 
@@ -155,6 +158,8 @@ BF_CH1ax <- compare(CH1ax_numerator, CH1ax_denominator)
 #saving the results in a text file
 sink(file = "06_output/stat/BF_CH1_lab_nolog.txt")
 BF_CH1ax
+"log(BF):"
+extractBF(BF_CH1ax, logbf = T, onlybf = T)
 sink()
 
 
@@ -191,6 +196,8 @@ BF_CH2_lab <- compare(CH2a_numerator, CH2a_denominator)
 #saving the results in a text file
 sink(file = "06_output/stat/BF_CH2_lab.txt")
 summary(BF_CH2_lab)
+"log(BF):"
+extractBF(BF_CH2_lab, logbf = T, onlybf = T)
 sink()
 
 # Positive control: CH2 in Lab data
@@ -225,6 +232,8 @@ BF_CH2x_lab <- compare(CH2ax_numerator, CH2ax_denominator)
 #saving the results in a text file
 sink(file = "06_output/stat/BF_CH2_lab_nolog.txt")
 summary(BF_CH2x_lab)
+"log(BF):"
+extractBF(BF_CH2x_lab, logbf = T, onlybf = T)
 sink()
 
 # Positive control: CH3 in Dark data
@@ -259,6 +268,8 @@ BF_CH3c <-  compare(CH3c_numerator, CH3c_denominator)
 #saving the results in a text file
 sink(file = "06_output/stat/BF_CH3_dark.txt")
 summary(BF_CH3c)
+"log(BF):"
+extractBF(BF_CH3c, logbf = T, onlybf = T)
 sink()
 
 
@@ -298,6 +309,8 @@ BF_CH1b <- compare(CH1b_numerator, CH1b_denominator)
 #saving the results in a text file
 sink(file = "06_output/stat/BF_CH1_field.txt")
 summary(BF_CH1b)
+"log(BF):"
+extractBF(BF_CH1b, logbf = T, onlybf = T)
 sink()
 
 
@@ -331,6 +344,8 @@ BF_CH1bx <-compare(CH1bx_numerator, CH1bx_denominator)
 #saving the results in a text file
 sink(file = "06_output/stat/BF_CH1_field_nolog.txt")
 summary(BF_CH1bx)
+"log(BF):"
+extractBF(BF_CH1bx, logbf = T, onlybf = T)
 sink()
 
 ### [5] Hypothesis testing - CH2----------------------------------------------------
@@ -368,6 +383,8 @@ BF_CH2b <- compare(CH2b_numerator, CH2b_denominator)
 #saving the results in a text file
 sink(file = "06_output/stat/BF_CH2_field.txt")
 summary(BF_CH2b)
+"log(BF):"
+extractBF(BF_CH2b, logbf = T, onlybf = T)
 sink()
 
 #computing BF10: likelihood ratio of full model vs. null model
@@ -399,6 +416,8 @@ BF_CH2bx <- compare(CH2bx_numerator, CH2bx_denominator)
 #saving the results in a text file
 sink(file = "06_output/stat/BF_CH2_field_nolog.txt")
 summary(BF_CH2bx)
+"log(BF):"
+extractBF(BF_CH2bx, logbf = T, onlybf = T)
 sink()
 
 # Testing the models against each other with BICs from the lm4e package
@@ -515,6 +534,8 @@ BF_CH3b <-  compare(CH3b_numerator, CH3b_denominator)
 #saving the results in a text file
 sink(file = "06_output/stat/BF_CH3_field.txt")
 summary(BF_CH3b)
+"log(BF):"
+extractBF(BF_CH3b, logbf = T, onlybf = T)
 sink()
 
 
@@ -545,6 +566,8 @@ BF_CH3b_nolog <-  compare(CH3bx_numerator, CH3bx_denominator)
 #saving the results in a text file
 sink(file = "06_output/stat/BF_CH3_field_nolog.txt")
 summary(BF_CH3b_nolog)
+"log(BF):"
+extractBF(BF_CH3b_nolog, logbf = T, onlybf = T)
 sink()
 
 
@@ -582,6 +605,8 @@ sexdif_field <- compare(sexdif_field_numerator, sexdif_field_denominator)
 #saving the results in a text file
 sink(file = "06_output/stat/BF_sexdif_field.txt")
 summary(sexdif_field)
+"log(BF):"
+extractBF(sexdif_field, logbf = T, onlybf = T)
 sink()
 
 # strong evidence for the null model
@@ -621,6 +646,8 @@ caf_field <- compare(caf_field_numerator, caf_field_denominator)
 #saving the results in a text file
 sink(file = "06_output/stat/BF_acutecaf_field.txt")
 summary(caf_field)
+"log(BF):"
+extractBF(caf_field, logbf = T, onlybf = T)
 sink()
 
 # --> moderate evidence for null model 
@@ -659,6 +686,8 @@ hcaf_field<- compare(hcaf_field_numerator, hcaf_field_denominator)
 #saving the results in a text file
 sink(file = "06_output/stat/BF_habitualcaf_field.txt")
 summary(hcaf_field)
+"log(BF):"
+extractBF(hcaf_field, logbf = T, onlybf = T)
 sink()
 
 # moderate evidence for null model 
@@ -696,6 +725,8 @@ iris_field <- compare(iris_field_numerator, iris_field_denominator)
 #saving the results in a text file
 sink(file = "06_output/stat/BF_iris_field.txt")
 summary(iris_field)
+"log(BF):"
+extractBF(iris_field, logbf = T, onlybf = T)
 sink()
 
 # strong evidence for null model 
