@@ -136,6 +136,21 @@ ggsave("06_output/agecomp_plot.pdf", plot = agecomp_plot ,
        width = 159.2 *(2.998/5), height = 80, units = "mm", 
        bg = "white")
 
+#Suppl Figure X : comparing age case data, dose response
+#use the agecomp dataset for comparing a typical 18-year old & 87-year-old subject
+#x-axis: phot. illum. ; y-axis: pupil size (mm) for a single participant
+# horizontal lines give maximum pupil range
+
+#create the plot via the ggdr_mel function and add the horizontal lines
+agecomp_plot_lux <- ggdr_lux(agecomp)+
+  geom_hline(aes(yintercept=Maxpup, colour = id), data=hline_dat)+
+  geom_hline(aes(yintercept=Minpup, colour = id), data=hline_dat)+
+  labs()
+agecomp_plot_lux
+
+ggsave("06_output/agecomp_plot_lux.pdf", plot = agecomp_plot_lux ,
+       width = 159.2 *(2.998/5), height = 80, units = "mm", 
+       bg = "white")
 
 
 ### [5] Age effect across light conditions--------------------------------------
@@ -808,26 +823,46 @@ library(performance)
 library(see)
 library(patchwork)
 
-#create a linear model for testing the untransformed light data
-model2 <- lm(diameter_3d ~ Mel_EDI + age, data = Fielddata)
+#create a linear model for testing the untransformed light data (mEDI)
+model1 <- lm(diameter_3d ~ Mel_EDI + age, data = Fielddata)
 
 #use the check model function to test the linear assumptions in the model
 #log10 transformed data
-assumptest_lin <- check_model(model2, theme="ggplot2::theme_classic")
+assumptest_lin <- check_model(model1, theme="ggplot2::theme_classic")
 #show the plot
-assumptest_lin
+#assumptest_lin
 
 #save as pdf manually: landscape full din A4 (width = 11.69 in, height = 8.27 in)
 #(ggsave function did not work here)
 
-#create  a linear model for testing the log10-transformed light data
-model <- lm(diameter_3d ~ log_Mel_EDI + age, data = Fielddata)
+#create  a linear model for testing the log10-transformed light data (mEDI)
+model2 <- lm(diameter_3d ~ log_Mel_EDI + age, data = Fielddata)
 
 #use the check model function to test the linear assumptions in the model
 #untransformed data
-assumptest_log <- check_model(model, theme="ggplot2::theme_classic")
+assumptest_log <- check_model(model2, theme="ggplot2::theme_classic")
 #show the plot
-assumptest_log
+#assumptest_log
 
-#save as pdf manually: landscape full din A4 (width = 11.69 in, height = 8.27 in)
-#(ggsave function did not work here)
+#create a linear model for testing the untransformed light data (phot. illum.)
+model3 <- lm(diameter_3d ~ phot_lux + age, data = Fielddata)
+
+#create a linear model for testing the untransformed light data (phot. illum.)
+model4 <- lm(diameter_3d ~  log_phot_lux + age, data = Fielddata)
+
+
+assumptest_lin_lux <- check_model(model3, theme="ggplot2::theme_classic")
+
+#show the plot
+#assumptest_lin_lux
+
+assumptest_log_lux <- check_model(model4, theme="ggplot2::theme_classic")
+
+#show the plot
+#assumptest_log_lux
+
+
+#save as pdf manually: (ggsave function did not work with these plots)
+#use large screen and extend "Plot" window as far as possible
+# then use "Export" - Save as PDF"
+# format: landscape full din A4 (width = 11.69 in, height = 8.27 in)
