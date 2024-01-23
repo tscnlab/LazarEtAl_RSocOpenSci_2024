@@ -32,6 +32,38 @@ ggdr_mel <- function(dataset) {
 }
 
 
+#plotting function for mEDI vs. pupil Size data
+#ggdr_mel was used in producing Figure 6
+
+ggdr_lux <- function(dataset) {
+  ggplot(dataset,
+         aes(x = phot_lux, y = diameter_3d, fill = id
+         ))+
+    #geom_hline(yintercept= max(y))+
+    facet_wrap(~ id, labeller = as_labeller(wraplabs)
+    )+
+    scale_x_log10(limits=c(1,55000), 
+                  breaks =c(1,10,100,1000,10000, 50000),
+                  labels =c(1,10,100,"1k","10k", "50k"))+
+    scale_y_continuous(breaks = seq(1,9,2), limits = c(1,9))+
+    geom_point(size=2.25, alpha=0.6, shape=21)+
+    labs(x = "Photopic Illuminance [lux]",
+         y = "Pupil diameter [mm]",
+    )+
+    geom_smooth(method = "lm", se=T, color="black", formula = my.formula,
+                fullrange = T) +
+    stat_poly_eq(formula = my.formula,
+                 size = 2.81,
+                 eq.with.lhs = "italic(hat(y))~`=`~",
+                 aes(label = paste(..eq.label.., ..rr.label.., 
+                                   sep = "*plain(\",\")~")), 
+                 parse = TRUE, label.x = 0.5, label.y = 0.018
+    ) +
+    theme_classic()+
+    theme(legend.position = "none",  aspect.ratio = 1/1)
+}
+
+
 #plotting function for light data comparison: phot. lux vs. mEDI
 #gglightcor was used in producing Figure 5 
 
