@@ -550,6 +550,11 @@ for (i in 1: nrow(rawdata_ID_all)){
   rawdata_ID_all$log_MelIrrad[i] <- NA
   rawdata_ID_all$log_Mel_EDI[i] <- NA
   rawdata_ID_all$log_phot_lux[i] <- NA
+  rawdata_ID_all$log_SCone_EDI[i] <- NA
+  rawdata_ID_all$log_MCone_EDI[i] <- NA
+  rawdata_ID_all$log_LCone_EDI[i] <- NA
+  rawdata_ID_all$log_Rod_EDI[i] <- NA
+  
     }
 }
 
