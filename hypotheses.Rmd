@@ -76,6 +76,15 @@ BF_CH1blog <-compare(CH1blog_numerator, CH1blog_denominator)
 
 summary(BF_CH1blog)
 
+#extract ln of the BF
+
+extractBF(BF_CH1blog, logbf = T, onlybf = T) 
+
+#convert to log10
+
+ extractBF(BF_CH1blog, logbf = T, onlybf = T) / log(10)
+ 
+
 
 ```
 
@@ -116,7 +125,11 @@ BF_CH1a <- compare(CH1a_numerator, CH1a_denominator)
 
 summary(BF_CH1a)
 
+#extract ln of the BF
+extractBF(BF_CH1a, logbf = T, onlybf = T)
 
+#convert to log10
+extractBF(BF_CH1a, logbf = T, onlybf = T) / log(10)
 
 
 # Positive control: CH1 in Lab data
@@ -150,6 +163,12 @@ set.seed(20230703)
 BF_CH1ax <- compare(CH1ax_numerator, CH1ax_denominator)
 
 summary(BF_CH1ax)
+
+#extract ln of the BF
+extractBF(BF_CH1ax, logbf = T, onlybf = T)
+#convert into log10
+extractBF(BF_CH1ax, logbf = T, onlybf = T)/ log(10)
+
 
 ```
 
@@ -190,6 +209,11 @@ BF_CH2_lab <- compare(CH2a_numerator, CH2a_denominator)
 
 summary(BF_CH2_lab)
 
+#extract ln of the BF
+extractBF(BF_CH2_lab, logbf = T, onlybf = T)
+#convert into log10
+extractBF(BF_CH2_lab, logbf = T, onlybf = T)/ log(10)
+
 
 # Positive control: CH2 in Lab data
 
@@ -221,6 +245,11 @@ set.seed(20230703)
 BF_CH2x_lab <- compare(CH2ax_numerator, CH2ax_denominator)
 
 summary(BF_CH2x_lab)
+
+#extract ln of the BF
+extractBF(BF_CH2x_lab, logbf = T, onlybf = T)
+#convert into log10
+extractBF(BF_CH2x_lab, logbf = T, onlybf = T)/ log(10)
 
 ```
 
@@ -260,6 +289,10 @@ BF_CH3c <-  compare(CH3c_numerator, CH3c_denominator)
 
 summary(BF_CH3c)
 
+#extract ln of the BF
+extractBF(BF_CH3c, logbf = T, onlybf = T)
+extractBF(BF_CH3c, logbf = T, onlybf = T)/ log(10)
+
 ```
 
 In the code given in <span style="color: blue;">*[4] Hypothesis testing - CH1*</span> , we test our confirmatory hypothesis CH1 in the data from the field condition (subdataset "Fielddata"). First, we conduct the test  with models including the log10-transformed mEDI predictor and then secondly with the linear mEDI predictor.
@@ -298,6 +331,11 @@ BF_CH1b <- compare(CH1b_numerator, CH1b_denominator)
 
 summary(BF_CH1b)
 
+#extract ln of the BF
+extractBF(BF_CH1b, logbf = T, onlybf = T)
+#convert into log10
+extractBF(BF_CH1b, logbf = T, onlybf = T)/ log(10)
+
 
 ```
 
@@ -334,6 +372,11 @@ set.seed(20230703)
 BF_CH1bx <-compare(CH1bx_numerator, CH1bx_denominator)
 
 summary(BF_CH1bx)
+
+#extract ln of the BF
+extractBF(BF_CH1bx, logbf = T, onlybf = T)
+#convert into log10
+extractBF(BF_CH1bx, logbf = T, onlybf = T)/ log(10)
 
 
 ```
@@ -376,6 +419,11 @@ BF_CH2b <- compare(CH2b_numerator, CH2b_denominator)
 
 summary(BF_CH2b)
 
+#extract ln of the BF
+extractBF(BF_CH2b, logbf = T, onlybf = T)
+#convert into log10
+extractBF(BF_CH2b, logbf = T, onlybf = T)/ log(10)
+
 
 ```
 
@@ -410,6 +458,11 @@ set.seed(20230703)
 BF_CH2bx <- compare(CH2bx_numerator, CH2bx_denominator)
 
 summary(BF_CH2bx)
+
+#extract ln of the BF
+extractBF(BF_CH2bx, logbf = T, onlybf = T)
+#convert into log10
+extractBF(BF_CH2bx, logbf = T, onlybf = T)/ log(10)
 
 
 ```
@@ -462,6 +515,14 @@ CH2_H0_bic<- BIC(CH2_NHST_H0)
 set.seed(20230703) 
 #convert the BICs into an approximated BF10 factor
 bic_bf10(CH2_H0_bic,CH2_H1_bic)
+
+#ln(approx. BF10)
+log(bic_bf10(CH2_H0_bic,CH2_H1_bic))
+#log10(approx. BF10)
+log10(bic_bf10(CH2_H0_bic,CH2_H1_bic))
+
+
+
 #result very similar to the BF10 computed with BayesFactor package.
 
 # Repeating the BIC test using the non-log10 transformed light intensity vars
@@ -488,7 +549,10 @@ set.seed(20230703)
 bic_bf10(CH2_H0_nolog_bic,CH2_H1_nolog_bic)
 #results very similar to the BF10 computed with BayesFactor package.
 
-
+#ln of approx. BF10 factor
+log(bic_bf10(CH2_H0_nolog_bic,CH2_H1_nolog_bic))
+#log10 of approx. BF10 factor
+log10(bic_bf10(CH2_H0_nolog_bic,CH2_H1_nolog_bic))
 ```
 
 In the code given in <span style="color: blue;">*[6] Hypothesis testing - CH3*</span> , we test our confirmatory hypothesis CH3 in the data from the field condition (subdataset "Fielddata"). First, we conduct the test  with models including the log10-transformed mEDI  predictor and then secondly with the linear mEDI predictor.
@@ -524,6 +588,11 @@ BF_CH3b <-  compare(CH3b_numerator, CH3b_denominator)
 
 summary(BF_CH3b)
 
+#extract ln of the BF
+extractBF(BF_CH3b, logbf = T, onlybf = T)
+#convert into log10
+extractBF(BF_CH3b, logbf = T, onlybf = T)/ log(10)
+
 ```
 
 CH3 test with the linear (non-transformed) melanopic Equivalent Daylight Illuminance (mEDI) predictor:
@@ -557,6 +626,10 @@ BF_CH3b_nolog <-  compare(CH3bx_numerator, CH3bx_denominator)
 
 summary(BF_CH3b_nolog)
 
+#extract ln of the BF
+extractBF(BF_CH3b_nolog, logbf = T, onlybf = T)
+#convert into log10
+extractBF(BF_CH3b_nolog, logbf = T, onlybf = T)/ log(10)
 
 ```
  
@@ -604,6 +677,11 @@ sexdif_field <- compare(sexdif_field_numerator, sexdif_field_denominator)
 summary(sexdif_field)
 
 
+#extract ln of the BF
+extractBF(sexdif_field, logbf = T, onlybf = T)
+#convert into log10
+extractBF(sexdif_field, logbf = T, onlybf = T)/ log(10)
+
 # strong evidence for the null model
 
 ```
@@ -644,6 +722,11 @@ caf_field <- compare(caf_field_numerator, caf_field_denominator)
 
 summary(caf_field)
 
+#extract ln of the BF
+extractBF(caf_field, logbf = T, onlybf = T)
+#convert into log10
+extractBF(caf_field, logbf = T, onlybf = T)/ log(10)
+
 # --> moderate evidence for null model 
 
 
@@ -678,6 +761,11 @@ set.seed(20230703)
 hcaf_field<- compare(hcaf_field_numerator, hcaf_field_denominator)
 
 summary(hcaf_field)
+
+#extract ln of the BF
+extractBF(hcaf_field, logbf = T, onlybf = T)
+#convert into log10
+extractBF(hcaf_field, logbf = T, onlybf = T)/ log(10)
 
 # moderate evidence for null model 
 
@@ -717,6 +805,11 @@ iris_field <- compare(iris_field_numerator, iris_field_denominator)
 
 summary(iris_field)
 
+
+#extract ln of the BF
+extractBF(iris_field, logbf = T, onlybf = T)
+#convert into log10
+extractBF(iris_field, logbf = T, onlybf = T)/ log(10)
 # strong evidence for null model 
 
 ```

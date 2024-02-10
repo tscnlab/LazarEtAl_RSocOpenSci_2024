@@ -10,7 +10,7 @@
 
 
 
-<meta name="date" content="2023-10-11" />
+<meta name="date" content="2024-02-10" />
 
 <title>Regulation of pupil size in natural vision - hypotheses</title>
 
@@ -2839,7 +2839,7 @@ border-radius: 0px;
 
 <h1 class="title toc-ignore">Regulation of pupil size in natural vision
 - hypotheses</h1>
-<h4 class="date">11 Oct 2023</h4>
+<h4 class="date">10 Feb 2024</h4>
 
 </div>
 
@@ -2902,6 +2902,14 @@ summary(BF_CH1blog)</code></pre>
 ##   diameter_3d ~ Mel_EDI + age + id + sex 
 ## ---
 ## Bayes factor type: BFlinearModel, JZS</code></pre>
+<pre class="r"><code>#extract ln of the BF
+
+extractBF(BF_CH1blog, logbf = T, onlybf = T) </code></pre>
+<pre><code>## [1] 2295.112</code></pre>
+<pre class="r"><code>#convert to log10
+
+ extractBF(BF_CH1blog, logbf = T, onlybf = T) / log(10)</code></pre>
+<pre><code>## [1] 996.7543</code></pre>
 <p>In code section <span style="color: blue;"><em>[3] Positive control
 tests</em></span> we test our confirmatory hypotheses in the controlled
 laboratory conditions as positive control tests. You find the results of
@@ -2951,6 +2959,12 @@ summary(BF_CH1a)</code></pre>
 ##   diameter_3d ~ age + id + sex 
 ## ---
 ## Bayes factor type: BFlinearModel, JZS</code></pre>
+<pre class="r"><code>#extract ln of the BF
+extractBF(BF_CH1a, logbf = T, onlybf = T)</code></pre>
+<pre><code>## [1] 292.5146</code></pre>
+<pre class="r"><code>#convert to log10
+extractBF(BF_CH1a, logbf = T, onlybf = T) / log(10)</code></pre>
+<pre><code>## [1] 127.0375</code></pre>
 <pre class="r"><code># Positive control: CH1 in Lab data
 
 #computing BF10: likelihood ratio of full model vs. null model
@@ -2990,6 +3004,12 @@ summary(BF_CH1ax)</code></pre>
 ##   diameter_3d ~ age + id + sex 
 ## ---
 ## Bayes factor type: BFlinearModel, JZS</code></pre>
+<pre class="r"><code>#extract ln of the BF
+extractBF(BF_CH1ax, logbf = T, onlybf = T)</code></pre>
+<pre><code>## [1] 391.8802</code></pre>
+<pre class="r"><code>#convert into log10
+extractBF(BF_CH1ax, logbf = T, onlybf = T)/ log(10)</code></pre>
+<pre><code>## [1] 170.1914</code></pre>
 <p>Secondly, we tested hypothesis CH2 with the linear models specified
 in stage 1 of our report with data from our laboratory conditions
 (subdataset “Labdata”). Note that under these conditions, the light
@@ -3037,6 +3057,12 @@ summary(BF_CH2_lab)</code></pre>
 ##   diameter_3d ~ log_phot_lux + age + id + sex 
 ## ---
 ## Bayes factor type: BFlinearModel, JZS</code></pre>
+<pre class="r"><code>#extract ln of the BF
+extractBF(BF_CH2_lab, logbf = T, onlybf = T)</code></pre>
+<pre><code>## [1] 56.77159</code></pre>
+<pre class="r"><code>#convert into log10
+extractBF(BF_CH2_lab, logbf = T, onlybf = T)/ log(10)</code></pre>
+<pre><code>## [1] 24.65559</code></pre>
 <pre class="r"><code># Positive control: CH2 in Lab data
 
 #computing BF10: likelihood ratio of full model vs. null model
@@ -3075,6 +3101,12 @@ summary(BF_CH2x_lab)</code></pre>
 ##   diameter_3d ~ phot_lux + age + id + sex 
 ## ---
 ## Bayes factor type: BFlinearModel, JZS</code></pre>
+<pre class="r"><code>#extract ln of the BF
+extractBF(BF_CH2x_lab, logbf = T, onlybf = T)</code></pre>
+<pre><code>## [1] 229.1698</code></pre>
+<pre class="r"><code>#convert into log10
+extractBF(BF_CH2x_lab, logbf = T, onlybf = T)/ log(10)</code></pre>
+<pre><code>## [1] 99.5272</code></pre>
 <p>Lastly, we test our age hypothesis CH3 in the data from the 10-minute
 dark adaptation (subdataset “Darkdata”) as a positive control, where we
 expected the age effect to be most pronounced. In the tested models, no
@@ -3119,6 +3151,11 @@ summary(BF_CH3c)</code></pre>
 ##   diameter_3d ~ id + sex 
 ## ---
 ## Bayes factor type: BFlinearModel, JZS</code></pre>
+<pre class="r"><code>#extract ln of the BF
+extractBF(BF_CH3c, logbf = T, onlybf = T)</code></pre>
+<pre><code>## [1] 12.24682</code></pre>
+<pre class="r"><code>extractBF(BF_CH3c, logbf = T, onlybf = T)/ log(10)</code></pre>
+<pre><code>## [1] 5.318728</code></pre>
 <p>In the code given in <span style="color: blue;"><em>[4] Hypothesis
 testing - CH1</em></span> , we test our confirmatory hypothesis CH1 in
 the data from the field condition (subdataset “Fielddata”). First, we
@@ -3165,6 +3202,12 @@ summary(BF_CH1b)</code></pre>
 ##   diameter_3d ~ age + id + sex 
 ## ---
 ## Bayes factor type: BFlinearModel, JZS</code></pre>
+<pre class="r"><code>#extract ln of the BF
+extractBF(BF_CH1b, logbf = T, onlybf = T)</code></pre>
+<pre><code>## [1] 2966.163</code></pre>
+<pre class="r"><code>#convert into log10
+extractBF(BF_CH1b, logbf = T, onlybf = T)/ log(10)</code></pre>
+<pre><code>## [1] 1288.188</code></pre>
 <p>CH1 test with the linear (non-transformed) melanopic Equivalent
 Daylight Illuminance (mEDI) predictor:</p>
 <pre class="r"><code>#computing BF10: likelihood ratio of full model vs. null model
@@ -3203,6 +3246,12 @@ summary(BF_CH1bx)</code></pre>
 ##   diameter_3d ~ age + id + sex 
 ## ---
 ## Bayes factor type: BFlinearModel, JZS</code></pre>
+<pre class="r"><code>#extract ln of the BF
+extractBF(BF_CH1bx, logbf = T, onlybf = T)</code></pre>
+<pre><code>## [1] 671.0242</code></pre>
+<pre class="r"><code>#convert into log10
+extractBF(BF_CH1bx, logbf = T, onlybf = T)/ log(10)</code></pre>
+<pre><code>## [1] 291.4221</code></pre>
 <p>In the code given in <span style="color: blue;"><em>[5] Hypothesis
 testing - CH2</em></span> , we test our confirmatory hypothesis CH2 in
 the data from the field condition (subdataset “Fielddata”). First, we
@@ -3250,6 +3299,12 @@ summary(BF_CH2b)</code></pre>
 ##   diameter_3d ~ log_phot_lux + age + id + sex 
 ## ---
 ## Bayes factor type: BFlinearModel, JZS</code></pre>
+<pre class="r"><code>#extract ln of the BF
+extractBF(BF_CH2b, logbf = T, onlybf = T)</code></pre>
+<pre><code>## [1] 48.73153</code></pre>
+<pre class="r"><code>#convert into log10
+extractBF(BF_CH2b, logbf = T, onlybf = T)/ log(10)</code></pre>
+<pre><code>## [1] 21.16384</code></pre>
 <p>CH2 test with the linear (non-transformed) melanopic Equivalent
 Daylight Illuminance (mEDI) and photopic illuminance predictors:</p>
 <pre class="r"><code>#computing BF10: likelihood ratio of full model vs. null model
@@ -3287,6 +3342,12 @@ summary(BF_CH2bx)</code></pre>
 ##   diameter_3d ~ phot_lux + age + id + sex 
 ## ---
 ## Bayes factor type: BFlinearModel, JZS</code></pre>
+<pre class="r"><code>#extract ln of the BF
+extractBF(BF_CH2bx, logbf = T, onlybf = T)</code></pre>
+<pre><code>## [1] 23.09435</code></pre>
+<pre class="r"><code>#convert into log10
+extractBF(BF_CH2bx, logbf = T, onlybf = T)/ log(10)</code></pre>
+<pre><code>## [1] 10.02975</code></pre>
 <p>To double check that our tests conducted with the “BayesFactors”
 package were valid, we additionally ran a test comparing the two models
 defined with a function from the <em>lme4</em> &amp; <em>lmerTest</em>
@@ -3382,6 +3443,12 @@ set.seed(20230703)
 #convert the BICs into an approximated BF10 factor
 bic_bf10(CH2_H0_bic,CH2_H1_bic)</code></pre>
 <pre><code>## [1] 1.435333e+21</code></pre>
+<pre class="r"><code>#ln(approx. BF10)
+log(bic_bf10(CH2_H0_bic,CH2_H1_bic))</code></pre>
+<pre><code>## [1] 48.71568</code></pre>
+<pre class="r"><code>#log10(approx. BF10)
+log10(bic_bf10(CH2_H0_bic,CH2_H1_bic))</code></pre>
+<pre><code>## [1] 21.15695</code></pre>
 <pre class="r"><code>#result very similar to the BF10 computed with BayesFactor package.
 
 # Repeating the BIC test using the non-log10 transformed light intensity vars
@@ -3443,7 +3510,14 @@ set.seed(20230703)
 #convert the BICs into an approximated BF10 factor
 bic_bf10(CH2_H0_nolog_bic,CH2_H1_nolog_bic)</code></pre>
 <pre><code>## [1] 12699650781</code></pre>
-<pre class="r"><code>#results very similar to the BF10 computed with BayesFactor package.</code></pre>
+<pre class="r"><code>#results very similar to the BF10 computed with BayesFactor package.
+
+#ln of approx. BF10 factor
+log(bic_bf10(CH2_H0_nolog_bic,CH2_H1_nolog_bic))</code></pre>
+<pre><code>## [1] 23.26484</code></pre>
+<pre class="r"><code>#log10 of approx. BF10 factor
+log10(bic_bf10(CH2_H0_nolog_bic,CH2_H1_nolog_bic))</code></pre>
+<pre><code>## [1] 10.10379</code></pre>
 <p>In the code given in <span style="color: blue;"><em>[6] Hypothesis
 testing - CH3</em></span> , we test our confirmatory hypothesis CH3 in
 the data from the field condition (subdataset “Fielddata”). First, we
@@ -3486,6 +3560,12 @@ summary(BF_CH3b)</code></pre>
 ##   diameter_3d ~ log_Mel_EDI + id + sex 
 ## ---
 ## Bayes factor type: BFlinearModel, JZS</code></pre>
+<pre class="r"><code>#extract ln of the BF
+extractBF(BF_CH3b, logbf = T, onlybf = T)</code></pre>
+<pre><code>## [1] 10.73805</code></pre>
+<pre class="r"><code>#convert into log10
+extractBF(BF_CH3b, logbf = T, onlybf = T)/ log(10)</code></pre>
+<pre><code>## [1] 4.663477</code></pre>
 <p>CH3 test with the linear (non-transformed) melanopic Equivalent
 Daylight Illuminance (mEDI) predictor:</p>
 <pre class="r"><code>#computing BF10: likelihood ratio of full model vs. null model
@@ -3521,6 +3601,12 @@ summary(BF_CH3b_nolog)</code></pre>
 ##   diameter_3d ~ Mel_EDI + id + sex 
 ## ---
 ## Bayes factor type: BFlinearModel, JZS</code></pre>
+<pre class="r"><code>#extract ln of the BF
+extractBF(BF_CH3b_nolog, logbf = T, onlybf = T)</code></pre>
+<pre><code>## [1] 7.705938</code></pre>
+<pre class="r"><code>#convert into log10
+extractBF(BF_CH3b_nolog, logbf = T, onlybf = T)/ log(10)</code></pre>
+<pre><code>## [1] 3.346646</code></pre>
 <p>In the code section <span style="color: blue;"><em>[7] Exploratory
 analyses - EH</em></span> we analyse our exploratory analyses specified
 in the Stage 2 RR manuscript. The analysis procedure corresponds to the
@@ -3578,6 +3664,12 @@ summary(sexdif_field)</code></pre>
 ##   diameter_3d ~ log_Mel_EDI + age + id 
 ## ---
 ## Bayes factor type: BFlinearModel, JZS</code></pre>
+<pre class="r"><code>#extract ln of the BF
+extractBF(sexdif_field, logbf = T, onlybf = T)</code></pre>
+<pre><code>## [1] -2.661831</code></pre>
+<pre class="r"><code>#convert into log10
+extractBF(sexdif_field, logbf = T, onlybf = T)/ log(10)</code></pre>
+<pre><code>## [1] -1.156019</code></pre>
 <pre class="r"><code># strong evidence for the null model</code></pre>
 <p>Caffeine consumption:</p>
 <pre class="r"><code>#Caffeine consumption-
@@ -3619,6 +3711,12 @@ summary(caf_field)</code></pre>
 ##   diameter_3d ~ log_Mel_EDI + age + id + sex 
 ## ---
 ## Bayes factor type: BFlinearModel, JZS</code></pre>
+<pre class="r"><code>#extract ln of the BF
+extractBF(caf_field, logbf = T, onlybf = T)</code></pre>
+<pre><code>## [1] -1.739857</code></pre>
+<pre class="r"><code>#convert into log10
+extractBF(caf_field, logbf = T, onlybf = T)/ log(10)</code></pre>
+<pre><code>## [1] -0.7556104</code></pre>
 <pre class="r"><code># --&gt; moderate evidence for null model 
 
 
@@ -3661,6 +3759,12 @@ summary(hcaf_field)</code></pre>
 ##   diameter_3d ~ log_Mel_EDI + age + id + sex 
 ## ---
 ## Bayes factor type: BFlinearModel, JZS</code></pre>
+<pre class="r"><code>#extract ln of the BF
+extractBF(hcaf_field, logbf = T, onlybf = T)</code></pre>
+<pre><code>## [1] -2.033355</code></pre>
+<pre class="r"><code>#convert into log10
+extractBF(hcaf_field, logbf = T, onlybf = T)/ log(10)</code></pre>
+<pre><code>## [1] -0.8830747</code></pre>
 <pre class="r"><code># moderate evidence for null model </code></pre>
 <p>Iris colour:</p>
 <pre class="r"><code># iris colour 
@@ -3701,6 +3805,12 @@ summary(iris_field)</code></pre>
 ##   diameter_3d ~ log_Mel_EDI + age + id + sex 
 ## ---
 ## Bayes factor type: BFlinearModel, JZS</code></pre>
+<pre class="r"><code>#extract ln of the BF
+extractBF(iris_field, logbf = T, onlybf = T)</code></pre>
+<pre><code>## [1] -4.060858</code></pre>
+<pre class="r"><code>#convert into log10
+extractBF(iris_field, logbf = T, onlybf = T)/ log(10)</code></pre>
+<pre><code>## [1] -1.763608</code></pre>
 <pre class="r"><code># strong evidence for null model </code></pre>
 
 

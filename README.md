@@ -175,7 +175,7 @@ In the <span style="color: blue;">*[7] Other subdatasets*</span> we created a su
 In <span style="color: blue;">*[8] Saving subdatasets*</span> we save all subdatasets (image of the environment) into the `conf_subdata.rda` file.
 
 
-## Hypotheses
+## Hypotheses and exploratory analyses
 <span style="color: green;">
 
 Folder: `05_analysis` <br>
@@ -218,12 +218,23 @@ In the code given in <span style="color: blue;">*[6] Hypothesis testing - CH3*</
  
 *CH3: In real-world conditions, light-adapted pupil size changes as a function of age, with higher age associated with a smaller pupil size.*
 
-In the code section <span style="color: blue;">*[7] Exploratory analyses - EH*</span> we conduct our exploratory analyses specified in the the stage 2 manuscript. The analysis procedure corresponds to the confirmatory hypotheses. However, we only include log10-transformed mEDI as a predictor in these cases.
+In the code section <span style="color: blue;">*[7] Exploratory analyses - EH*</span> we conduct our exploratory hypotheses tests specified in the the stage 2 manuscript. The analysis procedure corresponds to the confirmatory hypotheses. However, we only include log10-transformed mEDI as a predictor in these cases.
 
 - *EH1: Sex differences in light-adapted pupil size are present under real-world conditions.*
 - *EH2: Light-adapted pupil size varies as a function of iris colour under real-world conditions.*
 - *EH3: Light-adapted pupil size varies as a function of habitual caffeine consumption (relative to body weight) under real-world conditions.*
 - *EH4: Light-adapted pupil size varies as a function of the acute caffeine consumption (relative to body weight) under real-world conditions.*
+
+
+In the code section <span style="color: blue;">*[8] Exploratory analyses without hypotheses *</span> Here, we conduct the exploratory analyses of the stage 2 manuscript that were not hypothesis driven. The LMM analysis procedure  uses the same approach as for the exploratory hypothesis tests. The output however is given as matrices of Bayes Factor tests.
+
+The following exploratory tests were run:
+
+1) Exploratory tests of single light level measures as pupil size predictors (6 variables: 5x Alpha-opic EDIs + photopic illumiance).
+ 
+2) Exploratory tests of pairwise light level measures as pupil size predictors (all 15 pairwise combinations of the 6 light level variables).
+
+Please note that these tests are included in the R code but not part of the rmd and html files with the hypothesis tests, due to the high demand on computing power and long runtime when "knitting".
 
 
 ## Figures and tables
