@@ -52,7 +52,11 @@ merged_data_conf <- select(
                         MSFsc, time_awake, sleeping_hours, SDweek, iris_colour, #added vars
                         kss_pre, kss_post,#added vars
                         acute_sum, acute_sum_rel, habitual_sum_rel, #added vars
-                        log_MelIrrad, log_phot_lux, log_Mel_EDI, MPratio)
+                        log_MelIrrad, log_phot_lux, log_Mel_EDI, MPratio,
+                        SConeIrrad, MConeIrrad, LConeIrrad, RodIrrad,#added 2024-01-24
+                        SCone_EDI, MCone_EDI, LCone_EDI, Rod_EDI,#added 2024-02-02
+                        log_SCone_EDI, log_MCone_EDI, log_LCone_EDI, log_Rod_EDI#added 2024-02-02
+  )
 
 #save this as new dataset
 save(merged_data_conf, file="./03_datamerge/merged_data_conf.rda")

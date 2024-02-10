@@ -197,7 +197,8 @@ weatherdata <- merged_data_conf[merged_data_conf$exp_phase == "Field" &
                                   !is.na(merged_data_conf$phot_lux)
                                   ,] %>%
   select(id, sample_nr, date, begin, sample_nr, 
-         phot_lux, MelIrrad, Mel_EDI,
+         phot_lux, MelIrrad, Mel_EDI, SConeIrrad, MConeIrrad, LConeIrrad, RodIrrad,
+         SCone_EDI, MCone_EDI, LCone_EDI, Rod_EDI,
          weather, exp_phase, season)
 
 ### [5] Subdatasets for case data -------------------------------------------
@@ -293,6 +294,7 @@ pupil_acf <- data.frame(cor = acf(autocor_data$diameter_3d,
 #NOT using the "filler" work-around autocorellation data approach
 #This shows that the work-around was succesful:
 # the autocorrelation now does not take into account the samples of a the previous subject
+
 
 ### [8] Saving subdatasets----------------------------------------------------------------------------------------------------------
 
