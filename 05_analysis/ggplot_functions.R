@@ -173,40 +173,83 @@ ggweather <- function(dataset) {
 #bin breaks correspond to 0.5 log10 unit steps mEDI
 #ggweather_hist was used in producing Figure 3 (top panel)
 
-ggweather_hist <- function(dataset) {
-  ggplot(dataset, aes(x= Mel_EDI
-  ))+
-    geom_histogram(aes(y=..density..),
+ggweather_hist <- function(dataset, x_var) {
+  ggplot(dataset, aes(x = !!rlang::sym(x_var))) +
+    geom_histogram(aes(y = ..density..),
                    fill = "white",
                    color = "black",
-                   breaks=c(1,10^0.5,10,10^1.5,100,10^2.5,1000,10^3.5,10000,
-                            10^4.5, 100000),
-                   position="identity", alpha=0.5)+
-    geom_density(alpha=.2, fill="gold")+
-    scale_x_log10(limits=c(1,100000),
-                  breaks =c(1,10,100, 1000,10000,100000),
-                  labels =c(1,10,100, "1k","10k", "100k"))+
-    labs(x = "Melanopic EDI [lux]",
-         y = "Probability density"
-    )+
-    geom_vline(xintercept = 250, colour = "gray", linetype = "dashed"
-    )+
-    geom_vline(xintercept = 1000, colour = "gray"
-    )+
-    theme_classic()+
-    theme(axis.line.x = element_blank(), 
+                   breaks = c(1, 10^0.5, 10, 10^1.5, 100, 10^2.5, 1000, 10^3.5, 10000,
+                              10^4.5, 100000),
+                   position = "identity", alpha = 0.5) +
+    geom_density(alpha = .2, fill = "gold") +
+    scale_x_log10(limits = c(1, 100000),
+                  breaks = c(1, 10, 100, 1000, 10000, 100000),
+                  labels = c(1, 10, 100, "1k", "10k", "100k")) +
+    labs(x = paste("Melanopic EDI [", x_var, "]"),
+         y = "Probability density") +
+    geom_vline(xintercept = 250, colour = "gray", linetype = "dashed") +
+    geom_vline(xintercept = 1000, colour = "gray") +
+    theme_classic() +
+    theme(axis.line.x = element_blank(),
           axis.text.x = element_blank(),
           legend.position = "none",
           plot.margin = unit(c(5.5, 5.5, 0, 5.5), "pt"),
-          #plot.title = element_text(size = 11,
-                                    #face = "bold"),
-         #plot.subtitle = element_text(color = "black"),
           panel.background = element_rect(fill = "white",
                                           size = 2,
                                           linetype = "solid"),
-          aspect.ratio = 1/1)#+
-   # scale_fill_gradient(low = "white", high = "red")
+          aspect.ratio = 1/1)
 }
+
+
+#plotting Alpha-opic var with prob. density 
+
+
+ggalphaopic <- function(dataset,
+                        xvar1 = NULL,
+                        xvar2 = NULL,
+                        xvar3 = NULL,
+                        xvar4 = NULL,
+                        xvar5 = NULL) {
+
+  p <- ggplot(dataset)
+
+  if (!is.null(xvar1)) {
+    p <- p + geom_density(alpha = .2, aes(x = !!rlang::sym(xvar1), fill = xvar1))
+  }
+
+  if (!is.null(xvar2)) {
+    p <- p + geom_density(alpha = .2, aes(x = !!rlang::sym(xvar2), fill = xvar2))
+  }
+
+  if (!is.null(xvar3)) {
+    p <- p + geom_density(alpha = .2, aes(x = !!rlang::sym(xvar3), fill = xvar3))
+  }
+
+  if (!is.null(xvar4)) {
+    p <- p + geom_density(alpha = .2, aes(x = !!rlang::sym(xvar4), fill = xvar4))
+  }
+
+  if (!is.null(xvar5)) {
+    p <- p + geom_density(alpha = .2, aes(x = !!rlang::sym(xvar5), fill = xvar5))
+  }
+
+  p +
+    scale_x_log10(limits = c(1, 100000),
+                  breaks = c(1, 10, 100, 1000, 10000, 100000),
+                  labels = c(1, 10, 100, "1k", "10k", "100k")) +
+    labs(x = paste("α-opic EDI [lx]"),
+         y = "Probability density") +
+    theme_classic() +
+    theme(legend.position = "top",
+          legend.title = element_blank(),  # Remove legend title
+          plot.margin = unit(c(5.5, 5.5, 0, 5.5), "pt"),
+          panel.background = element_rect(fill = "white",
+                                          size = 2,
+                                          linetype = "solid"),
+          aspect.ratio = 1/1)
+}
+
+
 
 
 # plotting function for  age vs. pupil range 
