@@ -26,18 +26,44 @@ load(file="./02_rawdata/rawfiles.rda")
 
 ### [2] Data cleaning & quality checks-----------------------------------------
 
+#number of total pupil samples below 0.6 confidence
+a <- length(rawdata_ID_all$confidence[rawdata_ID_all$confidence < 0.6])
+#number of missing values of confidence (from participants excluded before trial)
+b <- sum(is.na(rawdata_ID_all$confidence))
+#number of total pupil samples >= 0.6 confidence
+c <- length(rawdata_ID_all$confidence[rawdata_ID_all$confidence >= 0.6])
+#check whether sum of values is equal to length of data
+d=a+c-b
+d==length(rawdata_ID_all$confidence)
+#total pupil samples data loss due to confidence relative to all samples in perc
+data_loss_conf<- round(a/d*100, 2)
+
+#total pupil samples data loss due to confidence relative to all samples in perc
+
+data_loss_conf<- round(a/d*100, 2)
+
 #"Lack of good-quality fit" quality check
 #set all  pupil data with confidence (derived from Pupil Labs software) < 0.6 = NA
 # this is according to the pupil labs recommendations
 rawdata_ID_all$diameter_3d[rawdata_ID_all$confidence < 0.6] <- NA
 
+
 #"Pupil size screening" quality check
-#check the number of "out of bounds" data for pupil size
-sum(rawdata_ID_all$diameter_3d > 9, na.rm = T)
+
+#check the number of "out of bounds" data for pupil size when low confidence data is removed
+e <- sum(rawdata_ID_all$diameter_3d > 9, na.rm = T) +
 sum(rawdata_ID_all$diameter_3d < 1, na.rm = T)
+
+data_loss_range<- round(e/d*100, 2)
+
 # set all pupil size values over 9 or smaller than 1 to NA
 rawdata_ID_all$diameter_3d[rawdata_ID_all$diameter_3d > 9] <- NA
 rawdata_ID_all$diameter_3d[rawdata_ID_all$diameter_3d < 1] <- NA
+
+
+f <- sum(rawdata_ID_all$phot_lux == 0,na.rm=T)
+data_loss_satspec<- round(f/d*100, 2)
+
 
 #"Saturated spectroradiometer samples" quality check
 #set all saturated / erroneous light data given by 0 = NA
@@ -153,7 +179,15 @@ rawdata_ID_all <- rawdata_ID_all %>%
          `log_phot_lux` = log10(phot_lux),
          #Transform MelIrrad to Mel_EDI with conversion factor
          `Mel_EDI` = MelIrrad/1.32621318911359,
-         `log_Mel_EDI` = log10(Mel_EDI)
+         `LCone_EDI` = LConeIrrad/1.62890776589039,
+         `MCone_EDI` = MConeIrrad/1.45582633881653,
+         `SCone_EDI` = SConeIrrad/0.817289644883213,
+         `Rod_EDI` = RodIrrad/1.4497035760559,
+         `log_Mel_EDI` = log10(Mel_EDI),
+         `log_SCone_EDI` = log10(SCone_EDI),
+         `log_MCone_EDI` = log10(MCone_EDI),
+         `log_LCone_EDI` = log10(LCone_EDI),
+         `log_Rod_EDI` = log10(Rod_EDI)
          )
 
 ### [4] Save checked rawfiles---------------------------------------------------
