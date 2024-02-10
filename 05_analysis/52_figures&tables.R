@@ -62,10 +62,12 @@ Fieldweatherplot
 # x-axis: mEDI; y-axis: probability density 
 #density plot
 #remove axis titles for combining it with the violin plots
-Fieldweatherhist <- ggweather_hist(weatherdata)+
+Fieldweatherhist <- ggweather_hist(weatherdata, "Mel_EDI")+
   labs(x=NULL)
 
 Fieldweatherhist
+
+
 
 #align the plot axes vertically for combining them stacked on top of each other
 info_plots <- align_plots(Fieldweatherhist, Fieldweatherplot,
@@ -107,6 +109,45 @@ ggsave("06_output/weath_panels.pdf", plot = info_panel ,
        width = 90, height = 100, units = "mm",
        bg = "white", device=cairo_pdf)
 
+
+
+#add figure comparing alpha-opic values (Suppl. Figure 2) ----------------------
+
+modified_labels <- c("L-cone-opic", "M-cone-opic", "S-cone-opic EDI")
+
+ao_EDI <- ggalphaopic(weatherdata, xvar1="LCone_EDI",xvar2= "MCone_EDI",xvar3="SCone_EDI",)+
+scale_fill_discrete(labels = modified_labels)+
+  labs(x= "Light level [lx]")
+
+
+modified_labels <- c("mEDI", "Illuminance", "rhodopic EDI"
+                     )
+
+medivsillu <- ggalphaopic(weatherdata, xvar1="Mel_EDI",xvar2= "phot_lux", xvar3="Rod_EDI" 
+                          )+
+  scale_fill_manual(labels = modified_labels,
+                    values = c("gold", "purple","turquoise"
+                                                         ))+
+  labs(x= "Light level [lx]")
+  
+
+SupplFig_density<- grid.arrange(medivsillu, ao_EDI, 
+                           nrow=1#,
+                           #bottom = bottom4,
+                           #top = top4
+)
+
+ggsave("06_output/suppl/SupplFig2.pdf", plot = SupplFig_density ,
+       width = 200, height = 100, units = "mm",
+       bg = "white", device=cairo_pdf)
+
+ggsave("06_output/suppl/SupplFig2.png", plot = SupplFig_density ,
+       width = 200, height = 100, units = "mm",
+       bg = "white")
+
+
+
+
 ### [4] Case data age comparison-------------------------------------------------------------
 
 #Figure 6: comparing age case data, dose response
@@ -129,14 +170,14 @@ hline_dat = data.frame(id=c(id="SP076","SP038"),
 agecomp_plot <- ggdr_mel(agecomp)+
   geom_hline(aes(yintercept=Maxpup, colour = id), data=hline_dat)+
   geom_hline(aes(yintercept=Minpup, colour = id), data=hline_dat)+
-  labs()
+  labs(x="Melanopic EDI [lx]")
 agecomp_plot
 
 ggsave("06_output/agecomp_plot.pdf", plot = agecomp_plot ,
-       width = 159.2 *(2.998/5), height = 80, units = "mm", 
+       width = 159.2 *(2.998/5), height = 80, units = "mm",
        bg = "white")
 
-#Suppl Figure X : comparing age case data, dose response
+#Suppl Figure 7: comparing age case data, dose response
 #use the agecomp dataset for comparing a typical 18-year old & 87-year-old subject
 #x-axis: phot. illum. ; y-axis: pupil size (mm) for a single participant
 # horizontal lines give maximum pupil range
@@ -449,7 +490,7 @@ ggsave("06_output/age_panels2.pdf", plot = Winn_panel2b ,
 
 
 ### [6] Autocorrelation ------------------
-#Suppl Figure 4 - Autocorrelations
+#Suppl Figure 8 - Autocorrelations
 
 #using the ggacf helper function to create Suppl Figure 4 A
 #get rid of axis labels for subplot for larger Figure
@@ -478,13 +519,13 @@ autocor_plots <- align_plots(mel_acf_plot, pupil_acf_plot,
                              align = "hv", axis = 'b')
 
 
-#Y-Axis Label for Suppl. Figure 4 
+#Y-Axis Label for Suppl. Figure 8
 yleft3 <- textGrob("Autocorrelation", 
                    rot = 90, 
                    gp = gpar(fontsize = 11),
                    vjust= 1.5)
 
-#X-Axis Label for Suppl. Figure 4
+#X-Axis Label for Suppl. Figure 8
 bottom3 <- textGrob("Sample lag, t0 - [minute]",
                     gp = gpar(fontsize = 11),
                     vjust= -1.5
@@ -492,7 +533,7 @@ bottom3 <- textGrob("Sample lag, t0 - [minute]",
 
 
 
-#Combine the subplots to one Figure (Suppl Figure 4)
+#Combine the subplots to one Figure (Suppl Figure 8)
 
 autocor_panel <- grid.arrange(autocor_plots[[1]], autocor_plots[[2]],
                               layout_matrix = lay3, 
@@ -688,7 +729,7 @@ ggsave("06_output/lightcomp_panels.pdf", plot = lightcomp_panel,
 
 
 ### [9] Data tables------------------------------------------------------------------------
-#Supplementary Tables 3 & 4
+#Supplementary Tables 3-9
 
 # summarizing each participant's data separated between field & positive control data
 #Separate tables for pupil size & melanopic EDI
@@ -775,7 +816,6 @@ summary_data_field_medi <- Fielddata %>% rename ("ID" = "id" ) %>%
   )
 
 
-
 #create summary table for mEDI  data from the positive control data (dark & lab data)
 
 summary_data_lab_medi <- Darklab %>% rename ("ID" = "id" ) %>%
@@ -817,7 +857,276 @@ gtsave(suppl_table_medi,        # save table as pdf
 
 
 
-### [10] Linear regression assumptions ---------------------------------------------------
+#create summary table for S-cone-opic light data -------------------------
+
+#
+#create summary table for SCone EDI from the field data
+summary_data_field_SCone <- Fielddata %>% rename ("ID" = "id" ) %>%
+  group_by(ID)  %>%
+  summarise("Min. S-cone-opic EDI [lx]" = round(min(SCone_EDI, na.rm = T), 0),
+            "Med. S-cone-opic EDI [lx]" = round(median(SCone_EDI, na.rm = T), 0),
+            "Max. S-cone-opic EDI [lx]" = round(max(SCone_EDI, na.rm = T), 0)
+  )
+
+
+
+#create summary table for SCone EDI data from the positive control data (dark & lab data)
+
+summary_data_lab_SCone <- Darklab %>% rename ("ID" = "id" ) %>%
+  group_by(ID)  %>%
+  summarise( "Med. S-cone-opic EDI [lx] " = round(median(SCone_EDI, na.rm = T), 0),
+             "Max. S-cone-opic EDI [lx] " = round(max(SCone_EDI, na.rm = T), 0)
+            #Min mEDI corresponds. to light intensity in dark adaptation phase ~ 0      
+  )%>% mutate("Min. S-cone-opic EDI [lx] " = rep("~0",times=83) )
+#relocate the min mEDI column to after ID
+summary_data_lab_SCone %>% relocate("Min. S-cone-opic EDI [lx] " , .after = ID) -> summary_data_lab_SCone
+
+#merge the 2 tables (leave out the duplicated ID column)
+suppl_table_SCone <- cbind(summary_data_field_SCone,summary_data_lab_SCone[,2:4])
+
+#create table spanners two differentiate between field and positive control data
+suppl_table_SCone <- suppl_table_SCone %>% gt() %>%  cols_align("right") %>%  
+  tab_spanner(
+    label = 'Field data',
+    columns = c(2, 3, 4)
+  ) %>%  tab_spanner(
+    label = 'Positive control data (lab. & dark adapt.)',
+    columns = c(5, 6, 7)
+  )
+# modify the format of the table 
+suppl_table_SCone <- opt_table_font(data= suppl_table_SCone, font = "Arial")  %>%
+  #adjust the fontsize of the cell bodies and footnotes 
+  tab_style(style=cell_text(size=px(11)), locations=list(cells_body(),
+                                                         cells_footnotes()
+  )
+  ) %>%
+  #adjust the cell title font sizes and padding
+  tab_style(style=cell_text(size=px(13), weight="bold"),
+            locations=list(cells_column_labels(), cells_column_spanners())
+  ) %>% tab_options(data_row.padding = px(4))
+
+
+gtsave(suppl_table_SCone,        # save table as pdf
+       filename = "06_output/suppl/sum_table_SCone.pdf")
+
+
+
+#create summary table for rhodopic light data -------------------------
+
+#
+#create summary table for Rod_EDI from the field data
+summary_data_field_rod <- Fielddata %>% rename ("ID" = "id" ) %>%
+  group_by(ID)  %>%
+  summarise("Min. rhodopic EDI [lx]" = round(min(Rod_EDI, na.rm = T), 0),
+            "Med. rhodopic EDI [lx]" = round(median(Rod_EDI, na.rm = T), 0),
+            "Max. rhodopic EDI [lx]" = round(max(Rod_EDI, na.rm = T), 0)
+  )
+
+
+
+#create summary table for SCone_EDI  data from the positive control data (dark & lab data)
+
+summary_data_lab_rod <- Darklab %>% rename ("ID" = "id" ) %>%
+  group_by(ID)  %>%
+  summarise( "Med. rhodopic EDI [lx] " = round(median(Rod_EDI, na.rm = T), 0),
+             "Max. rhodopic EDI [lx] " = round(max(Rod_EDI, na.rm = T), 0)
+             #Min mEDI corresponds. to light intensity in dark adaptation phase ~ 0      
+  )%>% mutate("Min. rhodopic EDI [lx] " = rep("~0",times=83) )
+#relocate the min mEDI column to after ID
+summary_data_lab_rod %>% relocate("Min. rhodopic EDI [lx] " , .after = ID) -> summary_data_lab_rod
+
+#merge the 2 tables (leave out the duplicated ID column)
+suppl_table_rod <- cbind(summary_data_field_rod,summary_data_lab_rod[,2:4])
+
+#create table spanners two differentiate between field and positive control data
+suppl_table_rod <- suppl_table_rod %>% gt() %>%  cols_align("right") %>%  
+  tab_spanner(
+    label = 'Field data',
+    columns = c(2, 3, 4)
+  ) %>%  tab_spanner(
+    label = 'Positive control data (lab. & dark adapt.)',
+    columns = c(5, 6, 7)
+  )
+# modify the format of the table 
+suppl_table_rod <- opt_table_font(data= suppl_table_rod, font = "Arial")  %>%
+  #adjust the fontsize of the cell bodies and footnotes 
+  tab_style(style=cell_text(size=px(11)), locations=list(cells_body(),
+                                                         cells_footnotes()
+  )
+  ) %>%
+  #adjust the cell title font sizes and padding
+  tab_style(style=cell_text(size=px(13), weight="bold"),
+            locations=list(cells_column_labels(), cells_column_spanners())
+  ) %>% tab_options(data_row.padding = px(4))
+
+
+gtsave(suppl_table_rod,        # save table as pdf
+       filename = "06_output/suppl/sum_table_rod.pdf")
+
+
+
+#create summary table for M-cone-opic light data -------------------------
+
+#
+#create summary table for MCone_EDI from the field data
+summary_data_field_MCone <- Fielddata %>% rename ("ID" = "id" ) %>%
+  group_by(ID)  %>%
+  summarise("Min. M-cone-opic EDI [lx]" = round(min(MCone_EDI, na.rm = T), 0),
+            "Med. M-cone-opic EDI [lx]" = round(median(MCone_EDI, na.rm = T), 0),
+            "Max. M-cone-opic EDI [lx]" = round(max(MCone_EDI, na.rm = T), 0)
+  )
+
+
+
+#create summary table for MCone_EDI  data from the positive control data (dark & lab data)
+
+summary_data_lab_MCone <- Darklab %>% rename ("ID" = "id" ) %>%
+  group_by(ID)  %>%
+  summarise( "Med. M-cone-opic EDI [lx] " = round(median(MCone_EDI, na.rm = T), 0),
+             "Max. M-cone-opic EDI [lx] " = round(max(MCone_EDI, na.rm = T), 0)
+             #Min mEDI corresponds. to light intensity in dark adaptation phase ~ 0      
+  )%>% mutate("Min. M-cone-opic EDI [lx] " = rep("~0",times=83) )
+#relocate the min mEDI column to after ID
+summary_data_lab_MCone %>% relocate("Min. M-cone-opic EDI [lx] " , .after = ID) -> summary_data_lab_MCone
+
+#merge the 2 tables (leave out the duplicated ID column)
+suppl_table_MCone <- cbind(summary_data_field_MCone,summary_data_lab_MCone[,2:4])
+
+#create table spanners two differentiate between field and positive control data
+suppl_table_MCone <- suppl_table_MCone %>% gt() %>%  cols_align("right") %>%  
+  tab_spanner(
+    label = 'Field data',
+    columns = c(2, 3, 4)
+  ) %>%  tab_spanner(
+    label = 'Positive control data (lab. & dark adapt.)',
+    columns = c(5, 6, 7)
+  )
+# modify the format of the table 
+suppl_table_MCone <- opt_table_font(data= suppl_table_MCone, font = "Arial")  %>%
+  #adjust the fontsize of the cell bodies and footnotes 
+  tab_style(style=cell_text(size=px(11)), locations=list(cells_body(),
+                                                         cells_footnotes()
+  )
+  ) %>%
+  #adjust the cell title font sizes and padding
+  tab_style(style=cell_text(size=px(13), weight="bold"),
+            locations=list(cells_column_labels(), cells_column_spanners())
+  ) %>% tab_options(data_row.padding = px(4))
+
+
+gtsave(suppl_table_MCone,        # save table as pdf
+       filename = "06_output/suppl/sum_table_MCone.pdf")
+
+
+
+
+
+#create summary table for L-cone-opic light data -------------------------
+
+#
+#create summary table for LCone_EDI from the field data
+summary_data_field_LCone <- Fielddata %>% rename ("ID" = "id" ) %>%
+  group_by(ID)  %>%
+  summarise("Min. L-cone-opic EDI [lx]" = round(min(LCone_EDI, na.rm = T), 0),
+            "Med. L-cone-opic EDI [lx]" = round(median(LCone_EDI, na.rm = T), 0),
+            "Max. L-cone-opic EDI [lx]" = round(max(LCone_EDI, na.rm = T), 0)
+  )
+
+
+
+#create summary table for LCone_EDI  data from the positive control data (dark & lab data)
+
+summary_data_lab_LCone <- Darklab %>% rename ("ID" = "id" ) %>%
+  group_by(ID)  %>%
+  summarise( "Med. L-cone-opic EDI [lx] " = round(median(LCone_EDI, na.rm = T), 0),
+             "Max. L-cone-opic EDI [lx] " = round(max(LCone_EDI, na.rm = T), 0)
+             #Min mEDI corresponds. to light intensity in dark adaptation phase ~ 0      
+  )%>% mutate("Min. L-cone-opic EDI [lx] " = rep("~0",times=83) )
+#relocate the min mEDI column to after ID
+summary_data_lab_LCone %>% relocate("Min. L-cone-opic EDI [lx] " , .after = ID) -> summary_data_lab_LCone
+
+#merge the 2 tables (leave out the duplicated ID column)
+suppl_table_LCone <- cbind(summary_data_field_LCone,summary_data_lab_LCone[,2:4])
+
+#create table spanners two differentiate between field and positive control data
+suppl_table_LCone <- suppl_table_LCone %>% gt() %>%  cols_align("right") %>%  
+  tab_spanner(
+    label = 'Field data',
+    columns = c(2, 3, 4)
+  ) %>%  tab_spanner(
+    label = 'Positive control data (lab. & dark adapt.)',
+    columns = c(5, 6, 7)
+  )
+# modify the format of the table 
+suppl_table_LCone <- opt_table_font(data= suppl_table_LCone, font = "Arial")  %>%
+  #adjust the fontsize of the cell bodies and footnotes 
+  tab_style(style=cell_text(size=px(11)), locations=list(cells_body(),
+                                                         cells_footnotes()
+  )
+  ) %>%
+  #adjust the cell title font sizes and padding
+  tab_style(style=cell_text(size=px(13), weight="bold"),
+            locations=list(cells_column_labels(), cells_column_spanners())
+  ) %>% tab_options(data_row.padding = px(4))
+
+
+gtsave(suppl_table_LCone,        # save table as pdf
+       filename = "06_output/suppl/sum_table_LCone.pdf")
+
+
+
+#create summary table for photopic illuminance light data -------------------------
+
+#
+#create summary table forIlluminance from the field data
+summary_data_field_phot_lux <- Fielddata %>% rename ("ID" = "id" ) %>%
+  group_by(ID)  %>%
+  summarise("Min. Photopic illuminance [lx]" = round(min(phot_lux, na.rm = T), 0),
+            "Med. Photopic illuminance [lx]" = round(median(phot_lux, na.rm = T), 0),
+            "Max. Photopic illuminance [lx]" = round(max(phot_lux, na.rm = T), 0)
+  )
+
+#create summary table for Illuminance data from the positive control data (dark & lab data)
+
+summary_data_lab_phot_lux <- Darklab %>% rename ("ID" = "id" ) %>%
+  group_by(ID)  %>%
+  summarise( "Med. Photopic illuminance [lx] " = round(median(phot_lux, na.rm = T), 0),
+             "Max. Photopic illuminance [lx] " = round(max(phot_lux, na.rm = T), 0)
+             #Min mEDI corresponds. to light intensity in dark adaptation phase ~ 0      
+  )%>% mutate("Min. Photopic illuminance [lx] " = rep("~0",times=83) )
+#relocate the min mEDI column to after ID
+summary_data_lab_phot_lux %>% relocate("Min. Photopic illuminance [lx] " , .after = ID) -> summary_data_lab_phot_lux
+
+#merge the 2 tables (leave out the duplicated ID column)
+suppl_table_phot_lux <- cbind(summary_data_field_phot_lux,summary_data_lab_phot_lux[,2:4])
+
+#create table spanners two differentiate between field and positive control data
+suppl_table_phot_lux <- suppl_table_phot_lux %>% gt() %>%  cols_align("right") %>%  
+  tab_spanner(
+    label = 'Field data',
+    columns = c(2, 3, 4)
+  ) %>%  tab_spanner(
+    label = 'Positive control data (lab. & dark adapt.)',
+    columns = c(5, 6, 7)
+  )
+# modify the format of the table 
+suppl_table_phot_lux <- opt_table_font(data= suppl_table_phot_lux, font = "Arial")  %>%
+  #adjust the fontsize of the cell bodies and footnotes 
+  tab_style(style=cell_text(size=px(11)), locations=list(cells_body(),
+                                                         cells_footnotes()
+  )
+  ) %>%
+  #adjust the cell title font sizes and padding
+  tab_style(style=cell_text(size=px(13), weight="bold"),
+            locations=list(cells_column_labels(), cells_column_spanners())
+  ) %>% tab_options(data_row.padding = px(4))
+
+
+gtsave(suppl_table_phot_lux,        # save table as pdf
+       filename = "06_output/suppl/sum_table_phot_lux.pdf")
+
+
+### [10] Linear regression assumptions (Suppl. Figures 3-6) ---------------------------------------------------
 #load new packages
 library(performance)
 library(see)
