@@ -107,7 +107,14 @@ info_panel <- grid.arrange(info_plots[[1]], info_plots[[2]],
 #In that case try deleting "device=cairo_pdf" in following code bit below
 ggsave("06_output/weath_panels.pdf", plot = info_panel ,
        width = 90, height = 100, units = "mm",
-       bg = "white", device=cairo_pdf)
+       bg = "white", device=cairo_pdf, dpi=600)
+
+
+# ggsave("06_output/weath_panels.tiff", plot = info_panel ,
+#        width = 90, height = 100, units = "mm",
+#        bg = "white", device="tiff", dpi=600)
+
+
 
 
 
@@ -141,10 +148,10 @@ ggsave("06_output/suppl/SupplFig2.pdf", plot = SupplFig_density ,
        width = 200, height = 100, units = "mm",
        bg = "white", device=cairo_pdf)
 
-ggsave("06_output/suppl/SupplFig2.png", plot = SupplFig_density ,
-       width = 200, height = 100, units = "mm",
-       bg = "white")
-
+# ggsave("06_output/suppl/SupplFig2.png", plot = SupplFig_density ,
+#        width = 200, height = 100, units = "mm",
+#        bg = "white")
+# 
 
 
 
@@ -175,7 +182,12 @@ agecomp_plot
 
 ggsave("06_output/agecomp_plot.pdf", plot = agecomp_plot ,
        width = 159.2 *(2.998/5), height = 80, units = "mm",
-       bg = "white")
+       bg = "white", dpi=600)
+
+# ggsave("06_output/agecomp_plot.tiff", plot = agecomp_plot ,
+#        width = 159.2 *(2.998/5), height = 80, units = "mm",
+#        bg = "white", device = "tiff", dpi=600)
+
 
 #Suppl Figure 7: comparing age case data, dose response
 #use the agecomp dataset for comparing a typical 18-year old & 87-year-old subject
@@ -352,7 +364,12 @@ Winn_panel1 <- grid.arrange(Winn_plot1[[1]], Winn_plot1[[2]],
 #In that case try deleting "device=cairo_pdf" in following code bit below
 ggsave("06_output/age_panels1.pdf", plot = Winn_panel1 ,
        width = 246.2, height = 80, units = "mm", 
-       bg = "white", device=cairo_pdf)
+       bg = "white", device=cairo_pdf, dpi=600)
+
+
+# ggsave("06_output/age_panels1.tiff", plot = Winn_panel1 ,
+#        width = 246.2, height = 80, units = "mm", 
+#        bg = "white", device="tiff", dpi=600)
 
 
 #Saving the age slope data in a data frame
@@ -485,7 +502,13 @@ Winn_panel2b <- grid.arrange(Winn_plot2[[1]],
 #In that case try deleting "device=cairo_pdf" in following code bit below
 ggsave("06_output/age_panels2.pdf", plot = Winn_panel2b ,
        width = 246.2*(3.4389/5), height = 85, units = "mm", 
-       bg = "white", device = cairo_pdf)
+       bg = "white", device = cairo_pdf, dpi=600)
+
+
+# ggsave("06_output/age_panels2.tiff", plot = Winn_panel2b ,
+#        width = 246.2*(3.4389/5), height = 85, units = "mm", 
+#        bg = "white", device = "tiff", dpi=600)
+
 
 
 
@@ -618,6 +641,11 @@ ggsave("06_output/dataloss_plot.pdf", plot = dataloss_plot ,
        width = 159.2/2.92, height = 60, units = "mm",
        bg = "white")
 
+# ggsave("06_output/dataloss_plot.tiff", plot = dataloss_plot ,
+#        width = 159.2/2.92, height = 60, units = "mm",
+#        bg = "white", device = "tiff", dpi=600)
+
+
 
 ### [8] Light condition comparison -------------------------------------------------
 
@@ -705,7 +733,7 @@ yleft_lightcomp <- textGrob("Melanopic EDI [lx]",
                             vjust= 1.5)
 
 #Figure 5 X-axis label
-bottom_lightcomp <- textGrob("Photopic Illuminance [lx]",
+bottom_lightcomp <- textGrob("Photopic illuminance [lx]",
                              gp = gpar(fontsize = 11),
                              vjust= -1.5
 )
@@ -724,7 +752,11 @@ lightcomp_panel <- grid.arrange(lightcomp_plots[[1]], lightcomp_plots[[2]],
 #41.5 mm x 41.5 mm subplot axes
 ggsave("06_output/lightcomp_panels.pdf", plot = lightcomp_panel,
        width = 159.2*(2.28242/3), height = 70.5, units = "mm", 
-       bg = "white")
+       bg = "white", dpi=600)
+
+# ggsave("06_output/lightcomp_panels.tiff", plot = lightcomp_panel,
+#        width = 159.2*(2.28242/3), height = 70.5, units = "mm", 
+#        bg = "white", device="tiff", dpi=600)
 
 
 
@@ -1131,6 +1163,9 @@ gtsave(suppl_table_phot_lux,        # save table as pdf
 library(performance)
 library(see)
 library(patchwork)
+library(lmerTest)
+library(lme4)
+
 
 #create a linear model for testing the untransformed light data (mEDI)
 model1 <- lm(diameter_3d ~ Mel_EDI + age, data = Fielddata)

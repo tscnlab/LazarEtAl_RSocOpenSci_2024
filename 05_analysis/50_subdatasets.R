@@ -296,7 +296,7 @@ pupil_acf <- data.frame(cor = acf(autocor_data$diameter_3d,
 # the autocorrelation now does not take into account the samples of a the previous subject
 
 
-### [8] Saving subdatasets----------------------------------------------------------------------------------------------------------
+### [7] Saving subdatasets----------------------------------------------------------------------------------------------------------
 
 #save all created subdataset in the environment via save.image
 save.image(file="./05_analysis/subdata/conf_subdata.rda")

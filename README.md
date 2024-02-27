@@ -66,7 +66,7 @@ Code section <span style="color: blue;">*[1] Load raw data*</span> loads the `ra
 
 The Code section <span style="color: blue;">*[2] Data cleaning & quality checks*</span> applies the data quality checks. This includes "Lack of good-quality fit", "Pupil size screening", and "Saturated spectroradiometer samples", where invalid pupil and light data are replaced by "NA" values. And finally the "Proportion of excluded data" quality check, which compares the proportion of excluded data points per participant vs. the specified data loss threshold. As described in the manuscript, we use two different data loss thresholds – initial (0.5; n=63) and adjusted (0.75; n=83)  – and report the results for both of them. In the script we use the adjusted threshold (0.75; n=83 included) as the default. To apply the initial threshold (0.5; n=63 included), one needs to "uncomment" the code line `#data_loss_thres <- 0.5`, and rerun the `21_qualitychecks.R` code.
 
-The Code section <span style="color: blue;">*[3] Light data transformation*</span> conducts a linear transformation of melanopic irradiance into Melanopic Equivalent Daylight Illuminance (mEDI) and creates variables with log10-transformed light data (due to violation of the linear regression assumptions, see more details in manuscript). 
+The Code section <span style="color: blue;">*[3] Light data transformation*</span> conducts a linear transformation of the alpha-opic irradiances into alpha-opic Equivalent Daylight Illuminances and creates variables with log10-transformed light data (due to violation of the linear regression assumptions, see more details in manuscript). 
 
 The Code section <span style="color: blue;">*[4] Save checked rawfiles*</span> saves the quality checked data to the file `checked_rawfiles.rda`.
 
@@ -154,7 +154,7 @@ In <span style="color: blue;">*[2] General Subdatasets*</span>, we first filter 
 - data from the laboratory condition (positive control) &rarr; `Labdata`
 - uncategorised data in between conditions (not analysed) &rarr; `Transitiondata`
 
-In the code section <span style="color: blue;">*[3] Subdatasets for visualising the age effect*</span> the subdatasets for the field condition are further divided into different light intensities in log-unit steps (plus the dark adaptation data) and summarised in the following coefficients (used in Figure 3 and 4 in the manuscript):
+In the code section <span style="color: blue;">*[3] Subdatasets for visualising the age effect*</span> the subdatasets for the field condition are further divided into different light intensities in log-unit steps (plus the dark adaptation data) and summarised in the following coefficients (used in Figure 7 and 8 in the manuscript):
 
  - median pupil size
  - minimum pupil size
@@ -164,15 +164,13 @@ In the code section <span style="color: blue;">*[3] Subdatasets for visualising 
  - age of the participant
 
 
-In the code section <span style="color: blue;">*[4] Subdataset for weather data*</span> we use the `merged_data_conf.rda` to generate a dataset from the field condition with light and weather data included. This is used in Figure 3 for describing the light data across different weather conditions. Please note that the `weatherdata` subdataset contains more observations than the `Fielddata` subdataset as observations with invalid/missing pupil data but valid light data are included here.
+In the code section <span style="color: blue;">*[4] Subdataset for weather data*</span> we use the `merged_data_conf.rda` to generate a dataset from the field condition with light and weather data included. This is used in Figure 3 for describing the light data across different weather conditions and in Suppl. Figure 2 showing the density of light measures across the field conditions. Please note that the `weatherdata` subdataset contains more observations than the `Fielddata` subdataset as observations with invalid/missing pupil data but valid light data are included here.
 
-<span style="color: blue;">*[5] Subdatasets for case data*</span>. In this section we generate a dataset with exemplary data from 2 participants of different age. The light data from the dark adaption (which was priorly set to NA values in the `22_categorisation.r` script) are set to "0", so can be included in the subplots (see Figure 6 in the manuscript).
+<span style="color: blue;">*[5] Subdatasets for case data*</span>. In this section we generate a dataset with exemplary data from 2 participants of different age. The light data from the dark adaption (which was priorly set to NA values in the `22_categorisation.r` script) are set to "0", so they can be included in the subplots (see Figure 6 in the manuscript and Suppl. Figure 7).
 
-In the code section <span style="color: blue;">*[6] Subdatasets for autocorrelation*</span> we create a subdataset from the field condition (with all NAs still included) and compute autocorrelations (3 minute lag) used for Suppl. Figure 4. To compute the autocorrelations separately for every participant's trial, we used a loop that adds 19 "NA"" rows to where the observations transition from one participant id to the next.
+In the code section <span style="color: blue;">*[6] Subdatasets for autocorrelation*</span> we create a subdataset from the field condition (with all NAs still included) and compute autocorrelations (3 minute lag) used for Suppl. Figure 8. To compute the autocorrelations separately for every participant's trial, we used a loop that adds 19 "NA"" rows to where the observations transition from one participant id to the next.
 
-In the <span style="color: blue;">*[7] Other subdatasets*</span> we created a subdataset for an exploratory analysis of subjective sleepiness values before and after the outdoor part of the field condition.
-
-In <span style="color: blue;">*[8] Saving subdatasets*</span> we save all subdatasets (image of the environment) into the `conf_subdata.rda` file.
+In <span style="color: blue;">*[7] Saving subdatasets*</span> we save all subdatasets (image of the environment) into the `conf_subdata.rda` file.
 
 
 ## Hypotheses and exploratory analyses
@@ -186,7 +184,7 @@ RCode: `51_hypotheses.R`<br>
 </span>
 
 
-<span style="color: red;">**Note**</span>: You can find the results of the hypothesis tests as output from the  `hypotheses.rmd` file in two versions for the respective samples: 
+<span style="color: red;">**Note**</span>: You can find the results of the hypothesis tests (but not the full exploratory analysis) as output from the `hypotheses.rmd` file in two versions for the respective samples: 
 1) n=83,  75% data loss threshold: `hypotheses_n83.html`
 2) n=63, 50% data loss threshold: `hypotheses_n63.html`
 
@@ -256,9 +254,9 @@ In the first section <span style="color: blue;">*[1] Loading subdatasets*</span>
 
 In <span style="color: blue;">*[2] Source ggplot functions*</span> we load the prespecified ggplot functions from the ggplot_functions.R` file to the environment.
 
-Section <span style="color: blue;">*[3] Weather & light conditions*</span> creates the 2 Subplots for Figure 3 of the manuscript, showing the light conditions across weather variations (`weath_panels.pdf`)
+Section <span style="color: blue;">*[3] Weather & light conditions*</span> creates the 2 Subplots for Figure 3 of the manuscript, showing the light conditions across weather variations (`weath_panels.pdf`) as well as the 2 subplots of Suppl. Figure 2 (`SupplFig2.pdf`).
 
-In section <span style="color: blue;">*[4] Case data age comparison*</span> we create Figure 6 of the manuscript, where we compare case data of two differently aged participants, plotting the pupillary light response (pupil size as a function of mEDI, see `agecomp_plot.pdf`).
+In section <span style="color: blue;">*[4] Case data age comparison*</span> we create Figure 6 of the manuscript, where we compare case data of two differently aged participants, plotting the pupillary light response (pupil size as a function of mEDI, see `agecomp_plot.pdf`). Additionally we generate Suppl. Figure 7 (`agecomp_plot_lux`), which includes the same comparison for photopic illuminance instead of mEDI.
 
 In section <span style="color: blue;">*[5] Age effect across light conditions*</span> we prepare the linear regressions and subplots of Figure 7 and 8 of the manuscript, where we compare the age effect on pupil size across different light conditions (median pupil size and pupil size range as functions of age, see `age_panels1.pdf` and `age_panels2.pdf`).
 
@@ -268,12 +266,12 @@ In the <span style="color: blue;">*[6] Autocorrelation*</span> code section we p
 
 In <span style="color: blue;">*[8] Light condition comparison*</span> we create the 2 subplots of Figure 5 in the manuscript (see `lightcomp_panels.pdf`), where we compare the field and laboratory data regarding the correlation of photopic illuminance and mEDI.
 
-In the code section <span style="color: blue;">*[9] Data tables*</span> we create the Supplementary Tables 3 & 4 summarizing each included participant's pupil and mEDI data (minimum, median, maximum and data loss ratio)  separated between field & positive control data.
+In the code section <span style="color: blue;">*[9] Data tables*</span> we create the Supplementary Tables 3-9 summarizing each included participant's pupil and light (alpha-opic EDI & photopic illuminance) data (minimum, median, maximum and data loss ratio) separated between field & positive control data.
 
-Finally we visualise the <span style="color: blue;">*[10] Linear regression assumptions*</span> (corresponding to Suppl. Figures 2 & 3) for the prediction of pupil size with the non-transformed and log10-transformed mEDI variable using the `performance` and `see` packages. The Figures were saved as pdf manually (see `assumptest_lin.pdf`, `assumptest_log.pdf`; size: landscape, width = 11.69 in, height = 8.27 in) because the *ggsave* function could not handle the size of those figures. 
+Finally we visualise the <span style="color: blue;">*[10] Linear regression assumptions*</span> (corresponding to Suppl. Figures 3-6) for the prediction of pupil size with the non-transformed and log10-transformed mEDI and photopic illuminance variables using the `performance` and `see` packages. The Figures were saved as pdf manually (size: landscape, width = 11.69 in, height = 8.27 in) because the *ggsave* function could not handle the size of those figures.
 
 
-Note: Figure 1 and Suppl. Figure 1 of the manuscript are not based on raw data and are hence not generated in R. If you have problems with some of the pdf saving code, this may be related to the cairo_pdf device (especially for MACOS users). In this case, try deleting "device=cairo_pdf" in the *ggsave* command and rerun the code.
+Note: Figure 1 of the manuscript and Suppl. Figure 1 are not based on raw data and are hence not generated in R. If you have problems with some of the pdf saving code, this may be related to the cairo_pdf device (especially for MACOS users). In this case, try deleting "device=cairo_pdf" in the *ggsave* commands and rerun the code.
 
 
 ## Output

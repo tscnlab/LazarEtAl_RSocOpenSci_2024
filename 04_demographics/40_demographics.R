@@ -235,6 +235,8 @@ agepyr_plot <- agepyr_plot+
     axis.title = element_text(size = 11),
     legend.text = element_text(size=9),
     plot.title = element_text(size = 12, face="bold"))
+
+agepyr_plot
   
 #save the plot as pdf 
 #in case you encounter problems during the pdf saving process, this could be
@@ -244,7 +246,12 @@ ggsave("06_output/agepyr_plot.pdf", plot = agepyr_plot ,
        width = 246.2/3.2, height = 73.4, units = "mm", 
        bg = "white", device=cairo_pdf)
 
-agepyr_plot
+# ggsave("06_output/agepyr_plot.tiff", plot = agepyr_plot ,
+#        width = 246.2/3.2, height = 73.4, units = "mm", 
+#        bg = "white", device="tiff", dpi=600)
+
+
+
 
 ### Notes-------------------------------------------------------------------
 
