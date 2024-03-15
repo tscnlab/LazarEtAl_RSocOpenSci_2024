@@ -55,8 +55,10 @@ latex_summary_of_manifest(metadata, manifest_df, root)
 
 # Summary
 
-This code was (not) straightforward to codecheck.
-[... ADD MORE INTERESTING FINDINGS HERE..]
+This was a reproduction of a paper currently in-press for Royal
+Society Open Science.  The R code was straightforward to execute and
+reproduced all the Figures (2-8) in the main article.  Supplementary
+files were also generated but were not included here for brevity.
 
 \clearpage
 
