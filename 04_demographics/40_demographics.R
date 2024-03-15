@@ -242,9 +242,14 @@ agepyr_plot
 #in case you encounter problems during the pdf saving process, this could be
 #related to the cairo_pdf device (especially the case for MACOS users)
 #In that case try deleting "device=cairo_pdf" in following code bit below
+#SJE Edit
+## ggsave("06_output/agepyr_plot.pdf", plot = agepyr_plot ,
+##        width = 246.2/3.2, height = 73.4, units = "mm", 
+##        bg = "white", device=cairo_pdf)
+
 ggsave("06_output/agepyr_plot.pdf", plot = agepyr_plot ,
        width = 246.2/3.2, height = 73.4, units = "mm", 
-       bg = "white", device=cairo_pdf)
+       bg = "white")
 
 # ggsave("06_output/agepyr_plot.tiff", plot = agepyr_plot ,
 #        width = 246.2/3.2, height = 73.4, units = "mm", 

@@ -107,7 +107,7 @@ info_panel <- grid.arrange(info_plots[[1]], info_plots[[2]],
 #In that case try deleting "device=cairo_pdf" in following code bit below
 ggsave("06_output/weath_panels.pdf", plot = info_panel ,
        width = 90, height = 100, units = "mm",
-       bg = "white", device=cairo_pdf, dpi=600)
+       bg = "white", dpi=600)
 
 
 # ggsave("06_output/weath_panels.tiff", plot = info_panel ,
@@ -144,9 +144,10 @@ SupplFig_density<- grid.arrange(medivsillu, ao_EDI,
                            #top = top4
 )
 
+## SJE - DELETE CAIRO_PDF
 ggsave("06_output/suppl/SupplFig2.pdf", plot = SupplFig_density ,
        width = 200, height = 100, units = "mm",
-       bg = "white", device=cairo_pdf)
+       bg = "white")
 
 # ggsave("06_output/suppl/SupplFig2.png", plot = SupplFig_density ,
 #        width = 200, height = 100, units = "mm",
@@ -364,7 +365,7 @@ Winn_panel1 <- grid.arrange(Winn_plot1[[1]], Winn_plot1[[2]],
 #In that case try deleting "device=cairo_pdf" in following code bit below
 ggsave("06_output/age_panels1.pdf", plot = Winn_panel1 ,
        width = 246.2, height = 80, units = "mm", 
-       bg = "white", device=cairo_pdf, dpi=600)
+       bg = "white", dpi=600)
 
 
 # ggsave("06_output/age_panels1.tiff", plot = Winn_panel1 ,
@@ -502,7 +503,7 @@ Winn_panel2b <- grid.arrange(Winn_plot2[[1]],
 #In that case try deleting "device=cairo_pdf" in following code bit below
 ggsave("06_output/age_panels2.pdf", plot = Winn_panel2b ,
        width = 246.2*(3.4389/5), height = 85, units = "mm", 
-       bg = "white", device = cairo_pdf, dpi=600)
+       bg = "white", dpi=600)
 
 
 # ggsave("06_output/age_panels2.tiff", plot = Winn_panel2b ,
