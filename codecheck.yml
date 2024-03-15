@@ -1,0 +1,43 @@
+---
+version: https://codecheck.org.uk/spec/config/1.0
+
+paper:
+  title: >
+    Regulation of pupil size in natural vision across the human lifespan
+  authors:
+    - name: Rafael Lazar
+      ORCID: 0000-0001-7972-5634
+    - name: Manuel Spitschan
+      ORCID: 0000-0002-8572-9268
+  reference: >
+    Royal Society Open Science (in press)
+    https://osf.io/zrksf/
+
+manifest:
+  - file: 06_output/dem_tab.pdf
+    comment: manuscript Table 1
+  - file: 06_output/agepyr_plot.pdf
+    comment: manuscript Figure 2
+  - file: 06_output/weath_panels.pdf
+    comment: manuscript Figure 3
+  - file: 06_output/dataloss_plot.pdf
+    comment: manuscript Figure 4
+  - file: 06_output/lightcomp_panels.pdf
+    comment: manuscript Figure 5
+  - file: 06_output/agecomp_plot.pdf
+    comment: manuscript Figure 6
+  - file: 06_output/age_panels1.pdf
+    comment: manuscript Figure 7
+  - file: 06_output/age_panels2.pdf
+    comment: manuscript Figure 8
+
+codechecker:
+  - name: Stephen J. Eglen
+    ORCID: 0000-0001-8607-8025
+
+summary: >
+  R code to generate all of the key figures in the paper.
+repository: https://github.com/codecheckers/LazarEtAl_RSocOpenSci_2024
+check_time: "2024-03-15 21:00"
+certificate: 2024-001
+report: https://doi.org/10.5281/zenodo.FIXME
