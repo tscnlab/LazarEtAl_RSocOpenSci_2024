@@ -67,8 +67,13 @@ comprehensive overview of the structure of the project, and the steps
 required to reproduce the figures.  Another highlight of the project
 structure was its use of the renv package to explicitly state which R
 packages (and their versions) should be installed.  The call to
-`renv::update()` in the project root took approximately 30 minutes on
+`renv::restore()` in the project root took approximately 30 minutes on
 my laptop to install the 199 packages.
+
+```{r,eval=FALSE}
+setwd("LazarEtAl_RSocOpenSci_2024")
+renv::restore()
+```
 
 Once the packages were installed, the steps involved were fairly
 straightforward -- all assuming the working directory was the root of
