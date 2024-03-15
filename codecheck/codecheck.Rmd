@@ -118,6 +118,9 @@ files, and then evaluates all the steps in the correct order.
    based on the operating system to    check whether the device
    parameter can be included.)
 
+4. I already had Chrome installed on my system, but as you use the
+   package `chromote`, it might be worth clarifying whether Google
+   Chrome or another suitable browser must be installed.
 
 
 
