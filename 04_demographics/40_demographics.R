@@ -30,15 +30,29 @@ library(webshot2)
 #Prepare data for demographic tables & figure
 
 #load complete merged dataset
-load(file="./03_datamerge/mergeddata_all.rda")
+load(file="./03_datamerge/mergeddata_dem.rda")
 
 #create dataset for demographic analysis
 #select only 1 line per participant and omit unneeded variables
-dem_data <- merged_data_all[!duplicated(merged_data_all[c('id')]),]
+dem_data <- merged_data_dem[!duplicated(merged_data_dem[c('id')]),]
+
+
+
+dem_data$excl[dem_data$overthrs75==TRUE] <- "EXCLUDED"
+dem_data$excl_time [dem_data$overthrs75==TRUE] <- "POST"
+
+# To compute the demographics according to the initial data loss threshold of 0.5
+#UNCOMMENT THE FOLLOWING 2 CODELINES
+
+# dem_data$excl[dem_data$overthrs50==TRUE] <- "EXCLUDED"
+# dem_data$excl_time [dem_data$overthrs50==TRUE] <- "POST"
+
+
+
 dem_data <- select(dem_data, id, excl, excl_time, date, begin, age, age_group,
-                   sex, handedness, visual_aid, contact_lenses, 
+                   sex, handedness, visual_aid, contact_lenses,
                    visual_acuity_snellen, BMI, MSFsc, time_awake, sleeping_hours,
-                   SDweek, acute_sum, acute_sum_rel, habitual_sum_rel, 
+                   SDweek, acute_sum, acute_sum_rel, habitual_sum_rel,
                    habitual_sum, iris_colour, weather, kss_pre, kss_post,
                    time_awake, season
                    )
