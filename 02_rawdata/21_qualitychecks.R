@@ -128,10 +128,7 @@ dataloss_rel <- data.frame(data_loss_thresvec,lossover_thrsvec)
 # CAVE: in RR Stage 1 data_loss_thres was originally specified as 0.5
 data_loss_thres <- 0.75
 
-# To compute the results according to the initial data loss threshold of 0.5
-#UNCOMMENT THE FOLLOWING CODE LINE
-
-#data_loss_thres <- 0.5
+data_loss_thres50 <- 0.5
 
 
 #data loss values that are over the just specified data loss threshold
@@ -140,25 +137,50 @@ data_loss_thres <- 0.75
 
 datalossover_thrs <- uniqloss[uniqloss > data_loss_thres]
 
-#find out the IDs of the participant's datasets which exceed the threshold
+datalossover_thrs50 <- uniqloss[uniqloss > data_loss_thres50]
+
+#find out the IDs of the participant's datasets which exceed the threshold of 75%
 id_datalossover_thrs <- 
   unique(rawdata_ID_all$id[rawdata_ID_all$data_loss %in% datalossover_thrs])
 
 
-#"This many pariticpants are excluded additionally due to exceeding the data loss threshold"
+#find out the IDs of the participant's datasets which exceed the threshold of 50%
+id_datalossover_thrs50 <- 
+  unique(rawdata_ID_all$id[rawdata_ID_all$data_loss %in% datalossover_thrs50])
+
+
+#"This many pariticpants are excluded additionally due to exceeding the data loss threshold over 75%"
 id_datalossover_thrs
 length(id_datalossover_thrs)
 
-#tag these datasets to be "EXCLUDED" in the "excl" variable
-#and tag them as "POST" for the exclusion time variable
-rawdata_ID_all$excl[rawdata_ID_all$id %in% id_datalossover_thrs] <- "EXCLUDED"
-rawdata_ID_all$excl_time[rawdata_ID_all$id %in% id_datalossover_thrs] <- "POST"
+#"This many pariticpants are excluded additionally due to exceeding the data loss threshold over 50%"
+id_datalossover_thrs50
+length(id_datalossover_thrs50)
 
+#create variable for ids over threshold 75%
+rawdata_ID_all$overthrs75 <- FALSE
+rawdata_ID_all$overthrs75[rawdata_ID_all$id %in% id_datalossover_thrs] <- TRUE
+
+#testing whether correctly assigned "TRUE"
+unique(rawdata_ID_all$id[rawdata_ID_all$overthrs75 == TRUE])
+
+#create variable for ids over threshold 50%
+rawdata_ID_all$overthrs50 <- FALSE
+rawdata_ID_all$overthrs50[rawdata_ID_all$id %in% id_datalossover_thrs50] <- TRUE
+
+#testing whether correctly assigned "TRUE"
+unique(rawdata_ID_all$id[rawdata_ID_all$overthrs50 == TRUE])
+
+  
 #compute total retained data among the included subjects
 total_retained_data <- sum(!is.na(rawdata_ID_all$diameter_3d) &
-                             !is.na(rawdata_ID_all$MelIrrad)&
-                             rawdata_ID_all$excl=="results"
-                             )
+                             !is.na(rawdata_ID_all$MelIrrad) &
+                             (rawdata_ID_all$excl=="results" &
+                                rawdata_ID_all$overthrs75 == FALSE)
+)
+
+total_retained_data
+
 #compute total retained data as a ratio in percent
 retained_data_perc <- 100*(1-(sum(is.na(rawdata_ID_all$diameter_3d) | is.na(rawdata_ID_all$MelIrrad))/
                                 (sum(is.na(rawdata_ID_all$diameter_3d)| is.na(rawdata_ID_all$MelIrrad)) 
