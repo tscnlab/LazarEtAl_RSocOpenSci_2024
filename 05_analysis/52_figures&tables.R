@@ -110,9 +110,9 @@ ggsave("06_output/weath_panels.pdf", plot = info_panel ,
        bg = "white", device=cairo_pdf, dpi=600)
 
 
-# ggsave("06_output/weath_panels.tiff", plot = info_panel ,
-#        width = 90, height = 100, units = "mm",
-#        bg = "white", device="tiff", dpi=600)
+ggsave("06_output/weath_panels.tiff", plot = info_panel ,
+       width = 90, height = 100, units = "mm",
+       bg = "white", device="tiff", dpi=600)
 
 
 
@@ -148,9 +148,9 @@ ggsave("06_output/suppl/SupplFig2.pdf", plot = SupplFig_density ,
        width = 200, height = 100, units = "mm",
        bg = "white", device=cairo_pdf)
 
-# ggsave("06_output/suppl/SupplFig2.png", plot = SupplFig_density ,
-#        width = 200, height = 100, units = "mm",
-#        bg = "white")
+ggsave("06_output/suppl/SupplFig2.png", plot = SupplFig_density ,
+       width = 200, height = 100, units = "mm",
+       bg = "white")
 
 
 
@@ -184,9 +184,9 @@ ggsave("06_output/agecomp_plot.pdf", plot = agecomp_plot ,
        width = 159.2 *(2.998/5), height = 80, units = "mm",
        bg = "white", dpi=600)
 
-# ggsave("06_output/agecomp_plot.tiff", plot = agecomp_plot ,
-#        width = 159.2 *(2.998/5), height = 80, units = "mm",
-#        bg = "white", device = "tiff", dpi=600)
+ggsave("06_output/agecomp_plot.tiff", plot = agecomp_plot ,
+       width = 159.2 *(2.998/5), height = 80, units = "mm",
+       bg = "white", device = "tiff", dpi=600)
 
 
 #Suppl Figure 7: comparing age case data, dose response
@@ -373,9 +373,9 @@ ggsave("06_output/age_panels1.pdf", plot = Winn_panel1 ,
        bg = "white", device=cairo_pdf, dpi=600)
 
 
-# ggsave("06_output/age_panels1.tiff", plot = Winn_panel1 ,
-#        width = 246.2, height = 80, units = "mm", 
-#        bg = "white", device="tiff", dpi=600)
+ggsave("06_output/age_panels1.tiff", plot = Winn_panel1 ,
+       width = 246.2, height = 80, units = "mm",
+       bg = "white", device="tiff", dpi=600)
 
 
 #Saving the age slope data in a data frame
@@ -449,6 +449,9 @@ labs(x = NULL,
 ageslopeplot
 
 
+round(Slopedata,3)
+
+
 # Figure 8 B Plotting the intercept data across the clustered light intensities
 
 ageintplot <- ggageintercept(Slopedata)+
@@ -511,9 +514,9 @@ ggsave("06_output/age_panels2.pdf", plot = Winn_panel2b ,
        bg = "white", device = cairo_pdf, dpi=600)
 
 
-# ggsave("06_output/age_panels2.tiff", plot = Winn_panel2b ,
-#        width = 246.2*(3.4389/5), height = 85, units = "mm", 
-#        bg = "white", device = "tiff", dpi=600)
+ggsave("06_output/age_panels2.tiff", plot = Winn_panel2b ,
+       width = 246.2*(3.4389/5), height = 85, units = "mm",
+       bg = "white", device = "tiff", dpi=600)
 
 
 
@@ -653,9 +656,9 @@ ggsave("06_output/dataloss_plot.pdf", plot = dataloss_plot ,
        width = 159.2/2.92, height = 60, units = "mm",
        bg = "white")
 
-# ggsave("06_output/dataloss_plot.tiff", plot = dataloss_plot ,
-#        width = 159.2/2.92, height = 60, units = "mm",
-#        bg = "white", device = "tiff", dpi=600)
+ggsave("06_output/dataloss_plot.tiff", plot = dataloss_plot ,
+       width = 159.2/2.92, height = 60, units = "mm",
+       bg = "white", device = "tiff", dpi=600)
 
 
 
@@ -766,9 +769,9 @@ ggsave("06_output/lightcomp_panels.pdf", plot = lightcomp_panel,
        width = 159.2*(2.28242/3), height = 70.5, units = "mm", 
        bg = "white", dpi=600)
 
-# ggsave("06_output/lightcomp_panels.tiff", plot = lightcomp_panel,
-#        width = 159.2*(2.28242/3), height = 70.5, units = "mm", 
-#        bg = "white", device="tiff", dpi=600)
+ggsave("06_output/lightcomp_panels.tiff", plot = lightcomp_panel,
+       width = 159.2*(2.28242/3), height = 70.5, units = "mm",
+       bg = "white", device="tiff", dpi=600)
 
 
 
@@ -1186,7 +1189,7 @@ model1 <- lm(diameter_3d ~ Mel_EDI + age, data = Fielddata)
 #log10 transformed data
 assumptest_lin <- check_model(model1, theme="ggplot2::theme_classic")
 #show the plot
-#assumptest_lin
+# assumptest_lin
 
 #save as pdf manually: landscape full din A4 (width = 11.69 in, height = 8.27 in)
 #(ggsave function did not work here)
