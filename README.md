@@ -64,13 +64,13 @@ RCode: `21_qualitychecks.R` <br>
 
 Code section <span style="color: blue;">*[1] Load raw data*</span> loads the `rawfiles.rda` file generated from the `20_rawdata_import.R` script.
 
-The Code section <span style="color: blue;">*[2] Data cleaning & quality checks*</span> applies the data quality checks. This includes "Lack of good-quality fit", "Pupil size screening", and "Saturated spectroradiometer samples", where invalid pupil and light data are replaced by "NA" values. And finally the "Proportion of excluded data" quality check, which compares the proportion of excluded data points per participant vs. the specified data loss threshold. As described in the manuscript, we use two different data loss thresholds – initial (0.5; n=63) and adjusted (0.75; n=83)  – and report the results for both of them. In the script we use the adjusted threshold (0.75; n=83 included) as the default. To apply the initial threshold (0.5; n=63 included), one needs to "uncomment" the code line `#data_loss_thres <- 0.5`, and rerun the `21_qualitychecks.R` code.
+The Code section <span style="color: blue;">*[2] Data cleaning & quality checks*</span> applies the data quality checks. This includes "Lack of good-quality fit", "Pupil size screening", and "Saturated spectroradiometer samples", where invalid pupil and light data are replaced by "NA" values. And finally the "Proportion of excluded data" quality check, which compares the proportion of excluded data points per participant vs. the specified data loss threshold. As described in the manuscript, we use two different data loss thresholds – initial (0.5; n=63) and adjusted (0.75; n=83)  – and report the results for both of them. Any subject that exceeded each respective dataloss threshold was tagged with the value "TRUE" in the logical variables `datalossover_thrs75` and `datalossover_thrs50`. In the `30_datamerge.R` code, these variables are then used to filter the dataset to only included subjects (default: adjusted data loss threshold, 0.75; n=83 included).
 
-The Code section <span style="color: blue;">*[3] Light data transformation*</span> conducts a linear transformation of the alpha-opic irradiances into alpha-opic Equivalent Daylight Illuminances and creates variables with log10-transformed light data (due to violation of the linear regression assumptions, see more details in manuscript). 
+The Code section <span style="color: blue;">*[3] Light data transformation*</span> conducts a linear transformation of the alpha-opic irradiances into alpha-opic Equivalent Daylight Illuminances and creates variables with log10-transformed light data (due to violation of the linear regression assumptions, see more details in manuscript). However, *corrected values for all used light units* will be introduced in the `30_datamerge.R` code, as there was a mistake in the interpolation of spectral light data in the initial computation. Thus, if you you want to use any of the light data for calculations, please make sure to use the corrected data introduced in the datamerge code or subdatasets (e.g.`merged_data_conf.rda`, `conf_subdata.rda` ).  
 
 The Code section <span style="color: blue;">*[4] Save checked rawfiles*</span> saves the quality checked data to the file `checked_rawfiles.rda`.
 
-<span style="color: red;">**Note**</span>: Remember that for the "Proportion of excluded data" quality check we used the adjusted data loss threshold (0.75; n=83 included) as a default. We also uploaded the resulting `checked_rawfiles.rda` file to allow continued analyses in case of problems with the prior R code. If you want to continue the analysis with the reduced dataset retained from the initial data loss threshold  (0.5; n=63 included),  "uncomment" the code line `#data_loss_thres <- 0.5`, restart RStudio and rerun the `21_qualitychecks.R` code. The `checked_rawfiles.rda` will then contain the same data but with  only n=63 tagged as "Included". 
+<span style="color: red;">**Note**</span>: We uploaded the resulting `checked_rawfiles.rda` file to allow continued analyses in case of problems with the prior R code.
 
 
 ## Data categorisation 
@@ -87,21 +87,31 @@ Code section <span style="color: blue;">*[1] Load checked raw data*</span> loads
 
 In the Code section <span style="color: blue;">*[2] Experimental phase categorisation*</span> the observations are "tagged" according to the experimental phases they were collected in. This is done with the help of multiple steps. First, as rough categorisation step  all data <1.5 lx photopic illuminance is tagged as "Dark" data from the dark-adaptation phase. Then the categorisation is refined by tagging the "Lab" data from the laboratory light conditions. This procedure is verified visually, by plotting the first 181 photopic illuminance samples (log10-scale) of each participants' dataset as a function of the sample number. Finally the "Field" data samples are tagged, starting 3 samples after the laboratory data. The transition samples before starting the dark adaptation and in-between conditions are tagged as "NA". Subsequently, all light data from the dark adaptation phase and data below <1 lx photopic illuminance or mEDI are replaced by "NA" values because the used spectroradiometer does not allow valid measurements in these very dim light conditions. Additionally a new light variable giving the ratio between melanopic irradiance and photopic illuminance (`MPratio`) is introduced for later plotting. 
 
-In code section <span style="color: blue;">*[3] Data saving*</span> we save the cleaned, quality checked and categorised dataset to the `rawdata_ID_all.rda` R data file. The uploaded `rawdata_ID_all.rda`file in the repository uses the adjusted data loss threshold (0.75; n=83 included).
+In code section <span style="color: blue;">*[3] Data saving*</span> we save the cleaned, quality checked and categorised dataset to the `rawdata_ID_all.rda` R data file.
 
 ## Data merge
 <span style="color: green;">
 
 Folder: `03_datamerge` <br>
-Input: `cleaned_survey.rda`, `rawdata_ID_all.rda` <br>
-Output: `mergeddata_all.rda`, `merged_data_conf.rda` <br>
+Input: `cleaned_survey.rda`, `rawdata_ID_all.rda`, `merged_calc.rda` <br>
+Output: `mergeddata_dem.rda`, `merged_data_conf.rda` <br>
 RCode: `30_datamerge.R` <br>
 
 </span>
 
-In the datamerge code, the cleaned survey and raw data are combined into one dataset matched by id. The full dataset is saved as `mergeddata_all.rda` including all observations and columns. The full dataset is then reduced to only included participants and relevant variables for confirmatory and exploratory analysis and saved as `merged_data_conf.rda`. 
+First, the cleaned survey and raw data are combined into one dataset matched by id. In the Code section <span style="color: blue;"> *[1] Save demographic dataset*</span>  we save a subdataset called `mergeddata_dem.rda` including all participants for the demographic descriptions. 
 
-<span style="color: red;">**Note**</span>: Beware that in the `merged_data_conf.rda` dataset, participants excluded during the "Proportion of excluded data" quality check are also not included in the data anymore. As a default the adjusted data loss threshold (0.75; n=83 included) was used (see uploaded`merged_data_conf.rda` file). If you want to continue the analysis with the reduced dataset retained from the initial data loss threshold  (0.5; n=63 included), you need to go back to `21_qualitychecks.R` code, "uncomment" the code line `#data_loss_thres <- 0.5`, restart RStudio and repeat the workflow from the *Quality checks* section on.
+In <span style="color: blue;"> *[2] Apply 75% data loss threshold*</span> we then apply the adjusted dataloss threshold (0.75; n=83 included) to select only included participants below 75% dataloss (`merged_data_incl75`).  This data is then used in the subsequent steps as `merged_data_incl`.
+
+Then, in <span style="color: blue;"> *[3] Load corrected light data*</span>  we load the corrected light dataset `merged_calc.rda` which includes the light unit calculations from the correctly interpolated spectral irradiance data. 
+
+Code section <span style="color: blue;"> *[4] Evaluate correction*</span> compares the corrected with the prior (uncorrected) light data across mEDI and illuminance and summarises the deviations and checks the outliers. The corrected data yields ~4% higher light levels compared to before. The values before correction are slightly lower across units because in the prior data, single defective wavelength pixels in the spectral irradiance measurements were set to 0 instead of correctly interpolated.
+
+Code <span style="color: blue;"> *[5] Incorporating corrected light data*</span> then replaces all  light data in `merged_data_incl` with the corrected values from (`merged_calc`), while keeping the values set to NA during the quality checks (`21_qualitychecks.R`). Introducing the corrected values does *not* change the direction, general magnitude or interpretation of any of the results. There are however slight but visible changes in the numeric results (BFs and linear regression analyses), the data visualisation and the data summaries due to the corrected and thus higher (~4%) light level units. You can get get the results using the uncorrected values by just running the `30_datamerge.R` script, while leaving out this code section *[5] Incorporating corrected light data*.
+
+The code <span style="color: blue;"> *[6] 50% data loss threshold*</span> applies the initial threshold (0.5; n=63 included) and creates dataset `merged_data_incl50` . To use this reduced dataset for subsequent calculations one needs to "uncomment" the code line (delete the "#") `#merged_data_incl <- merged_data_incl50`, and rerun the `03_datamerge.R` code.
+
+In <span style="color: blue;"> *[7] Save dataset*</span>, we select the relevant variables for analysis and save them in a dataframe `merged_data_conf.rda`.
 
 
 ## Demographics
@@ -114,7 +124,9 @@ RCode: `40_demographics.R` <br>
 
 </span>
 
-In the first section <span style="color: blue;">*[1] Demographic data preparation*</span>, we use the data from `mergeddata_all.rda` and prepare it for visualising the demographic characteristics of the sample, by selecting only relevant columns and reducing the dataset to 1 row per participant (resulting in the subdataset `dem_data`).
+In the first section <span style="color: blue;">*[1] Demographic data preparation*</span>, we use the data from `mergeddata_dem.rda` and prepare it for visualising the demographic characteristics of the sample by reducing the dataset to 1 row per participant (resulting in the subdataset `dem_data`) and labelling subjects that exceeded the 75% dataloss threshold (n=83 included, used as default) as "excluded". To compute the demographics according to the initial data loss threshold of 50% (n=63 included), one needs to "uncomment" the following two codelines (delete the "#"):
+`#dem_data$excl[dem_data$overthrs50==TRUE] <- "EXCLUDED"`
+`#dem_data$excl_time [dem_data$overthrs50==TRUE] <- "POST"`
 
 
 In section <span style="color: blue;">*[2] Demographic table*</span> we then apply the "gtsummary" package to generate a demographic characteristics table (see Table 1 in manuscript) with the following steps:
@@ -127,12 +139,7 @@ In section <span style="color: blue;">*[2] Demographic table*</span> we then app
 
 In section <span style="color: blue;">*[3] Supplementary demographic table*</span> we repeat the procedure as in *[2] Demographic table*, using further participant characteristics surveyed in the study, generating an additional demographic characteristics table for the supplementary information (see Suppl. Table 2).
 
-The code given in <span style="color: blue;">*[4] Demographic figure*</span> generates a pyramid plot stratified by sex for only the included participants (see Figure 2 in manuscript). If you have problems with the pdf saving code section, this may be related to the cairo_pdf device (especially for MACOS users). In this case, try deleting "device=cairo_pdf" in the ggsave command and rerun the code. The size of the sample in the figure depends on the chosen data loss threshold in the `21_qualitychecks.R` script:
-
-* adjusted data loss threshold (0.75; n=83 included) [used as default]
-* initial data loss threshold  (0.5; n=63 included)
-
-Thus, the figure is either based on n=83 or n=63 participants. To change the threshold to 0.5, navigate back to the `21_qualitychecks.R` file in the code workflow and "uncomment" the code line `#data_loss_thres <- 0.5`, restart RStudio and rerun whole workflow starting with the `21_qualitychecks.R` code.
+The code given in <span style="color: blue;">*[4] Demographic figure*</span> generates a pyramid plot stratified by sex for only the included participants (see Figure 2 in manuscript). If you have problems with the pdf saving code section, this may be related to the cairo_pdf device (especially for MACOS users). In this case, try deleting "device=cairo_pdf" in the ggsave command and rerun the code. 
 
 
 ## Subdatasets
@@ -166,7 +173,7 @@ In the code section <span style="color: blue;">*[3] Subdatasets for visualising 
 
 In the code section <span style="color: blue;">*[4] Subdataset for weather data*</span> we use the `merged_data_conf.rda` to generate a dataset from the field condition with light and weather data included. This is used in Figure 3 for describing the light data across different weather conditions and in Suppl. Figure 2 showing the density of light measures across the field conditions. Please note that the `weatherdata` subdataset contains more observations than the `Fielddata` subdataset as observations with invalid/missing pupil data but valid light data are included here.
 
-<span style="color: blue;">*[5] Subdatasets for case data*</span>. In this section we generate a dataset with exemplary data from 2 participants of different age. The light data from the dark adaption (which was priorly set to NA values in the `22_categorisation.r` script) are set to "0", so they can be included in the subplots (see Figure 6 in the manuscript and Suppl. Figure 7).
+<span style="color: blue;">*[5] Subdatasets for case data*</span>. In this section we generate a dataset with exemplary data from 2 participants of different age. The light data from the dark adaptation (which was priorly set to NA values in the `22_categorisation.r` script) are set to "0", so they can be included in the subplots (see Figure 6 in the manuscript and Suppl. Figure 7).
 
 In the code section <span style="color: blue;">*[6] Subdatasets for autocorrelation*</span> we create a subdataset from the field condition (with all NAs still included) and compute autocorrelations (3 minute lag) used for Suppl. Figure 8. To compute the autocorrelations separately for every participant's trial, we used a loop that adds 19 "NA"" rows to where the observations transition from one participant id to the next.
 

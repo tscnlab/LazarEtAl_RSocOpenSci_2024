@@ -34,6 +34,8 @@ merged_data_all <- left_join(rawdata_ID_all, surveydata, by="id")
 merged_data_all$id <- factor(merged_data_all$id)
 
 
+### [1] Save demographic dataset------------------------------------------------
+
 merged_data_dem <- merged_data_all %>% select(
   id, excl, excl_time, overthrs75,overthrs50,  date, begin, age, age_group,
                      sex, handedness, visual_aid, contact_lenses, 
@@ -45,10 +47,10 @@ merged_data_dem <- merged_data_all %>% select(
   
   
   
-# Save full merged data set 
+# Save demographic merged data set 
 save(merged_data_dem, file="./03_datamerge/mergeddata_dem.rda")
 
-##### select data according to 75% data loss threshold ---------------------------------
+### [2] Apply 75% data loss threshold -------------------------------------------
 
 # sort out excluded data
 #create a dataframe containing only the included data. Here we employ 
@@ -60,8 +62,8 @@ merged_data_incl75 <- merged_data_all[merged_data_all$excl == "results" &
 
 merged_data_incl <- merged_data_incl75
 
-###  load corrected light data (correct interpolation in spectra) -------------
-
+### [3] Load corrected light data ----------------------------------------------
+#correct interpolation in spectra
 
 #load file derived from correctly interpolated spectral data
 load(file="./03_datamerge/merged_calc.rda")
@@ -71,7 +73,7 @@ str(merged_calc)
 
 sum(is.na(merged_calc$`Illuminance (lx)`))
 
-#Compare the light data (uncorrected vs corrected) and quantify deviation in percent :----
+### [4] Evaluate correction----------------------------------------------------
 
 comp <- merged_data_incl75 %>% select (id, sample_nr, exp_phase, phot_lux, Mel_EDI ) 
 comp <- cbind(comp, merged_calc$`Illuminance (lx)`, merged_calc$`Melanopic EDI (lx)` )
@@ -185,7 +187,7 @@ rm(comp, max_diff_illumperc_rows, max_diff_mediperc_rows,
   
 
 
-#replacing light data from before with corrected data  ---------------------------
+### [5] Incorporating corrected light data -------------------------------------
 
 
 # Replace photopic illuminance values with corrected spectral values (correct interpolation)
@@ -283,7 +285,7 @@ sum(is.na(merged_data_incl$phot_lux))
 sum(is.na(merged_data_incl75$phot_lux))
 
 
-##### select data according to 50% data loss threshold ---------------------------------
+##### [6] 50% data loss threshold ----------------------------------------------
 
 #create a dataframe containing only data below the initial 50% data loss threshold
 
@@ -298,7 +300,7 @@ merged_data_incl50 <- merged_data_incl[merged_data_incl$excl == "results" &
 
 
 
-### Save dataset -------------
+### [7] Save dataset -----------------------------------------------------------
 
 
 # select variables for confirmatory & exploratory analysis

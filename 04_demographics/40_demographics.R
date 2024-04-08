@@ -260,9 +260,9 @@ ggsave("06_output/agepyr_plot.pdf", plot = agepyr_plot ,
        width = 246.2/3.2, height = 73.4, units = "mm", 
        bg = "white", device=cairo_pdf)
 
-# ggsave("06_output/agepyr_plot.tiff", plot = agepyr_plot ,
-#        width = 246.2/3.2, height = 73.4, units = "mm", 
-#        bg = "white", device="tiff", dpi=600)
+ggsave("06_output/agepyr_plot.tiff", plot = agepyr_plot ,
+       width = 246.2/3.2, height = 73.4, units = "mm",
+       bg = "white", device="tiff", dpi=600)
 
 
 
