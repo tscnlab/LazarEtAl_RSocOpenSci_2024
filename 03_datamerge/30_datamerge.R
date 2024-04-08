@@ -253,6 +253,11 @@ merged_data_incl$`CIE 1931 y` <- ifelse(!is.na(merged_data_incl$`CIE 1931 y`),
                                         merged_calc$`CIE 1931 xy chromaticity [y]`,
                                         NA)
 
+#replace filenames
+merged_data_incl$`Original file`<-  merged_calc$`Original file`
+                                       
+
+
 
 # log transformed values:
 
@@ -312,7 +317,10 @@ merged_data_conf <- select(
 )
 
 
+sum(is.na(merged_data_conf$phot_lux))
 
+
+str(merged_data_conf)
 
 #save this as new dataset
 save(merged_data_conf, file="./03_datamerge/merged_data_conf.rda")

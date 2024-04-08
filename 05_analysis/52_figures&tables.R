@@ -151,7 +151,7 @@ ggsave("06_output/suppl/SupplFig2.pdf", plot = SupplFig_density ,
 # ggsave("06_output/suppl/SupplFig2.png", plot = SupplFig_density ,
 #        width = 200, height = 100, units = "mm",
 #        bg = "white")
-# 
+
 
 
 
@@ -201,9 +201,15 @@ agecomp_plot_lux <- ggdr_lux(agecomp)+
   labs()
 agecomp_plot_lux
 
-ggsave("06_output/agecomp_plot_lux.pdf", plot = agecomp_plot_lux ,
+ggsave("06_output/suppl/agecomp_plot_lux.pdf", plot = agecomp_plot_lux ,
        width = 159.2 *(2.998/5), height = 80, units = "mm", 
        bg = "white")
+
+
+ggsave("06_output/suppl/agecomp_plot_lux.png", plot = agecomp_plot_lux ,
+       width = 159.2 *(2.998/5), height = 80, units = "mm",
+       bg = "white", device = "tiff", dpi=600)
+
 
 
 ### [5] Age effect across light conditions--------------------------------------
@@ -567,6 +573,12 @@ autocor_panel <- grid.arrange(autocor_plots[[1]], autocor_plots[[2]],
 ggsave("06_output/suppl/autocor_panels.pdf", plot = autocor_panel ,
        width = 159.2*(2.28242/3), height = 80, units = "mm", 
        bg = "white")
+
+
+ggsave("06_output/suppl/autocor_panels.png", plot = autocor_panel ,
+       width = 159.2*(2.28242/3), height = 80, units = "mm",
+       bg = "white", device = "tiff", dpi=600)
+
 
 
 ### [7] Data loss threshold--------------------------------------------------------------
