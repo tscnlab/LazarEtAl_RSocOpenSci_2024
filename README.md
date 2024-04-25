@@ -231,7 +231,7 @@ In the code section <span style="color: blue;">*[7] Exploratory analyses - EH*</
 - *EH4: Light-adapted pupil size varies as a function of the acute caffeine consumption (relative to body weight) under real-world conditions.*
 
 
-In the code section <span style="color: blue;">*[8] Exploratory analyses without hypotheses *</span> Here, we conduct the exploratory analyses of the stage 2 manuscript that were not hypothesis driven. The LMM analysis procedure  uses the same approach as for the exploratory hypothesis tests. The output however is given as matrices of Bayes Factor tests.
+In the code section <span style="color: blue;">*[8] Exploratory analyses without hypotheses *</span> we conduct the exploratory analyses of the stage 2 manuscript that were not hypothesis driven. The LMM analysis procedure  uses the same approach as for the exploratory hypothesis tests. The output however is given as matrices of Bayes Factor tests.
 
 The following exploratory tests were run:
 
