@@ -94,12 +94,12 @@ In code section <span style="color: blue;">*[3] Data saving*</span> we save the 
 
 Folder: `03_datamerge` <br>
 Input: `cleaned_survey.rda`, `rawdata_ID_all.rda`, `merged_calc.rda` <br>
-Output: `mergeddata_dem.rda`, `merged_data_conf.rda` <br>
+Output: `merged_data_dem.rda`, `merged_data_conf.rda`, `merged_data_incl.rda` <br>
 RCode: `30_datamerge.R` <br>
 
 </span>
 
-First, the cleaned survey and raw data are combined into one dataset matched by id. In the Code section <span style="color: blue;"> *[1] Save demographic dataset*</span>  we save a subdataset called `mergeddata_dem.rda` including all participants for the demographic descriptions. 
+First, the cleaned survey and raw data are combined into one dataset matched by id. In the Code section <span style="color: blue;"> *[1] Save demographic dataset*</span>  we save a subdataset called `merged_data_dem.rda` including all participants for the demographic descriptions. 
 
 In <span style="color: blue;"> *[2] Apply 75% data loss threshold*</span> we then apply the adjusted dataloss threshold (0.75; n=83 included) to select only included participants below 75% dataloss (`merged_data_incl75`).  This data is then used in the subsequent steps as `merged_data_incl`.
 
@@ -107,18 +107,18 @@ Then, in <span style="color: blue;"> *[3] Load corrected light data*</span>  we 
 
 Code section <span style="color: blue;"> *[4] Evaluate correction*</span> compares the corrected with the prior (uncorrected) light data across mEDI and illuminance and summarises the deviations and checks the outliers. The corrected data yields ~4% higher light levels compared to before. The values before correction are slightly lower across units because in the prior data, single defective wavelength pixels in the spectral irradiance measurements were set to 0 instead of correctly interpolated.
 
-Code <span style="color: blue;"> *[5] Incorporating corrected light data*</span> then replaces all  light data in `merged_data_incl` with the corrected values from (`merged_calc`), while keeping the values set to NA during the quality checks (`21_qualitychecks.R`). Introducing the corrected values does *not* change the direction, general magnitude or interpretation of any of the results. There are however slight but visible changes in the numeric results (BFs and linear regression analyses), the data visualisation and the data summaries due to the corrected and thus higher (~4%) light level units. You can get get the results using the uncorrected values by just running the `30_datamerge.R` script, while leaving out this code section *[5] Incorporating corrected light data*.
+Code <span style="color: blue;"> *[5] Incorporating corrected light data*</span> then replaces all  light data in `merged_data_incl` with the corrected values from (`merged_calc`), while keeping the values set to NA during the quality checks (`21_qualitychecks.R`). Introducing the corrected values does *not* change the direction, general magnitude or interpretation of any of the results. There are however slight changes in the numeric results (BFs and linear regression analyses), the data visualisation and the data summaries due to the corrected and thus higher (~4%) light level units.
 
-The code <span style="color: blue;"> *[6] 50% data loss threshold*</span> applies the initial threshold (0.5; n=63 included) and creates dataset `merged_data_incl50` . To use this reduced dataset for subsequent calculations one needs to "uncomment" the code line (delete the "#") `#merged_data_incl <- merged_data_incl50`, and rerun the `03_datamerge.R` code.
+The code <span style="color: blue;"> *[6] 50% data loss threshold*</span> applies the initial data loss threshold (0.5; n=63 included) and creates dataset `merged_data_incl50` . To use this reduced dataset for subsequent calculations one needs to "uncomment" the code line (delete the "#") `#merged_data_incl <- merged_data_incl50`, and rerun the `03_datamerge.R` code.
 
-In <span style="color: blue;"> *[7] Save dataset*</span>, we select the relevant variables for analysis and save them in a dataframe `merged_data_conf.rda`.
+In <span style="color: blue;"> *[7] Save dataset*</span>, we save the dataset with all columns as `merged_data_incl.rda` and then select the relevant variables for analysis and save them in a dataframe `merged_data_conf.rda`.
 
 
 ## Demographics
 <span style="color: green;">
 
 Folder: `04_demographics` <br>
-Input: `mergeddata_all.rda` <br>
+Input: `merged_data_dem.rda` <br>
 Output: `dem_tab.pdf`, `suppl_dem_tab.pdf`, `agepyr_plot.pdf` <br>
 RCode: `40_demographics.R` <br>
 
