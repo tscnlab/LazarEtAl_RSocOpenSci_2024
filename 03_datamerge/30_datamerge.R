@@ -319,13 +319,21 @@ merged_data_conf <- select(
 )
 
 
-sum(is.na(merged_data_conf$phot_lux))
-
-
+#check structure of the dataframe 
 str(merged_data_conf)
 
-#save this as new dataset
+#save pre-processed datasets
+#full dataset with all columns
+save(merged_data_incl, file="./03_datamerge/merged_data_incl.rda")
+#dataset with selected columns for analysis
 save(merged_data_conf, file="./03_datamerge/merged_data_conf.rda")
+
+
+
+
+# Export full pre-processed data for Figshare
+# write.csv(merged_data_incl, "merged_data_incl.csv", row.names = FALSE)
+
 
 
 
