@@ -27,7 +27,6 @@ vignettes/*.pdf
 /rawdata/*Notes.csv
 /rawdata/**/timing/
 /rawdata/**/*.png
-/06_output/**/*.txt
 README.html
 hypotheses.html
 #ignore .rda files with the exception of rawfiles.rda & cleaned_survey.rda and the correction file merged_calc
