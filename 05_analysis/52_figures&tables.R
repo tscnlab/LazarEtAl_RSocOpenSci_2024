@@ -1182,8 +1182,18 @@ library(lmerTest)
 library(lme4)
 
 
+Fielddata_r <- Fielddata %>%  rename(
+  mEDI=Mel_EDI,
+  `log10(mEDI)`=log_Mel_EDI,
+  `pupil size`=diameter_3d,
+  illuminance=phot_lux,
+  `log10(illuminance)`=log_phot_lux)
+
+
+
+
 #create a linear model for testing the untransformed light data (mEDI)
-model1 <- lm(diameter_3d ~ Mel_EDI + age, data = Fielddata)
+model1 <- lm(diameter_3d ~ Mel_EDI + age, data = Fielddata_r)
 
 #use the check model function to test the linear assumptions in the model
 #log10 transformed data
@@ -1195,7 +1205,7 @@ assumptest_lin <- check_model(model1, theme="ggplot2::theme_classic")
 #(ggsave function did not work here)
 
 #create  a linear model for testing the log10-transformed light data (mEDI)
-model2 <- lm(diameter_3d ~ log_Mel_EDI + age, data = Fielddata)
+model2 <- lm(diameter_3d ~ log_Mel_EDI + age, data = Fielddata_r)
 
 #use the check model function to test the linear assumptions in the model
 #untransformed data
@@ -1204,10 +1214,10 @@ assumptest_log <- check_model(model2, theme="ggplot2::theme_classic")
 #assumptest_log
 
 #create a linear model for testing the untransformed light data (phot. illum.)
-model3 <- lm(diameter_3d ~ phot_lux + age, data = Fielddata)
+model3 <- lm(diameter_3d ~ phot_lux + age, data = Fielddata_r)
 
 #create a linear model for testing the untransformed light data (phot. illum.)
-model4 <- lm(diameter_3d ~  log_phot_lux + age, data = Fielddata)
+model4 <- lm(diameter_3d ~  log_phot_lux + age, data = Fielddata_r)
 
 
 assumptest_lin_lux <- check_model(model3, theme="ggplot2::theme_classic")

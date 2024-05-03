@@ -40,7 +40,7 @@ load(file="./05_analysis/subdata/conf_subdata.rda")
 
 ```
 
-In section <span style="color: blue;">*[2] Testing log-transformation*</span> we run additional analyses regarding the log-10 transformation of the light data. After realizing that the linear light data violate the assumptions of linear regression models, (see Suppl. Figure 2 B, C and E) we generated log10-transformed light variables with which the requirements were approximately met (see Suppl. Figure 3). Here, we additionally tested whether the transformation improved the fit in the LMM, comparing the model with log10 transformation against a null model with linear light data in the same procedure as our hypothesis tests specified in the pre-registered analysis. The BF10 clearly shows evidence in favour of log10-transformation.
+In section <span style="color: blue;">*[2] Testing log-transformation*</span> we run additional analyses regarding the log-10 transformation of the light data. After realizing that the linear light data violate the assumptions of linear regression models, we generated log10-transformed light variables with which the requirements were approximately met. Here, we additionally tested whether the transformation improved the fit in the LMM, comparing the model with log10 transformation against a null model with linear light data in the same procedure as our hypothesis tests specified in the pre-registered analysis. The BF10 clearly shows evidence in favour of log10-transformation.
 
 ```{r [2]-Testing-log10-transformation}
 
@@ -88,7 +88,7 @@ extractBF(BF_CH1blog, logbf = T, onlybf = T)
 
 ```
 
-In code section <span style="color: blue;">*[3] Positive control tests*</span> we test our confirmatory hypotheses in the controlled laboratory conditions as positive control tests. You find the results of these tests in Supplementary Tables 6  for the 75% data loss threshold sample (n=83) and in Supplementary Table 7 in the 50% data loss" threshold sample (n=63).
+In code section <span style="color: blue;">*[3] Positive control tests*</span> we test our confirmatory hypotheses in the controlled laboratory conditions as positive control tests. 
 
 First, we tested hypothesis CH1 with the linear models specified in stage 1 of our report with data from our laboratory conditions (subdataset "Labdata"). The models are tested with log10-transformed and linear (non-transformed) mEDI as a predictor.
 
@@ -172,7 +172,7 @@ extractBF(BF_CH1ax, logbf = T, onlybf = T)/ log(10)
 
 ```
 
-Secondly, we tested hypothesis CH2 with the linear models specified in stage 1 of our report with data from our laboratory conditions (subdataset "Labdata"). Note that under these conditions, the light units mEDI and photopic lux are somewhat dissociated (see Figure 5). Again, the test is once run for a model including the log10-transformed light data (mEDI and photopic illuminance) and once with non-transformed light data.
+Secondly, we tested hypothesis CH2 with the linear models specified in stage 1 of our report with data from our laboratory conditions (subdataset "Labdata"). Note that under these conditions, the light units mEDI and photopic lux are somewhat dissociated. Again, the test is once run for a model including the log10-transformed light data (mEDI and photopic illuminance) and once with non-transformed light data.
 
 ```{r [3]-Positive-control-tests CH2}
 

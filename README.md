@@ -36,7 +36,7 @@ The health and eligibility screening including demographic data are given in thi
 - <span style="color: blue;">*[4] Data mistake corrections*</span> makes corrections to spelling mistakes and missing values in the survey data
 - <span style="color: blue;">*[5] Data saving*</span> saves the survey data in a cleaned R data file as `cleaned_survey.rda`.
 
-<span style="color: red;">**Note**</span>: We also uploaded the resulting `cleaned_survey.rda` file to allow continued analyses in case of problems with the survey data import into R. Import issues can typically arise due to differences in OS and time and language settings.
+**Note**: We also uploaded the resulting `cleaned_survey.rda` file to allow continued analyses in case of problems with the survey data import into R. Import issues can typically arise due to differences in OS and time and language settings.
 
 ## Raw data
 <span style="color: green;">
@@ -50,7 +50,7 @@ RCode: `20_rawdata_import.R` <br>
 
 The `20_rawdata_import.R` conducts the raw data import, reading in the rawdata csv files and extracting their inclusion/exclusion status from the subject-specific subfolder name and finally renaming some variables. The raw data csv files are given in subject-specific subfolders of the `02_rawdata` folder (`SP001`-`SP113`). The subject-specific subfolders of the participants excluded before the trial contain a results file with the same header but only one row NA as data. The imported data are saved as `rawfiles.rda`.
 
-<span style="color: red;">**Note**</span>: We also uploaded the resulting `rawfiles.rda` file to allow continued analyses in case of problems with the survey data import into R. Import issues can typically arise due to differences in OS and time and language settings.
+**Note**: We also uploaded the resulting `rawfiles.rda` file to allow continued analyses in case of problems with the survey data import into R. Import issues can typically arise due to differences in OS and time and language settings.
 
 ## Quality checks
 <span style="color: green;">
@@ -70,7 +70,7 @@ The Code section <span style="color: blue;">*[3] Light data transformation*</spa
 
 The Code section <span style="color: blue;">*[4] Save checked rawfiles*</span> saves the quality checked data to the file `checked_rawfiles.rda`.
 
-<span style="color: red;">**Note**</span>: We uploaded the resulting `checked_rawfiles.rda` file to allow continued analyses in case of problems with the prior R code.
+**Note**: We uploaded the resulting `checked_rawfiles.rda` file to allow continued analyses in case of problems with the prior R code.
 
 
 ## Data categorisation 
@@ -87,7 +87,9 @@ Code section <span style="color: blue;">*[1] Load checked raw data*</span> loads
 
 In the Code section <span style="color: blue;">*[2] Experimental phase categorisation*</span> the observations are "tagged" according to the experimental phases they were collected in. This is done with the help of multiple steps. First, as rough categorisation step  all data <1.5 lx photopic illuminance is tagged as "Dark" data from the dark-adaptation phase. Then the categorisation is refined by tagging the "Lab" data from the laboratory light conditions. This procedure is verified visually, by plotting the first 181 photopic illuminance samples (log10-scale) of each participants' dataset as a function of the sample number. Finally the "Field" data samples are tagged, starting 3 samples after the laboratory data. The transition samples before starting the dark adaptation and in-between conditions are tagged as "NA". Subsequently, all light data from the dark adaptation phase and data below <1 lx photopic illuminance or mEDI are replaced by "NA" values because the used spectroradiometer does not allow valid measurements in these very dim light conditions. Additionally a new light variable giving the ratio between melanopic irradiance and photopic illuminance (`MPratio`) is introduced for later plotting. 
 
-In code section <span style="color: blue;">*[3] Data saving*</span> we save the cleaned, quality checked and categorised dataset to the `rawdata_ID_all.rda` R data file.
+In code section <span style="color: blue;">*[3] Data saving*</span> we save the cleaned, quality checked and categorised dataset to the `rawdata_ID_all.rda` R data file. 
+
+**Note**: We uploaded the resulting `rawdata_ID_all.rda` file to allow continued analyses in case of problems with the prior R code.
 
 ## Data merge
 <span style="color: green;">
@@ -107,12 +109,14 @@ Then, in <span style="color: blue;"> *[3] Load corrected light data*</span>  we 
 
 Code section <span style="color: blue;"> *[4] Evaluate correction*</span> compares the corrected with the prior (uncorrected) light data across mEDI and illuminance and summarises the deviations and checks the outliers. The corrected data yields ~4% higher light levels compared to before. The values before correction are slightly lower across units because in the prior data, single defective wavelength pixels in the spectral irradiance measurements were set to 0 instead of correctly interpolated.
 
-Code <span style="color: blue;"> *[5] Incorporating corrected light data*</span> then replaces all  light data in `merged_data_incl` with the corrected values from (`merged_calc`), while keeping the values set to NA during the quality checks (`21_qualitychecks.R`). Introducing the corrected values does *not* change the direction, general magnitude or interpretation of any of the results. There are however slight changes in the numeric results (BFs and linear regression analyses), the data visualisation and the data summaries due to the corrected and thus higher (~4%) light level units.
+Code <span style="color: blue;"> *[5] Incorporating corrected light data*</span> then replaces all  light data in `merged_data_incl` with the corrected values from (`merged_calc`), while keeping the values set to NA during the quality checks (`21_qualitychecks.R`). Introducing the corrected values did *not* change the direction, general magnitude or interpretation of any of the results. There were however slight changes in the numeric results (BFs and linear regression analyses), the data visualisation and the data summaries due to the corrected and thus higher (~4%) light level units.
 
 The code <span style="color: blue;"> *[6] 50% data loss threshold*</span> applies the initial data loss threshold (0.5; n=63 included) and creates dataset `merged_data_incl50` . To use this reduced dataset for subsequent calculations one needs to "uncomment" the code line (delete the "#") `#merged_data_incl <- merged_data_incl50`, and rerun the `03_datamerge.R` code.
 
 In <span style="color: blue;"> *[7] Save dataset*</span>, we save the dataset with all columns as `merged_data_incl.rda` and then select the relevant variables for analysis and save them in a dataframe `merged_data_conf.rda`.
 
+
+**Note**: We uploaded the resulting `merged_data_dem.rda`, `merged_data_incl.rda` and `merged_data_conf.rda` files to allow continued analyses in case of problems with the prior R code.
 
 ## Demographics
 <span style="color: green;">
@@ -178,6 +182,8 @@ In the code section <span style="color: blue;">*[4] Subdataset for weather data*
 In the code section <span style="color: blue;">*[6] Subdatasets for autocorrelation*</span> we create a subdataset from the field condition (with all NAs still included) and compute autocorrelations (3 minute lag) used for Suppl. Figure 8. To compute the autocorrelations separately for every participant's trial, we used a loop that adds 19 "NA"" rows to where the observations transition from one participant id to the next.
 
 In <span style="color: blue;">*[7] Saving subdatasets*</span> we save all subdatasets (image of the environment) into the `conf_subdata.rda` file.
+
+**Note**: We uploaded the resulting `conf_subdata.rda` file to allow continued analyses in case of problems with the prior R code.
 
 
 ## Hypotheses and exploratory analyses
@@ -275,10 +281,10 @@ In <span style="color: blue;">*[8] Light condition comparison*</span> we create 
 
 In the code section <span style="color: blue;">*[9] Data tables*</span> we create the Supplementary Tables 3-9 summarizing each included participant's pupil and light (alpha-opic EDI & photopic illuminance) data (minimum, median, maximum and data loss ratio) separated between field & positive control data.
 
-Finally we visualise the <span style="color: blue;">*[10] Linear regression assumptions*</span> (corresponding to Suppl. Figures 3-6) for the prediction of pupil size with the non-transformed and log10-transformed mEDI and photopic illuminance variables using the `performance` and `see` packages. The Figures were saved as pdf manually (size: landscape, width = 11.69 in, height = 8.27 in) because the *ggsave* function could not handle the size of those figures.
+Finally we visualise the <span style="color: blue;">*[10] Linear regression assumptions*</span> (corresponding to Suppl. Figures 3-6) for the prediction of pupil size with the non-transformed and log10-transformed mEDI and photopic illuminance variables using the `performance` and `see` packages. The Figures were saved as pdf manually because the *ggsave* function could not handle the size of those figures.
 
 
-Note: Figure 1 of the manuscript and Suppl. Figure 1 are not based on raw data and are hence not generated in R. If you have problems with some of the pdf saving code, this may be related to the cairo_pdf device (especially for MACOS users). In this case, try deleting "device=cairo_pdf" in the *ggsave* commands and rerun the code.
+**Note**: Figure 1 of the manuscript and Suppl. Figure 1 are not based on raw data and are hence not generated in R. If you have problems with some of the pdf saving code, this may be related to the cairo_pdf device (especially for MACOS users). In this case, try deleting "device=cairo_pdf" in the *ggsave* commands and rerun the code.
 
 
 ## Output
