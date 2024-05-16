@@ -183,8 +183,6 @@ In the code section <span style="color: blue;">*[6] Subdatasets for autocorrelat
 
 In <span style="color: blue;">*[7] Saving subdatasets*</span> we save all subdatasets (image of the environment) into the `conf_subdata.rda` file.
 
-**Note**: We uploaded the resulting `conf_subdata.rda` file to allow continued analyses in case of problems with the prior R code.
-
 
 ## Hypotheses and exploratory analyses
 <span style="color: green;">
