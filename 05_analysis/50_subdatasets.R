@@ -215,9 +215,7 @@ agecomp <- cf_data[!cf_data$exp_phase == "Lab" & !is.na(cf_data$exp_phase) &
 for (i in 1: nrow(agecomp)){
   if ((agecomp$exp_phase[i] == "Dark")
   )
-  { agecomp$`CIE 1931 x`[i] <- 0
-  agecomp$`CIE 1931 y`[i] <- 0
-  agecomp$phot_lux[i] <- 0
+  {agecomp$phot_lux[i] <- 0
   agecomp$SConeIrrad[i] <- 0
   agecomp$MConeIrrad[i] <- 0
   agecomp$LConeIrrad[i] <- 0
