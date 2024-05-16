@@ -24,6 +24,7 @@ vignettes/*.pdf
 *.knit.md
 /06_output/**/*.pdf
 /06_output/**/*.txt
+/06_output/archive/
 /rawdata/*Notes.csv
 /rawdata/**/timing/
 /rawdata/**/*.png
