@@ -109,9 +109,9 @@ Then, in <span style="color: blue;"> *[3] Load corrected light data*</span>  we 
 
 Code section <span style="color: blue;"> *[4] Evaluate correction*</span> compares the corrected with the prior (uncorrected) light data across mEDI and illuminance and summarises the deviations and checks the outliers. The corrected data yields ~4% higher light levels compared to before. The values before correction are slightly lower across units because in the prior data, single defective wavelength pixels in the spectral irradiance measurements were set to 0 instead of correctly interpolated.
 
-Code <span style="color: blue;"> *[5] Incorporating corrected light data*</span> then replaces all  light data in `merged_data_incl` with the corrected values from (`merged_calc`), while keeping the values set to NA during the quality checks (`21_qualitychecks.R`). Introducing the corrected values did *not* change the direction, general magnitude or interpretation of any of the results. There were however slight changes in the numeric results (BFs and linear regression analyses), the data visualisation and the data summaries due to the corrected and thus higher (~4%) light level units.
+Code <span style="color: blue;"> *[5] Incorporating corrected light data*</span> then replaces all  light data in `merged_data_incl` with the corrected values from (`merged_calc`), while keeping the values set to NA during the quality checks (`21_qualitychecks.R`). Using the uncorrected values does *not* change the direction, general magnitude or interpretation of any of the results. There are however slight differences in the numeric results (BFs and linear regression analyses), the data visualisation, and the data summaries due to the small differences (~4%) across light level units.
 
-The code <span style="color: blue;"> *[6] 50% data loss threshold*</span> applies the initial data loss threshold (0.5; n=63 included) and creates dataset `merged_data_incl50` . To use this reduced dataset for subsequent calculations one needs to "uncomment" the code line (delete the "#") `#merged_data_incl <- merged_data_incl50`, and rerun the `03_datamerge.R` code.
+The code section <span style="color: blue;"> *[6] 50% data loss threshold*</span> applies the initial data loss threshold (0.5; n=63 included) and creates dataset `merged_data_incl50` . To use this reduced dataset for subsequent calculations one needs to "uncomment" the code line (delete the "#") `#merged_data_incl <- merged_data_incl50`, and rerun the `03_datamerge.R` code.
 
 In <span style="color: blue;"> *[7] Save dataset*</span>, we save the dataset with all columns as `merged_data_incl.rda` and then select the relevant variables for analysis and save them in a dataframe `merged_data_conf.rda`.
 
@@ -143,7 +143,7 @@ In section <span style="color: blue;">*[2] Demographic table*</span> we then app
 
 In section <span style="color: blue;">*[3] Supplementary demographic table*</span> we repeat the procedure as in *[2] Demographic table*, using further participant characteristics surveyed in the study, generating an additional demographic characteristics table for the supplementary information (see Suppl. Table 2).
 
-The code given in <span style="color: blue;">*[4] Demographic figure*</span> generates a pyramid plot stratified by sex for only the included participants (see Figure 2 in manuscript). If you have problems with the pdf saving code section, this may be related to the cairo_pdf device (especially for MACOS users). In this case, try deleting "device=cairo_pdf" in the ggsave command and rerun the code. 
+The code given in <span style="color: blue;">*[4] Demographic figure*</span> generates a pyramid plot stratified by sex for only the included participants (see Figure 2 in manuscript). 
 
 
 ## Subdatasets
