@@ -1,3 +1,5 @@
+<img src="https://github.com/tscnlab/Templates/blob/main/logo/logo_with_text-01.png" width="400"/>
+
 # Overview
 This R code and data repository is part of the registered report: **Regulation of pupil size in natural vision across the human lifespan** and publicly accessible under the [MIT](https://opensource.org/license/mit/) license (see `LICENSE.md` file). The laboratory log file (`lablog_RSOS-191613.csv`) provides an overview of the most relevant metadata for all invited participants.
 
